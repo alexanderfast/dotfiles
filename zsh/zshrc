@@ -3,6 +3,20 @@
 
 export ZSH=$HOME/.oh-my-zsh
 
+setopt AUTO_PARAM_SLASH       # adds slash at end of tabbed dirs
+setopt CHECK_JOBS             # check bg jobs on exit
+setopt EXTENDED_GLOB          # globs #, ~ and ^
+setopt EXTENDED_HISTORY       # saves timestamps on history
+setopt GLOB_DOTS              # find dotfiles easier
+setopt HASH_CMDS              # save cmd location to skip PATH lookup
+setopt HIST_EXPIRE_DUPS_FIRST # expire duped history first
+setopt HIST_NO_STORE          # dont save history cmd in history
+setopt INC_APPEND_HISTORY     # append history as command are entered
+setopt LIST_ROWS_FIRST        # completion options left-to-right, top-to-bottom
+setopt LIST_TYPES             # show file types in list
+setopt MARK_DIRS              # adds slash to end of completed dirs
+setopt SHARE_HISTORY          # share history between open shells
+
 ZSH_THEME="robbyrussell"
 DOTFILES="$HOME/dotfiles"
 
@@ -41,6 +55,13 @@ zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' verbose true
+
+# Host completion for ssh, I have no idea how this works
+zstyle -e ':completion:*:(ssh|scp):*' hosts 'reply=(
+${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) \
+  /dev/null)"}%%[# ]*}//,/ }
+${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2>/dev/null))"}%%\#*}
+  )'
 
 autoload -Uz compinit
 compinit
