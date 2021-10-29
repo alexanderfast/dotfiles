@@ -1,7 +1,10 @@
 - link:
         ~/.oh-my-zsh: ohmyzsh
+        ~/.tmux:
+        ~/.tmux.conf:
         ~/.zsh:
         ~/.zshrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [~/.tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
