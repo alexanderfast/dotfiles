@@ -102,3 +102,15 @@ source $ZSH/oh-my-zsh.sh
 
 # Added stuff below
 TERM=screen-256color
+
+# From other file
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/home/afast/.zshrc'
+
+autoload -Uz compinit
+compinit
