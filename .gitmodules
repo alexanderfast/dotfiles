@@ -9,3 +9,7 @@
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 	ignore = dirty
+[submodule "tmux/plugins/nord-tmux"]
+	path = tmux/plugins/nord-tmux
+	url =  https://git::@github.com/arcticicestudio/nord-tmux
+	ignore = all
