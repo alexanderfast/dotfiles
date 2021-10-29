@@ -1,0 +1,2 @@
+#!/bin/bash -xe
+nvim --headless -u $(dirname $0)/bootstrap.vim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

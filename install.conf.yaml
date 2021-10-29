@@ -1,4 +1,8 @@
+- create:
+        - ~/.config
+
 - link:
+        ~/.config/nvim: nvim
         ~/.oh-my-zsh: ohmyzsh
         ~/.tmux:
         ~/.tmux.conf:
@@ -8,3 +12,4 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [~/.tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
+  - [~/dotfiles/nvim/install_plugins, Installing nvim plugins]
