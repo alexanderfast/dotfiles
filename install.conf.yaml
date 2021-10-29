@@ -5,7 +5,7 @@
         ~/.config/nvim: nvim
         ~/.oh-my-zsh: ohmyzsh
         ~/.tmux:
-        ~/.tmux.conf:
+        ~/.tmux.conf: tmux/tmux.conf
         ~/.zshrc: zsh/zshrc
         ~/.zshenv: zsh/zshenv
         ~/.zsh_aliases: zsh/zsh_aliases
