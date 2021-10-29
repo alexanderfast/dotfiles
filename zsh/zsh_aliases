@@ -1,3 +1,6 @@
 alias rl=". ~/.zshrc && echo 'zsh config reloaded'"
-alias gdc="git diff --cached"
 alias v="nvim"
+
+# git
+alias gcma='git commit -am'
+alias gamend='git commit --amend --verbose'
