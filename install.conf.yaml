@@ -6,8 +6,9 @@
         ~/.oh-my-zsh: ohmyzsh
         ~/.tmux:
         ~/.tmux.conf:
-        ~/.zsh:
-        ~/.zshrc:
+        ~/.zshrc: zsh/zshrc
+        ~/.zshenv: zsh/zshenv
+        ~/.zsh_aliases: zsh/zsh_aliases
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
