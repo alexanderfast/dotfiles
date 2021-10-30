@@ -4,11 +4,12 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'itchyny/lightline.vim'
-Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'bronson/vim-trailing-whitespace', { 'on': 'FixWhitespace' }
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'Yggdroot/indentLine', { 'for': 'yaml' }
 call plug#end()
 
 " options
@@ -59,6 +60,10 @@ function! StartUp()
     end
 endfunction
 autocmd vimenter * call StartUp()
+
+" yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+let g:indentLine_char = '⦙'
 
 " keybinds
 nnoremap <C-n> :NERDTreeToggle<CR>

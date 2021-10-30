@@ -3,17 +3,17 @@
       relink: true
 
 - create:
-        - ~/.config
+  - ~/.config
 
 - link:
-        ~/.config/nvim: nvim
-        ~/.dir_colors: nord-dircolors/src/dir_colors
-        ~/.oh-my-zsh: ohmyzsh
-        ~/.tmux:
-        ~/.tmux.conf: tmux/tmux.conf
-        ~/.zshrc: zsh/zshrc
-        ~/.zshenv: zsh/zshenv
-        ~/.zsh_aliases: zsh/zsh_aliases
+    ~/.config/nvim: nvim
+    ~/.dir_colors: nord-dircolors/src/dir_colors
+    ~/.oh-my-zsh: ohmyzsh
+    ~/.tmux:
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.zshrc: zsh/zshrc
+    ~/.zshenv: zsh/zshenv
+    ~/.zsh_aliases: zsh/zsh_aliases
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
