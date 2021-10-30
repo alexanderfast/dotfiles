@@ -1,13 +1,15 @@
 " plugins
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'arcticicestudio/nord-vim'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'arcticicestudio/nord-vim'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'itchyny/lightline.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'bronson/vim-trailing-whitespace', { 'on': 'FixWhitespace' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 call plug#end()
 
 " options
@@ -18,12 +20,20 @@ set hlsearch
 set smarttab
 set shiftwidth=4
 set tabstop=4
-set mouse=v
+set mouse=v                 " mouse only in visual mode
 set incsearch
 set autoindent
 set termguicolors
 set number
 set relativenumber
+set backspace=indent,eol    " dont backspace across lines
+set nowrap
+set linebreak
+set noswapfile
+set nowritebackup
+set foldmethod=syntax
+set splitbelow
+set splitright
 
 colorscheme nord
 
@@ -42,11 +52,19 @@ let g:lightline = {
 " terraform
 let g:terraform_align=1
 
-" Start NERDTree and put the cursor back in the other window.
-" autocmd VimEnter * NERDTree | wincmd p
-nnoremap <C-n> :NERDTreeToggle<CR>
+" show nerdtree when started with no args
+function! StartUp()
+    if !argc()
+        NERDTree
+    end
+endfunction
+autocmd vimenter * call StartUp()
 
 " keybinds
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap confe :e $MYVIMRC<CR>
+nnoremap confr :source $MYVIMRC<CR>
+
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
