@@ -1,7 +1,6 @@
 " plugins
 call plug#begin(stdpath('data') . '/plugged')
 Plug 'arcticicestudio/nord-vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'itchyny/lightline.vim'
