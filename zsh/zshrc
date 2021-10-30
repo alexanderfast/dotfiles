@@ -77,12 +77,5 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # ssh host completion
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
-#autoload -Uz promptinit
-#promptinit
-
-# loaded by ohmyzsh
-#autoload -Uz compinit
-#compinit
-
 # uncomment to profile
 #zprof
