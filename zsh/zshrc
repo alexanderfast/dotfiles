@@ -66,7 +66,7 @@ antigen bundle python
 antigen bundle terraform
 antigen bundle tmux
 antigen bundle vault
-
+antigen bundle z
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
