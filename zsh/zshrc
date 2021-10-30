@@ -45,24 +45,11 @@ HIST_STAMPS="yyyy-mm-dd"
 
 DISABLE_AUTO_TITLE="true"
 
-plugins=(
-    git
-    colorize
-    python
-    pip
-    pipenv
-    pyenv
-    autopep8
-    docker
-    vault
-    tmux
-    common-aliases
-    command-not-found
-)
-
 source $ZSH/oh-my-zsh.sh
-
 source $DOTFILES/zsh/zsh_aliases
+source $DOTFILES/zsh/antigen.zsh
+
+antigen init $DOTFILES/zsh/antigenrc
 
 eval "$(dircolors ~/.dir_colors)"
 
