@@ -31,6 +31,7 @@ set linebreak
 set noswapfile
 set nowritebackup
 set foldmethod=syntax
+set foldlevelstart=20
 set splitbelow
 set splitright
 

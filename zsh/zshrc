@@ -1,7 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export ZSH=$HOME/.oh-my-zsh
+
+autoload -Uz promptinit
+promptinit
+
+autoload -Uz compinit
+compinit
+
+bindkey -v
 
 setopt AUTO_PARAM_SLASH       # adds slash at end of tabbed dirs
 setopt CHECK_JOBS             # check bg jobs on exit
@@ -17,7 +24,7 @@ setopt LIST_TYPES             # show file types in list
 setopt MARK_DIRS              # adds slash to end of completed dirs
 setopt SHARE_HISTORY          # share history between open shells
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="refined"
 DOTFILES="$HOME/dotfiles"
 
 # Uncomment the following line to use hyphen-insensitive completion.
@@ -33,36 +40,54 @@ zstyle ':omz:update' frequency 13
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# Uncomment if git is slow
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.histfile
 HIST_STAMPS="yyyy-mm-dd"
+
 DISABLE_AUTO_TITLE="true"
 
-plugins=(git)
+plugins=(
+    git
+    colorize
+    python
+    pip
+    pipenv
+    pyenv
+    autopep8
+    docker
+    vault
+    tmux
+    common-aliases
+    command-not-found
+)
 
 source $ZSH/oh-my-zsh.sh
 
 . $DOTFILES/zsh/zsh_aliases
 
-# From other file
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+# completion
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' max-errors 2
-zstyle ':completion:*' menu select=long
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+eval "$(dircolors -b)"
 
-# Host completion for ssh, I have no idea how this works
-zstyle -e ':completion:*:(ssh|scp):*' hosts 'reply=(
-${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) \
-  /dev/null)"}%%[# ]*}//,/ }
-${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2>/dev/null))"}%%\#*}
-  )'
-
-autoload -Uz compinit
-compinit
+# ssh host completion
+zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
