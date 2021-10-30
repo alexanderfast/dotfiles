@@ -17,7 +17,7 @@ setopt LIST_TYPES             # show file types in list
 setopt MARK_DIRS              # adds slash to end of completed dirs
 setopt SHARE_HISTORY          # share history between open shells
 
-ZSH_THEME="refined"
+ZSH_THEME="candy"
 DOTFILES="$HOME/dotfiles"
 
 # Uncomment the following line to use hyphen-insensitive completion.
