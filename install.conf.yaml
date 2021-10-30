@@ -13,5 +13,4 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [~/.tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
-  # TODO this doesnt work from within dotbot for some reason, but works when run manually
-  #  - [~/dotfiles/nvim/install_plugins, Installing nvim plugins]
+  - [~/dotfiles/nvim/install_plugins, Installing nvim plugins]

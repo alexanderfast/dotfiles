@@ -1,9 +1,33 @@
-lua require('plugins')
-lua require('options')
+" plugins
+call plug#begin(stdpath('data') . '/plugged')
+Plug 'arcticicestudio/nord-vim'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'arcticicestudio/nord-vim'
+Plug 'akinsho/nvim-bufferline.lua'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'itchyny/lightline.vim'
+Plug 'hashivim/vim-terraform'
+call plug#end()
 
-" auto update plugins
-autocmd BufWritePost plugins.lua PackerCompile
+" options
+set expandtab
+set showmatch
+set ignorecase
+set hlsearch
+set smarttab
+set shiftwidth=4
+set tabstop=4
+set mouse=v
+set incsearch
+set autoindent
+set termguicolors
+set number
+set relativenumber
 
+colorscheme nord
+
+" status bar
 let g:lightline = {
       \ 'colorscheme': 'nord',
       \ 'active': {
@@ -19,7 +43,7 @@ let g:lightline = {
 let g:terraform_align=1
 
 " Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * NERDTree | wincmd p
 nnoremap <C-n> :NERDTreeToggle<CR>
 
 " keybinds
