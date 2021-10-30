@@ -1,8 +1,13 @@
+- defaults:
+    link:
+      relink: true
+
 - create:
         - ~/.config
 
 - link:
         ~/.config/nvim: nvim
+        ~/.dir_colors: nord-dircolors/src/dir_colors
         ~/.oh-my-zsh: ohmyzsh
         ~/.tmux:
         ~/.tmux.conf: tmux/tmux.conf
