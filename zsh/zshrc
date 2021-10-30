@@ -1,3 +1,6 @@
+# uncomment to profile
+zmodload zsh/zprof
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh
@@ -74,8 +77,12 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # ssh host completion
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
-autoload -Uz promptinit
-promptinit
+#autoload -Uz promptinit
+#promptinit
 
-autoload -Uz compinit
-compinit
+# loaded by ohmyzsh
+#autoload -Uz compinit
+#compinit
+
+# uncomment to profile
+#zprof
