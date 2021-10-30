@@ -53,13 +53,11 @@ let g:lightline = {
 " terraform
 let g:terraform_align=1
 
-" show nerdtree when started with no args
-function! StartUp()
-    if !argc()
-        NERDTree
-    end
-endfunction
-autocmd vimenter * call StartUp()
+" restore cursor to last position
+autocmd BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |   exe "normal! g`\""
+  \ | endif
 
 " yaml
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
