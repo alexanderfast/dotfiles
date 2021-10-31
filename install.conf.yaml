@@ -18,5 +18,6 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [~/.tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
-  - [~/dotfiles/nvim/install_plugins, Installing nvim plugins]
+  - [tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
+  - [scripts/compile_neovim.sh, Installing nvim]
+  - [nvim/install_plugins, Installing nvim plugins]
