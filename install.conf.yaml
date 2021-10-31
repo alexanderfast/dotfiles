@@ -1,10 +1,9 @@
 - defaults:
     link:
+      create: true
       relink: true
 
-- create:
-  - ~/.config
-  - ~/.config/alacritty
+  clean: ['~']
 
 - link:
     ~/.config/nvim: nvim
