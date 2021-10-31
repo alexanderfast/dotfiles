@@ -1,4 +1,4 @@
 export TERM='screen-256color'
 export EDITOR='nvim'
-export XDG_CONFIG_HOME='$HOME/dotfiles'
+export XDG_CONFIG_HOME="$HOME/.config"
 skip_global_compinit=1
