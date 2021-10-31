@@ -8,6 +8,7 @@
 - link:
     ~/.config/nvim: nvim
     ~/.config/alacritty/alacritty.yml: nord-alacritty/src/nord.yml
+    alacritty/alacritty.yml: nord-alacritty/src/nord.yml
     ~/.dir_colors: nord-dircolors/src/dir_colors
     ~/.oh-my-zsh: ohmyzsh
     ~/.tmux:
