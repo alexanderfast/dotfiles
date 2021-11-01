@@ -87,9 +87,15 @@ nnoremap <leader>gl :Git pull --rebase<CR>
 " keybinds telescope
 :lua require('telescopeconf')
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fr <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fm <cmd>Telescope marks<cr>
+nnoremap <leader>fq <cmd>Telescope quickfix<cr>
+nnoremap <leader>fgc <cmd>Telescope git_commits<cr>
+nnoremap <leader>fgbc <cmd>Telescope git_bcommits<cr>
+nnoremap <leader>fgbr <cmd>Telescope git_branches<cr>
+nnoremap <leader>fgs <cmd>Telescope git_status<cr>
 
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
