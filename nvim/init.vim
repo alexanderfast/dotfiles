@@ -73,8 +73,11 @@ nnoremap <leader>z ZZ<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :wa<CR>
 
-nnoremap <leader>ga :Git add -i<CR>
-nnoremap <leader>gd :Git diffCR>
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gd :Git diff<CR>
+nnoremap <leader>gc :Git commit -av<CR>
+nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gl :Git pull --rebase<CR>
 
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
