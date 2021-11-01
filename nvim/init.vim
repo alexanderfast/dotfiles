@@ -4,6 +4,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'akinsho/nvim-bufferline.lua'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
@@ -64,9 +65,16 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 let g:indentLine_char = '⦙'
 
 " keybinds
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap confe :e $MYVIMRC<CR>
-nnoremap confr :source $MYVIMRC<CR>
+let mapleader = " "
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>ce :e $MYVIMRC<CR>
+nnoremap <leader>cr :source $MYVIMRC<CR>
+nnoremap <leader>z ZZ<CR>
+nnoremap <leader>h :noh<CR>
+nnoremap <leader>w :wa<CR>
+
+nnoremap <leader>ga :Git add -i<CR>
+nnoremap <leader>gd :Git diffCR>
 
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
