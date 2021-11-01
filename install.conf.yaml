@@ -3,19 +3,22 @@
       create: true
       relink: true
 
-  clean:
-    ~
-    ~/.config
+- clean:
+    ~/.config:
+      recursive: true
+    ~/.local:
+      recursive: true
 
 - link:
-    alacritty/alacritty.yml: nord-alacritty/src/nord.yml
-    nvim/autoload/plug.vim: vim-plug/plug.vim
+    ~/.config/alacritty/alacritty.yml: nord-alacritty/src/nord.yml
+    ~/.config/nvim:
     ~/.dir_colors: nord-dircolors/src/dir_colors
+    ~/.local/share/nvim/site/autoload/plug.vim: vim-plug/plug.vim
     ~/.oh-my-zsh: ohmyzsh
-    ~/.tmux:
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.zshrc: zsh/zshrc
+    ~/.tmux:
     ~/.zshenv: zsh/zshenv
+    ~/.zshrc: zsh/zshrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

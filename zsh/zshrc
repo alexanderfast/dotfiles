@@ -20,7 +20,7 @@ setopt LIST_TYPES             # show file types in list
 setopt MARK_DIRS              # adds slash to end of completed dirs
 setopt SHARE_HISTORY          # share history between open shells
 
-DOTFILES="$HOME/.config"
+DOTFILES="$HOME/.dotfiles"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.

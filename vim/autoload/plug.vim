@@ -1,1 +1,0 @@
-/home/afast/.config/vim-plug/plug.vim
