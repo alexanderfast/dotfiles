@@ -11,6 +11,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'bronson/vim-trailing-whitespace', { 'on': 'FixWhitespace' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'Yggdroot/indentLine', { 'for': 'yaml' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
 " options
@@ -72,12 +75,21 @@ nnoremap <leader>cr :source $MYVIMRC<CR>
 nnoremap <leader>z ZZ<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :wa<CR>
+nnoremap <leader>q :wqa!<CR>
 
+" keybinds git
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gd :Git diff<CR>
 nnoremap <leader>gc :Git commit -av<CR>
 nnoremap <leader>gp :Git push<CR>
 nnoremap <leader>gl :Git pull --rebase<CR>
+
+" keybinds telescope
+:lua require('telescopeconf')
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
