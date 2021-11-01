@@ -71,11 +71,10 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-antigen theme candy
-
 antigen apply
 
 source $DOTFILES/zsh/zsh_aliases
+source $DOTFILES/zsh/zsh_theme
 
 eval "$(dircolors ~/.dir_colors)"
 
