@@ -49,7 +49,6 @@ DISABLE_AUTO_TITLE="true"
 
 # antigen
 source $DOTFILES/zsh/antigen.zsh
-antigen use oh-my-zsh
 
 antigen bundle autopep8
 antigen bundle colorize
@@ -70,6 +69,12 @@ antigen bundle agkozak/zsh-z
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
+
+ZSH_TMUX_AUTOSTART=true     # auto start tmux
+ZSH_TMUX_UNICODE=true       # enable unicode
+ZSH_TMUX_AUTOCONNECT=false  # dont autoconnect
+
+antigen use oh-my-zsh
 
 antigen apply
 
