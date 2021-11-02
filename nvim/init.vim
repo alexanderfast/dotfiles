@@ -76,6 +76,14 @@ nnoremap <leader>z ZZ<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :wa<CR>
 nnoremap <leader>q :wqa!<CR>
+nnoremap <leader>ss :vsp<CR>
+nnoremap <leader>si :split<CR>
+nnoremap <leader>t :tabnew<CR>
+
+nnoremap <leader>co :copen<CR>
+nnoremap <leader>ccl :ccl<CR>
+nnoremap <leader>cn :cnext<CR>
+nnoremap <leader>cp :cprevious<CR>
 
 " keybinds git
 nnoremap <leader>gs :Git<CR>
