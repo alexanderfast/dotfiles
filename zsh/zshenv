@@ -2,3 +2,8 @@ export TERM='screen-256color'
 export EDITOR='nvim'
 export XDG_CONFIG_HOME="$HOME/.config"
 skip_global_compinit=1
+
+# put sensitive env vars in this file outside source control
+if test -f "$HOME/.zshenv-private"; then
+    source "$HOME/.zshenv-private"
+fi
