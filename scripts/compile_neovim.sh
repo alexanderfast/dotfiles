@@ -9,6 +9,7 @@ if [ $(which nvim) ]; then
     echo 'nvim already install, exiting'
     exit 0
 fi
+set -xe
 
 git clone https://github.com/neovim/neovim --branch $branch --single-branch $workdir
 pushd $workdir
