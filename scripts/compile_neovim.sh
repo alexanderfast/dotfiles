@@ -10,7 +10,7 @@ if [ $(which nvim) ]; then
     exit 0
 fi
 
-git clone git@github.com:neovim/neovim.git --branch $branch --single-branch $workdir
+git clone https://github.com/neovim/neovim --branch $branch --single-branch $workdir
 pushd $workdir
 sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
 make CMAKE_BUILD_TYPE=Release -j4
