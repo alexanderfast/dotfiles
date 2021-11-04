@@ -2,8 +2,8 @@
 My personal dotfiles
 
 ```
-git clone --recurse-submodules -j8 https://github.com/alexanderfast/dotfiles ~/.dotfiles &&\
-~/.dotfiles/install &&\
+git clone --recurse-submodules -j8 https://github.com/alexanderfast/dotfiles ~/.dotfiles
+~/.dotfiles/install
 tmux new zsh
 ```
 
