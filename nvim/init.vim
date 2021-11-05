@@ -31,7 +31,6 @@ set termguicolors
 set number
 set relativenumber
 set backspace=indent,eol    " dont backspace across lines
-set nowrap
 set linebreak
 set noswapfile
 set nowritebackup
