@@ -16,9 +16,6 @@
 [submodule "nord-dircolors"]
 	path = nord-dircolors
 	url = https://github.com/arcticicestudio/nord-dircolors
-[submodule "nord-alacritty"]
-	path = nord-alacritty
-	url = https://github.com/arcticicestudio/nord-alacritty
 [submodule "vim-plug"]
 	path = vim-plug
 	url = https://github.com/junegunn/vim-plug

@@ -1,4 +1,1 @@
 *.swp
-
-# this folder is symlinked when installed
-alacritty

@@ -10,7 +10,7 @@
       recursive: true
 
 - link:
-    ~/.config/alacritty/alacritty.yml: nord-alacritty/src/nord.yml
+    ~/.config/alacritty:
     ~/.config/nvim:
     ~/.dir_colors: nord-dircolors/src/dir_colors
     ~/.local/share/nvim/site/autoload/plug.vim: vim-plug/plug.vim
