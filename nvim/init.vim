@@ -5,6 +5,7 @@ Plug 'akinsho/nvim-bufferline.lua'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'jremmen/vim-ripgrep'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
@@ -66,6 +67,10 @@ autocmd BufReadPost *
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 let g:indentLine_char = '⦙'
 
+" ripgrep
+let g:rg_highlight = 'true'
+let g:rg_command = 'rg --vimgrep -S'
+
 " keybinds
 let mapleader = " "
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -81,8 +86,8 @@ nnoremap <leader>t :tabnew<CR>
 
 nnoremap <leader>co :copen<CR>
 nnoremap <leader>ccl :ccl<CR>
-nnoremap <leader>cn :cnext<CR>
-nnoremap <leader>cp :cprevious<CR>
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprevious<CR>
 
 " keybinds git
 nnoremap <leader>gs :Git<CR>
