@@ -1,5 +1,5 @@
 #!/bin/bash -xe
-sudo apt-get install -y git zsh tmux
+sudo apt-get install -y git zsh tmux python3 fonts-powerline
 
 # ripgrep isnt in apt before v20
 major=$(lsb_release -r | grep Release | grep -oP '\d+\.\d+' | cut -d'.' -f1)
