@@ -18,27 +18,29 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
 " options
-set expandtab
-set showmatch
-set ignorecase
-set hlsearch
+set expandtab               " convert tab to space
+set showmatch               " show matching
+set ignorecase              " case insensitive
+set hlsearch                " highlight search
 set smarttab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=4            " width for autoindent
+set tabstop=4               " number of columns in a tab
 set mouse=v                 " mouse only in visual mode
-set incsearch
+set incsearch               " incremental search
 set autoindent
 set termguicolors
-set number
-set relativenumber
+set number                  " show line numbers
+set relativenumber          " show relative line numbers
 set backspace=indent,eol    " dont backspace across lines
 set linebreak
-set noswapfile
+set noswapfile              " disable swap file
 set nowritebackup
 set foldmethod=syntax
 set foldlevelstart=20
 set splitbelow
 set splitright
+set cursorline              " highlight current line
+set cursorlineopt=number    " highlight current line through number
 
 colorscheme nord
 
