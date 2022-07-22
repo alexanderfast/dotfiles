@@ -20,3 +20,6 @@
 	path = vim-plug
 	url = https://github.com/junegunn/vim-plug
 	ignore = dirty
+[submodule "tmux/plugins/tmux-onedark-theme"]
+	path = tmux/plugins/tmux-onedark-theme
+	url = https://git::@github.com/odedlaz/tmux-onedark-theme

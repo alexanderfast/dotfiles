@@ -15,6 +15,7 @@ Plug 'Yggdroot/indentLine', { 'for': 'yaml' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': 'nvim-0.6' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " options
@@ -42,11 +43,11 @@ set splitright
 set cursorline              " highlight current line
 set cursorlineopt=number    " highlight current line through number
 
-colorscheme nord
+colorscheme onedark
 
 " status bar
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
