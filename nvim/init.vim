@@ -13,7 +13,7 @@ Plug 'bronson/vim-trailing-whitespace', { 'on': 'FixWhitespace' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'Yggdroot/indentLine', { 'for': 'yaml' }
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': 'nvim-0.6' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
