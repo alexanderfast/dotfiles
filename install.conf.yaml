@@ -23,6 +23,5 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [scripts/install-ubuntu-packages.sh, Installing ubuntu packages]
-  - [scripts/compile_neovim.sh, Installing nvim]
   - [tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
   - [nvim/install_plugins, Installing nvim plugins]
