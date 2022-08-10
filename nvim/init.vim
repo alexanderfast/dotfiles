@@ -16,6 +16,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': 'nvim-0.6' }
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'joshdick/onedark.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 " options
@@ -82,7 +83,8 @@ nnoremap <leader>cr :source $MYVIMRC<CR>
 nnoremap <leader>z ZZ<CR>
 nnoremap <leader>h :noh<CR>
 nnoremap <leader>w :wa<CR>
-nnoremap <leader>q :wqa!<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :wqa!<CR>
 nnoremap <leader>ss :vsp<CR>
 nnoremap <leader>si :split<CR>
 nnoremap <leader>t :tabnew<CR>
@@ -91,6 +93,9 @@ nnoremap <leader>co :copen<CR>
 nnoremap <leader>ccl :ccl<CR>
 nnoremap <C-j> :cnext<CR>
 nnoremap <C-k> :cprevious<CR>
+
+" delete current file
+nnoremap <leader>DD :call delete(expand('%')) \| bdelete!<CR>
 
 " keybinds git
 nnoremap <leader>gs :Git<CR>
@@ -117,3 +122,5 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellesca
 
 autocmd FileType ruby map <buffer> <F9> :w<CR>:exec '!rake' shellescape(@%, 1)<CR>
 autocmd FileType ruby imap <buffer> <F9> <esc>:w<CR>:exec '!rake' shellescape(@%, 1)<CR>
+
+:lua require('treesitterconf')
