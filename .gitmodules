@@ -9,13 +9,6 @@
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 	ignore = dirty
-[submodule "tmux/plugins/nord-tmux"]
-	path = tmux/plugins/nord-tmux
-	url =  https://git::@github.com/arcticicestudio/nord-tmux
-	ignore = all
-[submodule "nord-dircolors"]
-	path = nord-dircolors
-	url = https://github.com/arcticicestudio/nord-dircolors
 [submodule "tmux/plugins/tmux-onedark-theme"]
 	path = tmux/plugins/tmux-onedark-theme
 	url = https://git::@github.com/odedlaz/tmux-onedark-theme

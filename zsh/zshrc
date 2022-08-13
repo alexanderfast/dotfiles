@@ -82,8 +82,6 @@ antigen apply
 source $DOTFILES/zsh/zsh_aliases
 source $DOTFILES/zsh/zsh_theme
 
-eval "$(dircolors ~/.dir_colors)"
-
 # completion
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' auto-description 'specify: %d'
