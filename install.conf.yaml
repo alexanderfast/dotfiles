@@ -13,7 +13,6 @@
     ~/.config/alacritty:
     ~/.config/nvim:
     ~/.dir_colors: nord-dircolors/src/dir_colors
-    ~/.local/share/nvim/site/autoload/plug.vim: vim-plug/plug.vim
     ~/.oh-my-zsh: ohmyzsh
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux:
@@ -23,5 +22,5 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [scripts/install-ubuntu-packages.sh, Installing ubuntu packages]
+  - [scripts/install-neovim.sh, Installing neovim]
   - [tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
-  - [nvim/install_plugins, Installing nvim plugins]

@@ -1,0 +1,25 @@
+" plugins
+call plug#begin(stdpath('data') . '/plugged')
+Plug 'arcticicestudio/nord-vim'
+Plug 'akinsho/nvim-bufferline.lua'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'jremmen/vim-ripgrep'
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+Plug 'bronson/vim-trailing-whitespace', { 'on': 'FixWhitespace' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'Yggdroot/indentLine', { 'for': 'yaml' }
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'joshdick/onedark.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+call plug#end()
+
+return require('packer').startup(function(use)
+	-- Packer can manage itself
+	use 'wbthomason/packer.nvim'
+end

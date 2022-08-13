@@ -11,4 +11,4 @@ else
     sudo dpkg -i ripgrep_${version}_amd64.deb
 fi
 
-sudo apt-get install -y git zsh tmux python3 fonts-powerline neovim cmake make
+sudo apt-get install -y git zsh tmux python3 fonts-powerline cmake make fuse build-essential
