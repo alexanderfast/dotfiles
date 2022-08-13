@@ -12,7 +12,6 @@
 - link:
     ~/.config/alacritty:
     ~/.config/nvim:
-    ~/.dir_colors: nord-dircolors/src/dir_colors
     ~/.oh-my-zsh: ohmyzsh
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux:
