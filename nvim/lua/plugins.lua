@@ -2,7 +2,10 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use 'joshdick/onedark.vim'
-    use 'itchyny/lightline.vim'
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
     use 'neovim/nvim-lspconfig'
     use { 'preservim/nerdtree', { opt = True, cmd = 'NERDTreeToggle' }}
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
