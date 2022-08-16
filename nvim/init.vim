@@ -33,6 +33,7 @@ autocmd FileType ruby imap <buffer> <F9> <esc>:w<CR>:exec '!rake' shellescape(@%
 
 lua << EOF
 require("lspconfig").pylsp.setup{}
+require("lspconfig").solargraph.setup{}
 EOF
 
 set completeopt-=preview
