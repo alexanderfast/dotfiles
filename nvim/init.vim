@@ -34,6 +34,11 @@ autocmd FileType ruby imap <buffer> <F9> <esc>:w<CR>:exec '!rake' shellescape(@%
 lua << EOF
 require("lspconfig").pylsp.setup{}
 require("lspconfig").solargraph.setup{}
+require('lspconfig').kotlin_language_server.setup({
+    cmd = { "kotlin-language-server" };
+    filetypes = { "kotlin" };
+    on_attach = custom_lsp_attach
+})
 EOF
 
 set completeopt-=preview

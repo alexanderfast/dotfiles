@@ -22,4 +22,5 @@
   - [git submodule update --init --recursive, Installing submodules]
   - [scripts/install-ubuntu-packages.sh, Installing ubuntu packages]
   - [scripts/install-neovim.sh, Installing neovim]
+  - [nvim/install-lsp-servers.sh, Installing neovim lsp]
   - [tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
