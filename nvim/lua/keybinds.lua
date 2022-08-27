@@ -23,8 +23,12 @@ map("n", "<leader>t", ":tabnew<CR>")
 
 map("n", "<leader>co", ":copen<CR>")
 map("n", "<leader>ccl", ":ccl<CR>")
-map("n", "<C-j>", ":cnext<CR>")
-map("n", "<C-k>", ":cprevious<CR>")
+--map("n", "<C-j>", ":cnext<CR>")
+--map("n", "<C-k>", ":cprevious<CR>")
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
 
 -- delete current file
 map("n", "<leader>DD", ":call delete(expand('%')) | bdelete!<CR>")
