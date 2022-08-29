@@ -9,7 +9,9 @@ end
 vim.g.mapleader = ' '
 
 -- keybinds
-map("n", "<leader>n", ":NERDTreeToggle<CR>")
+map("n", "<leader>nt", ":NvimTreeToggle<CR>")
+map("n", "<leader>nf", ":NvimTreeFindFile<CR>")
+map("n", "<leader>nr", ":NvimTreeRefresh<CR>")
 map("n", "<leader>ce", ":e $MYVIMRC<CR>")
 map("n", "<leader>cr", ":source $MYVIMRC<CR>")
 map("n", "<leader>z", "ZZ<CR>")
