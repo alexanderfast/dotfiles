@@ -58,6 +58,7 @@ antigen bundle common-aliases
 antigen bundle dirhistory
 antigen bundle docker
 antigen bundle git
+antigen bundle xylous/gitstatus
 antigen bundle history
 antigen bundle pip
 #antigen bundle pipenv
