@@ -7,3 +7,6 @@ alias glr='git pull --rebase'
 
 # docker
 alias dr='docker run --rm -it'
+
+# override default rm
+alias rm='rm'
