@@ -9,9 +9,6 @@ end
 vim.g.mapleader = ' '
 
 -- keybinds
-map("n", "<leader>nt", ":NvimTreeToggle<CR>")
-map("n", "<leader>nf", ":NvimTreeFindFile<CR>")
-map("n", "<leader>nr", ":NvimTreeRefresh<CR>")
 map("n", "<leader>ce", ":e $MYVIMRC<CR>")
 map("n", "<leader>cr", ":source $MYVIMRC<CR>")
 map("n", "<leader>z", "ZZ<CR>")
@@ -26,6 +23,7 @@ map("n", "<leader>tn", ":tabnext<CR>")
 map("n", "<leader>tp", ":tabprevious<CR>")
 map("n", "<leader>tq", ":tabclose<CR>")
 map("n", "<leader>tQ", ":tabonly<CR>")
+map("n", "<leader>DD", ":call delete(expand('%')) | bdelete!<CR>") -- delete current file
 
 map("n", "<leader>co", ":copen<CR>")
 map("n", "<leader>ccl", ":ccl<CR>")
@@ -36,8 +34,10 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
--- delete current file
-map("n", "<leader>DD", ":call delete(expand('%')) | bdelete!<CR>")
+-- tree
+map("n", "<leader>nt", ":NeoTreeShowToggle<CR>")
+map("n", "<leader>ns", ":NeoTreeShowInSplitToggle<CR>")
+map("n", "<leader>nf", ":NeoTreeFloat<CR>")
 
 -- keybinds git
 map("n", "<leader>gs", ":Git<CR>")

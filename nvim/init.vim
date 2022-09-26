@@ -3,8 +3,6 @@ lua require('set')
 lua require('keybinds')
 lua require('treesitterconf')
 lua require('telescopeconf')
-lua require('nvimtreeconf')
-
 
 " status bar
 lua require('lualine').setup()

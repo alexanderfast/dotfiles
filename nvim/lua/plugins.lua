@@ -8,11 +8,13 @@ return require('packer').startup(function(use)
     }
     use 'neovim/nvim-lspconfig'
     use {
-        'kyazdani42/nvim-tree.lua',
+        'nvim-neo-tree/neo-tree.nvim',
+        branch = 'v2.x',
         requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icons
-        },
-        --tag = 'nightly' -- optional, updated every week. (see issue #1193)
+            'nvim-lua/plenary.nvim',
+            'kyazdani42/nvim-web-devicons',
+            'MunifTanjim/nui.nvim',
+        }
     }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
