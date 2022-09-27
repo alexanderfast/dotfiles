@@ -9,8 +9,8 @@ end
 vim.g.mapleader = ' '
 
 -- keybinds
-map("n", "<leader>ce", ":e $MYVIMRC<CR>")
-map("n", "<leader>cr", ":source $MYVIMRC<CR>")
+--map("n", "<leader>ce", ":e $MYVIMRC<CR>")
+--map("n", "<leader>cr", ":source $MYVIMRC<CR>")
 map("n", "<leader>z", "ZZ<CR>")
 map("n", "<leader>h", ":noh<CR>")
 map("n", "<leader>w", ":wa<CR>")
@@ -69,3 +69,11 @@ map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.references()<CR>")
 map("n", "<leader>lsd", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
 map("n", "<leader>lsw", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
 map("i", "<C-c>", "<cmd>lua vim.lsp.buf.completion()<CR>")
+
+map("n", "<leader>c", "<cmd>:ToggleTerm<CR>")
+map('t', '<esc>', [[<C-\><C-n>]])
+map('t', 'jk', [[<C-\><C-n>]])
+map('t', '<C-h>', [[<Cmd>wincmd h<CR>]])
+map('t', '<C-j>', [[<Cmd>wincmd j<CR>]])
+map('t', '<C-k>', [[<Cmd>wincmd k<CR>]])
+map('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
