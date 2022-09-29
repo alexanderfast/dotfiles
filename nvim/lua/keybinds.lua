@@ -37,7 +37,8 @@ map("n", "<C-l>", "<C-w>l")
 -- tree
 map("n", "<leader>nt", ":NeoTreeShowToggle<CR>")
 map("n", "<leader>ns", ":NeoTreeShowInSplitToggle<CR>")
-map("n", "<leader>nf", ":NeoTreeFloat<CR>")
+map("n", "<leader>nl", ":NeoTreeFloat<CR>")
+map("n", "<leader>nf", ":NeoTreeFocus<CR>")
 
 -- keybinds git
 map("n", "<leader>gs", ":Git<CR>")
