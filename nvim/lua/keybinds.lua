@@ -34,6 +34,14 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
+-- quickfix
+map("n", "<leader>co", ":copen<CR>")
+map("n", "<leader>cl", ":ccl<CR>")
+map("n", "<leader>cw", ":cw<CR>")
+map("n", "<leader>cn", ":cn<CR>")
+map("n", "<leader>cp", ":cp<CR>")
+map("n", "<leader>c<CR>", ":.cc<CR>")
+
 -- tree
 map("n", "<leader>nt", ":NeoTreeShowToggle<CR>")
 map("n", "<leader>ns", ":NeoTreeShowInSplitToggle<CR>")
@@ -71,7 +79,7 @@ map("n", "<leader>lsd", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
 map("n", "<leader>lsw", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
 map("i", "<C-c>", "<cmd>lua vim.lsp.buf.completion()<CR>")
 
-map("n", "<leader>c", "<cmd>:ToggleTerm<CR>")
+map("n", "<leader>k", "<cmd>:ToggleTerm<CR>")
 map('t', '<esc>', [[<C-\><C-n>]])
 map('t', 'jk', [[<C-\><C-n>]])
 map('t', '<C-h>', [[<Cmd>wincmd h<CR>]])
