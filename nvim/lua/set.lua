@@ -15,7 +15,6 @@ set.number = true             -- show line numbers
 set.relativenumber = true     -- show relative line numbers
 set.backspace = indent,eol    -- dont backspace across lines
 set.linebreak = true
---set.noswapfile = true         -- disable swap file
 --set.nowritebackup = true
 --set.foldmethod = syntax
 --set.foldlevelstart = 20
@@ -23,5 +22,6 @@ set.splitbelow = true
 set.splitright = true
 set.cursorline = true         -- highlight current line
 --set.cursorlineopt = number    -- highlight current line through number
+set.swapfile = false
 
 vim.cmd "colorscheme onedark"
