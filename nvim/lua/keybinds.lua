@@ -58,6 +58,7 @@ map("n", "<leader>gl", ":Git pull --rebase<CR>")
 -- keybinds telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<cr>")
 map("n", "<leader>fr", "<cmd>Telescope live_grep hidden=true<cr>")
+map("n", "<leader>fs", "<cmd>Telescope grep_string hidden=true<cr>")
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 map("n", "<leader>fm", "<cmd>Telescope marks<cr>")
