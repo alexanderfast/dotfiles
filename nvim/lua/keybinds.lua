@@ -24,6 +24,8 @@ map("n", "<leader>tp", ":tabprevious<CR>")
 map("n", "<leader>tq", ":tabclose<CR>")
 map("n", "<leader>tQ", ":tabonly<CR>")
 map("n", "<leader>DD", ":call delete(expand('%')) | bdelete!<CR>") -- delete current file
+map("i", "jk", "<ESC>")
+map("v", "jk", "<ESC>")
 
 map("n", "<leader>co", ":copen<CR>")
 map("n", "<leader>ccl", ":ccl<CR>")
