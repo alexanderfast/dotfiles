@@ -158,11 +158,28 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Basic keybinds for better navigation
+vim.keymap.set('n', '<leader>z', 'ZZ<CR>')
+vim.keymap.set('n', '<leader>w', ':wa<CR>')
+vim.keymap.set('n', '<leader>Q', ':wqa!<CR>')
+vim.keymap.set('n', '<leader>tt', ':tabnew<CR>')
+vim.keymap.set('n', '<leader>tn', ':tabnext<CR>')
+vim.keymap.set('n', '<leader>tp', ':tabprevious<CR>')
+vim.keymap.set('n', '<leader>tq', ':tabclose<CR>')
+vim.keymap.set('n', '<leader>tQ', ':tabonly<CR>')
+vim.keymap.set({ 'n', 'v', 'i' }, 'jk', '<ESC>')
+vim.keymap.set('n', '<leader>p', 'viw"_dP') -- replace inside word
+
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
+
 -- NeoTree keybinds
-vim.keymap.set("n", "<leader>nt", ":NeoTreeShowToggle<CR>")
-vim.keymap.set("n", "<leader>ns", ":NeoTreeShowInSplitToggle<CR>")
-vim.keymap.set("n", "<leader>nl", ":NeoTreeFloat<CR>")
-vim.keymap.set("n", "<leader>nf", ":NeoTreeFocus<CR>")
+vim.keymap.set('n', '<leader>nt', ':NeoTreeShowToggle<CR>')
+vim.keymap.set('n', '<leader>ns', ':NeoTreeShowInSplitToggle<CR>')
+vim.keymap.set('n', '<leader>nl', ':NeoTreeFloat<CR>')
+vim.keymap.set('n', '<leader>nf', ':NeoTreeFocus<CR>')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
