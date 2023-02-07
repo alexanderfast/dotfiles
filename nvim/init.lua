@@ -176,10 +176,10 @@ vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 -- NeoTree keybinds
-vim.keymap.set('n', '<leader>nt', ':NeoTreeShowToggle<CR>')
-vim.keymap.set('n', '<leader>ns', ':NeoTreeShowInSplitToggle<CR>')
-vim.keymap.set('n', '<leader>nl', ':NeoTreeFloat<CR>')
-vim.keymap.set('n', '<leader>nf', ':NeoTreeFocus<CR>')
+vim.keymap.set('n', '<leader>nt', ':Neotree toggle<CR>')
+vim.keymap.set('n', '<leader>nb', ':Neotree buffers<CR>')
+vim.keymap.set('n', '<leader>nl', ':Neotree float<CR>')
+vim.keymap.set('n', '<leader>nf', ':Neotree focus<CR>')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
