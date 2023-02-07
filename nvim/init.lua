@@ -60,7 +60,23 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+  -- Lua formatter with stylua, assumes cargo is installed
   use { 'ckipp01/stylua-nvim', run = 'cargo install stylua' }
+
+  -- Folder/tree view
+  use {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      -- Unless you are still migrating, remove the deprecated commands from v1.x
+      vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
+    end,
+  }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -141,6 +157,12 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- NeoTree keybinds
+vim.keymap.set("n", "<leader>nt", ":NeoTreeShowToggle<CR>")
+vim.keymap.set("n", "<leader>ns", ":NeoTreeShowInSplitToggle<CR>")
+vim.keymap.set("n", "<leader>nl", ":NeoTreeFloat<CR>")
+vim.keymap.set("n", "<leader>nf", ":NeoTreeFocus<CR>")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
