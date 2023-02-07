@@ -60,6 +60,8 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+  use { 'ckipp01/stylua-nvim', run = 'cargo install stylua' }
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -348,8 +350,8 @@ local servers = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       diagnostics = {
-        globals = { 'vim' }
-      }
+        globals = { 'vim' },
+      },
     },
   },
 }
@@ -379,6 +381,17 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
     }
   end,
+}
+
+local lsp_config = require 'lspconfig'
+lsp_config.sumneko_lua.setup {
+  commands = {
+    Format = {
+      function()
+        require('stylua-nvim').format_file()
+      end,
+    },
+  },
 }
 
 -- Turn on lsp status information
@@ -429,4 +442,3 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
