@@ -118,6 +118,7 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -142,6 +143,14 @@ vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+
+-- Indentation
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+
+-- Default open place for new splits
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
