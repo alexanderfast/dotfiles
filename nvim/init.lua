@@ -167,7 +167,7 @@ vim.keymap.set('n', '<leader>tn', ':tabnext<CR>')
 vim.keymap.set('n', '<leader>tp', ':tabprevious<CR>')
 vim.keymap.set('n', '<leader>tq', ':tabclose<CR>')
 vim.keymap.set('n', '<leader>tQ', ':tabonly<CR>')
-vim.keymap.set({ 'n', 'v', 'i' }, 'jk', '<ESC>')
+--vim.keymap.set({ 'n', 'v', 'i' }, 'jk', '<ESC>')
 vim.keymap.set('n', '<leader>p', 'viw"_dP') -- replace inside word
 
 vim.keymap.set('n', '<C-h>', '<C-w>h')
