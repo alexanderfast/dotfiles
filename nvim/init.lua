@@ -207,6 +207,7 @@ vim.keymap.set('n', '<leader>tq', ':tabclose<CR>')
 vim.keymap.set('n', '<leader>tQ', ':tabonly<CR>')
 --vim.keymap.set({ 'n', 'v', 'i' }, 'jk', '<ESC>')
 vim.keymap.set('n', '<leader>p', 'viw"_dP') -- replace inside word
+vim.keymap.set('n', '<leader>f', ':Format<CR>')
 
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
