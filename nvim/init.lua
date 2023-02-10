@@ -78,6 +78,35 @@ require('packer').startup(function(use)
     end,
   }
 
+  -- Unit testing
+  use {
+    'nvim-neotest/neotest',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-neotest/neotest-go',
+    },
+    config = function()
+      -- get neotest namespace (api call creates or returns namespace)
+      local neotest_ns = vim.api.nvim_create_namespace 'neotest'
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
+            return message
+          end,
+        },
+      }, neotest_ns)
+      require('neotest').setup {
+        -- your neotest config here
+        adapters = {
+          require 'neotest-go',
+        },
+      }
+    end,
+  }
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -190,6 +219,12 @@ vim.keymap.set('n', '<leader>nb', ':Neotree buffers<CR>')
 vim.keymap.set('n', '<leader>nl', ':Neotree float<CR>')
 vim.keymap.set('n', '<leader>nf', ':Neotree focus<CR>')
 
+-- Neotest
+vim.keymap.set('n', '<leader>tp', ':lua require("neotest").output_panel.toggle()<CR>')
+vim.keymap.set('n', '<leader>ts', ':lua require("neotest").summary.toggle()<CR>')
+vim.keymap.set('n', '<leader>trf', ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>')
+vim.keymap.set('n', '<leader>trn', ':lua require("neotest").run.run()<CR>')
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -271,7 +306,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim', 'kotlin', 'ruby' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
