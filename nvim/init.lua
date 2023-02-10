@@ -63,6 +63,9 @@ require('packer').startup(function(use)
   -- Lua formatter with stylua, assumes cargo is installed
   use { 'ckipp01/stylua-nvim', run = 'cargo install stylua' }
 
+  -- Show signatures
+  use { 'ray-x/lsp_signature.nvim' }
+
   -- Folder/tree view
   use {
     'nvim-neo-tree/neo-tree.nvim',
@@ -476,6 +479,13 @@ lsp_config.sumneko_lua.setup {
         require('stylua-nvim').format_file()
       end,
     },
+  },
+}
+
+require('lsp_signature').setup {
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+  handler_opts = {
+    border = 'rounded',
   },
 }
 
