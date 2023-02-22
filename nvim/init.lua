@@ -516,16 +516,7 @@ local servers = {
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      diagnostics = {
-        globals = { 'vim' },
-      },
-    },
-  },
-
+  lua_ls = {},
   gopls = {},
 }
 
@@ -554,17 +545,6 @@ mason_lspconfig.setup_handlers {
       settings = servers[server_name],
     }
   end,
-}
-
-local lsp_config = require 'lspconfig'
-lsp_config.sumneko_lua.setup {
-  commands = {
-    Format = {
-      function()
-        require('stylua-nvim').format_file()
-      end,
-    },
-  },
 }
 
 require('lsp_signature').setup {
