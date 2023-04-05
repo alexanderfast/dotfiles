@@ -211,6 +211,7 @@ vim.keymap.set('n', '<leader>tQ', ':tabonly<CR>')
 --vim.keymap.set({ 'n', 'v', 'i' }, 'jk', '<ESC>')
 vim.keymap.set('n', '<leader>p', 'viw"_dP') -- replace inside word
 vim.keymap.set('n', '<leader>f', ':Format<CR>')
+vim.keymap.set('n', '<leader><leader>s', ':source $MYVIMRC<CR>')
 
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
@@ -357,6 +358,27 @@ require('gitsigns').setup {
   end,
 }
 
+vim.keymap.set('n', '<leader>gs', ':Git<CR>')
+vim.keymap.set('n', '<leader>gf', ':Git fetch --prune<CR>')
+vim.keymap.set('n', '<leader>gl', ':Git pull<CR>')
+vim.keymap.set('n', '<leader>gp', ':Git push<CR>')
+vim.keymap.set('n', '<leader>gp', ':Git push<CR>')
+vim.keymap.set('n', '<leader>gu', function ()
+    local branch = vim.fn.system('git branch --show-current', true)
+    vim.cmd(':Git push --set-upstream origin ' .. branch)
+end)
+vim.keymap.set('n', '<leader>gcb', function ()
+    vim.ui.input({
+        prompt = 'Branch name: ',
+    }, function(input)
+        if input then
+            vim.cmd(':Git checkout -b ' .. input)
+        else
+            error('No branch name')
+        end
+    end)
+end)
+
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
@@ -391,6 +413,10 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [B]uffers' })
 vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
+
+vim.keymap.set('n', '<leader>sgb', require('telescope.builtin').git_branches, { desc = '[S]earch [G]it [B]ranches' })
+vim.keymap.set('n', '<leader>sgc', require('telescope.builtin').git_commits, { desc = '[S]earch [G]it [C]ommits' })
+vim.keymap.set('n', '<leader>sgs', require('telescope.builtin').git_status, { desc = '[S]earch [G]it [S]tatus' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
