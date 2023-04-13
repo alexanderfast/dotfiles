@@ -68,6 +68,7 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim'               -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth'                    -- Detect tabstop and shiftwidth automatically
+  use 'voldikss/vim-floaterm'               -- Easy access terminal
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -244,6 +245,11 @@ vim.keymap.set('n', '<leader>tp', ':lua require("neotest").output_panel.toggle()
 vim.keymap.set('n', '<leader>ts', ':lua require("neotest").summary.toggle()<CR>')
 vim.keymap.set('n', '<leader>trf', ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>')
 vim.keymap.set('n', '<leader>trn', ':lua require("neotest").run.run()<CR>')
+--
+-- FloaTerm configuration
+vim.keymap.set('n', "<leader>t", ":FloatermNew --name=myfloat --height=0.8 --width=0.7 --autoclose=2 zsh <CR> ")
+vim.keymap.set('n', "t", ":FloatermToggle myfloat<CR>")
+vim.keymap.set('t', "<Esc>", "<C-\\><C-n>:q<CR>")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
