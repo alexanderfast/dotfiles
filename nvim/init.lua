@@ -559,9 +559,7 @@ local servers = {
 
   lua_ls = {},
   gopls = {},
-  -- rust
   rust_analyzer = {},
-  codelldb = {},
 }
 
 -- Setup neovim lua configuration
