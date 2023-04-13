@@ -269,6 +269,14 @@ vim.keymap.set('n', "<leader>t", ":FloatermNew --name=myfloat --height=0.8 --wid
 vim.keymap.set('n', "t", ":FloatermToggle myfloat<CR>")
 vim.keymap.set('t', "<Esc>", "<C-\\><C-n>:q<CR>")
 
+-- Quickfix
+map("n", "<leader>co", ":copen<CR>")
+map("n", "<leader>cl", ":ccl<CR>")
+map("n", "<leader>cw", ":cw<CR>")
+map("n", "<leader>cn", ":cn<CR>")
+map("n", "<leader>cp", ":cp<CR>")
+map("n", "<leader>c<CR>", ":.cc<CR>")
+
 -- Trouble
 vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
   { silent = true, noremap = true }
