@@ -23,12 +23,27 @@ require('packer').startup(function(use)
 
       -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
+
+      -- Auto configures rust
+      'simrat39/rust-tools.nvim',
     },
   }
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    requires = {
+        'L3MON4D3/LuaSnip',
+        'saadparwaiz1/cmp_luasnip',
+
+        'hrsh7th/nvim-cmp' ,
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
+        'hrsh7th/cmp-vsnip',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/vim-vsnip',
+    },
   }
 
   use { -- Highlight, edit, and navigate code
@@ -422,7 +437,7 @@ vim.keymap.set('n', '<leader>gt', require('telescope.builtin').git_status, { des
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim', 'kotlin', 'ruby' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'toml', 'typescript', 'help', 'vim', 'kotlin', 'ruby' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -540,11 +555,14 @@ end
 local servers = {
   -- clangd = {},
   -- pyright = {},
-  -- rust_analyzer = {},
   -- tsserver = {},
 
   lua_ls = {},
   gopls = {},
+
+  -- rust
+  rust_analyzer = {},
+  codelldb = {},
 }
 
 -- Setup neovim lua configuration
@@ -627,5 +645,52 @@ cmp.setup {
   },
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
+-- Rust
+local rt = require("rust-tools")
+
+rt.setup({
+  server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end,
+  },
+})
+
+-- LSP Diagnostics Options Setup 
+local sign = function(opts)
+  vim.fn.sign_define(opts.name, {
+    texthl = opts.name,
+    text = opts.text,
+    numhl = ''
+  })
+end
+
+sign({name = 'DiagnosticSignError', text = ''})
+sign({name = 'DiagnosticSignWarn', text = ''})
+sign({name = 'DiagnosticSignHint', text = ''})
+sign({name = 'DiagnosticSignInfo', text = ''})
+
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = {
+        border = 'rounded',
+        source = 'always',
+        header = '',
+        prefix = '',
+    },
+})
+
+vim.cmd([[
+set signcolumn=yes
+autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])
+
+-- The line beneath this is called `modeline`.  `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
