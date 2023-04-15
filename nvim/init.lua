@@ -614,6 +614,7 @@ local servers = {
   lua_ls = {},
   gopls = {},
   rust_analyzer = {},
+  solargraph = {}, -- ruby
 }
 
 -- Setup neovim lua configuration
