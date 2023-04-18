@@ -4,6 +4,7 @@ alias v="nvim"
 alias gcma='git commit -am'
 alias gamend='git commit --amend --verbose'
 alias glr='git pull --rebase'
+alias gfpgl='git fetch --prune; git pull'
 
 # docker
 alias dr='docker run --rm -it'
