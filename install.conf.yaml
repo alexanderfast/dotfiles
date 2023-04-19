@@ -12,6 +12,7 @@
 - link:
     ~/.config/alacritty:
     ~/.config/nvim:
+    ~/.config/qtile:
     ~/.oh-my-zsh: ohmyzsh
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux:
