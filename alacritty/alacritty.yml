@@ -1,9 +1,11 @@
 font:
   normal:
-    family: "Noto Mono for Powerline"
-  size: 7
+    family: "NotoMono for Powerline"
+    style: "Regular"
+  size: 10
 
-background_opacity: 0.9
+window:
+  opacity: 0.9
 
 # Copyright (c) 2017-present Arctic Ice Studio <development@arcticicestudio.com>
 # Copyright (c) 2017-present Sven Greb <code@svengreb.de>
@@ -33,7 +35,7 @@ colors:
     matches:
       foreground: CellBackground
       background: '#88c0d0'
-    bar:
+    footer_bar:
       background: '#434c5e'
       foreground: '#d8dee9'
   normal:

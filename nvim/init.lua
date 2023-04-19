@@ -491,7 +491,7 @@ vim.keymap.set('n', '<leader>st', ":TodoTelescope<CR>", { desc = '[S]earch [T]od
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'toml', 'typescript', 'help', 'vim', 'kotlin', 'ruby' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'toml', 'typescript', 'vimdoc', 'vim', 'kotlin', 'ruby' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -611,15 +611,15 @@ local servers = {
   -- tsserver = {},
 
   lua_ls = {},
-  gopls = {},
+  -- gopls = {},
   rust_analyzer = {},
-  solargraph = {}, -- ruby
-  pyright = {},
+  -- solargraph = {}, -- ruby
+  -- pyright = {},
 }
 
 -- Setup neovim lua configuration
 require('neodev').setup()
---
+
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)

@@ -1,7 +1,11 @@
 #!/bin/bash -xe
 if [[ -z "$(which nvim)" ]]; then
-    sudo wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim.appimage -O /usr/local/bin/nvim
-    sudo chmod +x /usr/local/bin/nvim
+    mkdir -p ~/opensource/neovim
+    git clone git@github.com:neovim/neovim.git ~/opensource/neovim
+    cd ~/opensource/neovim
+    git checkout release-0.9
+    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
 fi
 
 if [[ ! -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
