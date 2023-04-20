@@ -24,7 +24,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
+import subprocess
+import os
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -98,6 +100,7 @@ for i in groups:
 
 # From https://github.com/joshdick/onedark.vim/blob/main/colors/onedark.vim
 one_dark = {
+    "black_black":  "#1e2127",
     "black":        "#282c34",
     "white":        "#abb2bf",
     "light_red":    "#e06c75",
@@ -144,7 +147,7 @@ widget_defaults = dict(
     font="NotoMono for Powerline",
     fontsize=14,
     padding=3,
-    background=theme["black"],
+    background=theme["black_black"],
     foreground=theme["white"],
     border_color=theme["comment_grey"],
 
@@ -199,7 +202,7 @@ screens = [
                 #widget.Volume(fmt='Vol: {}'),
                 #widget.Sep(),
                 widget.Clock(foreground=theme['magenta'], format="%Y-%m-%d %a %H:%M"),
-                widget.QuickExit(),
+                widget.QuickExit(countdown_start=3),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
@@ -252,3 +255,9 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~/.config/qtile/autostart.sh')
+    subprocess.Popen([home])

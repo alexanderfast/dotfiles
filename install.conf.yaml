@@ -13,6 +13,7 @@
     ~/.config/alacritty:
     ~/.config/nvim:
     ~/.config/qtile:
+    ~/.config/picom:
     ~/.oh-my-zsh: ohmyzsh
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux:
