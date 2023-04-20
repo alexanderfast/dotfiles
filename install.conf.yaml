@@ -25,5 +25,5 @@
   - [curl https://sh.rustup.rs -sSf | sh -s -- -y, Installing cargo]
   - [scripts/install-packages.sh, Installing packages]
   - [scripts/install-neovim.sh, Installing neovim]
-  - [nvim/install-lsp-servers.sh, Installing neovim lsp]
+  - [scripts/install-font.sh, Installing font]
   - [tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
