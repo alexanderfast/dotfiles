@@ -123,15 +123,15 @@ layout_defaults = {
     "border_normal": theme["black"],
     "border_normal_stack": theme["black"],
     "insert_position": 1,
-    "margin": 10,
+    "margin": 6,
 }
 
 layouts = [
     layout.Columns(**layout_defaults),
-    #layout.Bsp(**layout_defaults),
-    #layout.Floating(**layout_defaults),
-    #layout.Matrix(**layout_defaults),
-    #layout.Max(**layout_defaults),
+    layout.Bsp(**layout_defaults),
+    layout.Floating(**layout_defaults),
+    layout.Matrix(**layout_defaults),
+    layout.Max(**layout_defaults),
     #layout.MonadTall(**layout_defaults),
     #layout.MonadThreeCol(**layout_defaults),
     #layout.MonadWide(**layout_defaults),
@@ -146,19 +146,23 @@ layouts = [
 widget_defaults = dict(
     font="NotoMono for Powerline",
     fontsize=14,
-    padding=3,
     background=theme["black_black"],
     foreground=theme["white"],
     border_color=theme["comment_grey"],
 
     active=theme["blue"],
-    inactive=theme["gutter_grey"],
+    inactive=theme["black"],
 
     # graphs
     graph_color=theme["blue"],
     fill_color=theme["comment_grey"],
 )
 extension_defaults = widget_defaults.copy()
+
+separator = lambda: widget.Sep(
+        linewidth=0,
+        padding=4,
+    )
 
 screens = [
     Screen(
@@ -167,14 +171,25 @@ screens = [
         bottom=bar.Bar(
             [
                 #widget.CurrentLayoutIcon(),
-                widget.CurrentLayout(),
+                separator(),
                 widget.GroupBox(
-                    borderwidth=2,
-                    this_current_screen_border=theme['magenta'],
-                    this_screen_border=theme['magenta'],
-                    #other_current_screen_border='#FF0000',
-                    #other_screen_border='#FF0000',
+                    highlight_method="block",
+                    this_current_screen_border=theme['blue'],
+                    #this_other_screen_border=theme["blue"],
+                    #this_current_screen=theme["background"],
+                    block_highlight_text_color=theme["black_black"],
+                    borderwidth=0,
+                    rounded=False,
+                    padding_x=10,
+                    padding_y=8,
+                    margin_x=0,
+                    disable_drag=True,
                 ),
+                separator(),
+                widget.CurrentLayout(
+                    background=theme['green'],
+                    foreground=theme['black_black']
+                    ),
                 widget.Prompt(foreground=theme["magenta"]),
                 widget.WindowName(),
                 widget.Chord(
@@ -201,10 +216,15 @@ screens = [
                 widget.Systray(),
                 #widget.Volume(fmt='Vol: {}'),
                 #widget.Sep(),
-                widget.Clock(foreground=theme['magenta'], format="%Y-%m-%d %a %H:%M"),
+                separator(),
+                widget.Clock(
+                    background=theme['magenta'],
+                    foreground=theme['black_black'],
+                    format="%Y-%m-%d %a %H:%M",
+                ),
                 widget.QuickExit(countdown_start=3),
             ],
-            24,
+            28,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
