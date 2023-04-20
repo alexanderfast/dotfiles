@@ -16,5 +16,5 @@ then
 
 	sudo apt-get install -y git zsh tmux python3 fonts-powerline cmake make fuse build-essential
 else
-	sudo pacman -Sy git zsh tmux python3 cmake make base-devel openssh bitwarden wget curl fuse unzip neovim ripgrep picom
+	sudo pacman -Sy git zsh tmux python3 cmake make base-devel openssh bitwarden wget curl fuse unzip neovim ripgrep picom pyright npm
 fi

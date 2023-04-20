@@ -100,6 +100,13 @@ require('packer').startup(function(use)
   -- Show signatures
   use { 'ray-x/lsp_signature.nvim' }
 
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end
+  }
+
   -- Folder/tree view
   use {
     'nvim-neo-tree/neo-tree.nvim',
@@ -614,7 +621,7 @@ local servers = {
   -- gopls = {},
   rust_analyzer = {},
   -- solargraph = {}, -- ruby
-  -- pyright = {},
+  pyright = {},
 }
 
 -- Setup neovim lua configuration

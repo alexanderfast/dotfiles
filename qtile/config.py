@@ -58,12 +58,8 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
+    Key([mod, "shift"], "s", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
+    Key([mod, "shift"], "f", lazy.layout.flip(), desc="Flip/mirror the layout"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -98,37 +94,85 @@ for i in groups:
             #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+   
+
+# From https://github.com/joshdick/onedark.vim/blob/main/colors/onedark.vim
+one_dark = {
+    "black":        "#282c34",
+    "white":        "#abb2bf",
+    "light_red":    "#e06c75",
+    "dark_red":     "#be5046",
+    "green":        "#98c379",
+    "light_yellow": "#e5c07b",
+    "dark_yellow":  "#d19a66",
+    "blue":         "#61afef",
+    "magenta":      "#c678dd",
+    "cyan":         "#56b6c2",
+    "gutter_grey":  "#4b5263",
+    "comment_grey": "#5c6370",
+}
+theme = one_dark
+
+layout_defaults = {
+    "border_width": 2,
+    "border_focus": theme["blue"],
+    "border_focus_stack": theme["blue"],
+    "border_normal": theme["black"],
+    "border_normal_stack": theme["black"],
+    "insert_position": 1,
+    "margin": 10,
+}
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    layout.Columns(**layout_defaults),
+    #layout.Bsp(**layout_defaults),
+    #layout.Floating(**layout_defaults),
+    #layout.Matrix(**layout_defaults),
+    #layout.Max(**layout_defaults),
+    #layout.MonadTall(**layout_defaults),
+    #layout.MonadThreeCol(**layout_defaults),
+    #layout.MonadWide(**layout_defaults),
+    #layout.RatioTile(**layout_defaults),
+    #layout.Stack(**layout_defaults, num_stacks=2),
+    #layout.Tile(**layout_defaults),
+    #layout.TreeTab(**layout_defaults),
+    #layout.VerticalTile(**layout_defaults),
+    #layout.Zoomy(**layout_defaults),
 ]
 
 widget_defaults = dict(
-    font="sans",
-    fontsize=12,
+    font="NotoMono for Powerline",
+    fontsize=14,
     padding=3,
+    background=theme["black"],
+    foreground=theme["white"],
+    border_color=theme["comment_grey"],
+
+    active=theme["blue"],
+    inactive=theme["gutter_grey"],
+
+    # graphs
+    graph_color=theme["blue"],
+    fill_color=theme["comment_grey"],
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
+        wallpaper='~/.wallpapers/comfy.png',
+        wallpaper_mode='fill',
         bottom=bar.Bar(
             [
+                #widget.CurrentLayoutIcon(),
                 widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
+                widget.GroupBox(
+                    borderwidth=2,
+                    this_current_screen_border=theme['magenta'],
+                    this_screen_border=theme['magenta'],
+                    #other_current_screen_border='#FF0000',
+                    #other_screen_border='#FF0000',
+                ),
+                widget.Prompt(foreground=theme["magenta"]),
                 widget.WindowName(),
                 widget.Chord(
                     chords_colors={
@@ -136,12 +180,25 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                #widget.Notify(),
+                widget.WidgetBox(widgets=[
+                    widget.TextBox('C'),
+                    widget.CPUGraph(),
+                    widget.TextBox('M'),
+                    widget.MemoryGraph(),
+                    widget.TextBox('H'),
+                    widget.HDDBusyGraph(),
+                    widget.TextBox('N'),
+                    widget.NetGraph(),
+                    widget.DF(wan_color=theme["light_red"], visible_on_warn=False),
+                    ]
+                ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                #widget.Volume(fmt='Vol: {}'),
+                #widget.Sep(),
+                widget.Clock(foreground=theme['magenta'], format="%Y-%m-%d %a %H:%M"),
                 widget.QuickExit(),
             ],
             24,
