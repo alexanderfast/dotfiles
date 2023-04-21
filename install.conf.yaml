@@ -17,6 +17,7 @@
     ~/.oh-my-zsh: ohmyzsh
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux:
+    ~/.xinitrc: xinit/xinitrc
     ~/.zshenv: zsh/zshenv
     ~/.zshrc: zsh/zshrc
 
