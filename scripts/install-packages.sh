@@ -24,4 +24,7 @@ else
 	sudo cp -f ~/.dotfiles/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 	sudo mkdir -p /etc/share/pixmaps
 	sudo cp ~/.dotfiles/wallpapers/cubes.png /etc/share/pixmaps/cubes.png
+
+	# enable ntp, why isnt this default?
+	timedatectl set-ntp true
 fi
