@@ -11,9 +11,10 @@
 
 - link:
     ~/.config/alacritty:
+    ~/.config/gtk-3.0:
     ~/.config/nvim:
-    ~/.config/qtile:
     ~/.config/picom:
+    ~/.config/qtile:
     ~/.oh-my-zsh: ohmyzsh
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux:
@@ -26,5 +27,5 @@
   - [curl https://sh.rustup.rs -sSf | sh -s -- -y, Installing cargo]
   - [scripts/install-packages.sh, Installing packages]
   - [scripts/install-neovim.sh, Installing neovim]
-  - [scripts/install-font.sh, Installing font]
+  #- [scripts/install-font.sh, Installing font]
   - [tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
