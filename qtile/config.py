@@ -32,6 +32,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
+alt = "mod1"
 terminal = guess_terminal()
 
 keys = [
@@ -69,6 +70,9 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+
+    # Non-layout hotkeys
+    Key([mod, alt], "l", lazy.spawn("dm-tool lock"), desc="Lock the screen"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -166,7 +170,7 @@ separator = lambda: widget.Sep(
 
 screens = [
     Screen(
-        wallpaper='~/.wallpapers/comfy.png',
+        wallpaper='~/.dotfiles/wallpapers/cubes.png',
         wallpaper_mode='fill',
         bottom=bar.Bar(
             [
