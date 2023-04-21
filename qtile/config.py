@@ -217,6 +217,8 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
+                widget.CheckUpdates(distro="Arch", fmt="pacman: {}", color_have_updates=theme["green"]),
+                widget.CheckUpdates(distro="Arch_yay", fmt="yay: {}", color_have_updates=theme["green"]),
                 widget.Systray(),
                 #widget.Volume(fmt='Vol: {}'),
                 #widget.Sep(),
