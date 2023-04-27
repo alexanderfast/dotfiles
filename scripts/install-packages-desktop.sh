@@ -1,8 +1,6 @@
 #!/bin/bash
 
-if [ -z "$(grep 'Arch Linux' /etc/os-release)" ]
-then
-else
+if [ -n "$(grep 'Arch Linux' /etc/os-release)" ]; then
 	# extra packages only for deskop
 	sudo pacman -Sq --noconfirm picom
 
@@ -15,4 +13,8 @@ else
 
 	# enable ntp, why isnt this default?
 	timedatectl set-ntp true
+elif [ -z "$(grep 'Arch Linux' /etc/os-release)" ]; then
+	sudo dnf copr enable -y frostyx/qtile
+	sudo dnf install -y alacritty qtile xrandr dunst
+else
 fi
