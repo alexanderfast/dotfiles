@@ -13,7 +13,7 @@ if [ -n "$(grep 'Arch Linux' /etc/os-release)" ]; then
 
 	# enable ntp, why isnt this default?
 	timedatectl set-ntp true
-elif [ -z "$(grep 'Arch Linux' /etc/os-release)" ]; then
+elif [ -z "$(grep 'fedora' /etc/os-release)" ]; then
 	sudo dnf copr enable -y frostyx/qtile
 	sudo dnf install -y alacritty qtile xrandr dunst
 else
