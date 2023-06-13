@@ -13,6 +13,7 @@
     ~/.config/alacritty:
     ~/.config/dunst:
     ~/.config/gtk-3.0:
+    ~/.config/i3:
     ~/.config/nvim:
     ~/.config/picom:
     ~/.config/qtile:
