@@ -115,3 +115,5 @@ zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f
 
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/go/bin":$PATH
+
+source $HOME/.secrets
