@@ -59,6 +59,9 @@ require('packer').startup(function(use)
     end
   }
 
+  -- Useful status updates for LSP
+  use { 'j-hui/fidget.nvim', tag = 'legacy' }
+
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
