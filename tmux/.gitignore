@@ -1,0 +1,4 @@
+# ignore everything
+plugins/*
+# except tpm
+!plugins/tpm
