@@ -12,3 +12,9 @@
 [submodule "tmux/plugins/tmux-onedark-theme"]
 	path = tmux/plugins/tmux-onedark-theme
 	url = https://git::@github.com/odedlaz/tmux-onedark-theme
+[submodule "tmux/plugins/tmux-resurrect"]
+	path = tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
+[submodule "tmux/plugins/tmux-continuum"]
+	path = tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum.git
