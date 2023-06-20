@@ -240,9 +240,10 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 vim.o.relativenumber = true
+vim.o.cursorline = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = 'v'
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -272,6 +273,9 @@ vim.o.tabstop = 4
 -- Default open place for new splits
 vim.o.splitbelow = true
 vim.o.splitright = true
+
+-- No swapfile
+vim.o.swapfile = false
 
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
