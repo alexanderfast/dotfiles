@@ -282,6 +282,11 @@ vim.o.splitright = true
 -- No swapfile
 vim.o.swapfile = false
 
+-- Use scrolloff to keep cursor closer to middle for context
+vim.o.scrolloff = 10
+vim.o.sidescrolloff = 15
+vim.o.sidescroll = 1
+
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
