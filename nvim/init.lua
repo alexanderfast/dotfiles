@@ -127,6 +127,8 @@ require('packer').startup(function(use)
     end
   }
 
+  use 'nvie/vim-flake8'
+
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
@@ -553,7 +555,7 @@ vim.keymap.set('n', '<leader>st', ":TodoTelescope<CR>", { desc = '[S]earch [T]od
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'toml', 'typescript', 'vimdoc', 'vim', 'kotlin', },
+  ensure_installed = { 'lua', 'python', 'rust', 'toml', 'vimdoc', 'vim' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -676,7 +678,15 @@ local servers = {
   -- gopls = {},
   rust_analyzer = {},
   -- solargraph = {}, -- ruby
-  pyright = {},
+  pyright = {
+    python = {
+      pythonPath = "pyenv exec pipenv run python",
+      venvPath = ".venv"
+  --    analysis = {
+  --      typeCheckingMode = 'off',
+  --    }
+    }
+  }
 }
 
 -- Setup neovim lua configuration
@@ -845,6 +855,11 @@ vim.api.nvim_set_option('updatetime', 300)
 vim.cmd([[
 set signcolumn=yes
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+]])
+
+-- Configure python flake8 through regular vim
+vim.cmd([[
+let g:flake8_cmd="pyenv exec flake8"
 ]])
 
 -- The line beneath this is called `modeline`.  `:help modeline`
