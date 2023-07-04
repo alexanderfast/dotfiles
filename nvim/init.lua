@@ -670,30 +670,6 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
-local servers = {
-  -- clangd = {},
-  -- tsserver = {},
-
-  lua_ls = {},
-  -- gopls = {},
-  rust_analyzer = {},
-  -- solargraph = {}, -- ruby
-  pyright = {
-    python = {
-      pythonPath = "pyenv exec pipenv run python",
-      venvPath = ".venv"
-  --    analysis = {
-  --      typeCheckingMode = 'off',
-  --    }
-    }
-  }
-}
-
 -- Setup neovim lua configuration
 require('neodev').setup()
 
@@ -703,22 +679,16 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 require('mason').setup()
-
--- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
-
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
+require("mason-lspconfig").setup()
+require("lspconfig").lua_ls.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {},
 }
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-    }
-  end,
+require("lspconfig").pyright.setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {},
 }
 
 require('lsp_signature').setup {
