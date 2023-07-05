@@ -64,9 +64,9 @@ antigen bundle docker
 antigen bundle git
 antigen bundle xylous/gitstatus
 antigen bundle history
-#antigen bundle pip
-#antigen bundle pipenv
-#antigen bundle pyenv
+antigen bundle pip
+antigen bundle pipenv
+antigen bundle pyenv
 antigen bundle python
 antigen bundle terraform
 antigen bundle tmux
