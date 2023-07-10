@@ -698,6 +698,11 @@ require("lspconfig").pyright.setup {
   on_attach = on_attach,
   settings = {},
 }
+require("lspconfig").terraformls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {},
+}
 
 require('lsp_signature').setup {
   bind = true,   -- This is mandatory, otherwise border config won't get registered.
