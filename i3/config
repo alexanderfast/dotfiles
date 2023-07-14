@@ -85,10 +85,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Shift+i split h
+bindsym $mod+i split h
 
 # split in vertical orientation
-bindsym $mod+Shift+u split v
+bindsym $mod+u split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -186,48 +186,81 @@ bindsym $mod+r mode "resize"
 # Template author: Tinted Theming (https://github.com/tinted-theming)
 #
 # You can use these variables anywhere in the i3 configuration file.
+#set $base00 #282c34
+#set $base01 #353b45
+#set $base02 #3e4451
+#set $base03 #545862
+#set $base04 #565c64
+#set $base05 #abb2bf
+#set $base06 #b6bdca
+#set $base07 #c8ccd4
+#set $base08 #e06c75
+#set $base09 #d19a66
+#set $base0A #e5c07b
+#set $base0B #98c379
+#set $base0C #56b6c2
+#set $base0D #61afef
+#set $base0E #c678dd
+#set $base0F #be5046
 
-set $base00 #282c34
-set $base01 #353b45
-set $base02 #3e4451
-set $base03 #545862
-set $base04 #565c64
-set $base05 #abb2bf
-set $base06 #b6bdca
-set $base07 #c8ccd4
-set $base08 #e06c75
-set $base09 #d19a66
-set $base0A #e5c07b
-set $base0B #98c379
-set $base0C #56b6c2
-set $base0D #61afef
-set $base0E #c678dd
-set $base0F #be5046
+# From https://github.com/catppuccin/i3/blob/main/themes/catppuccin-mocha
+set $rosewater #f5e0dc
+set $flamingo  #f2cdcd
+set $pink      #f5c2e7
+set $mauve     #cba6f7
+set $red       #f38ba8
+set $maroon    #eba0ac
+set $peach     #fab387
+set $green     #a6e3a1
+set $teal      #94e2d5
+set $sky       #89dceb
+set $sapphire  #74c7ec
+set $blue      #89b4fa
+set $lavender  #b4befe
+set $text      #cdd6f4
+set $subtext1  #bac2de
+set $subtext0  #a6adc8
+set $overlay2  #9399b2
+set $overlay1  #7f849c
+set $overlay0  #6c7086
+set $surface2  #585b70
+set $surface1  #45475a
+set $surface0  #313244
+set $base      #1e1e2e
+set $mantle    #181825
+set $crust     #11111b
 
-## Basic bar configuration using the Base16 variables.
-#bar {
-#    status_command i3status
-#
-#    colors {
-#        background $base00
-#        separator  $base01
-#        statusline $base04
-#
-#        # State             Border  BG      Text
-#        focused_workspace   $base05 $base0D $base00
-#        active_workspace    $base05 $base03 $base00
-#        inactive_workspace  $base03 $base01 $base05
-#        urgent_workspace    $base08 $base08 $base00
-#        binding_mode        $base00 $base0A $base00
-#    }
-#}
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# Basic bar configuration using the Base16 variables.
+bar {
+    status_command i3status
+
+    colors {
+        background $surface0
+        separator  $mauve
+        statusline $lavender
+
+        # State             Border      BG          Text
+        focused_workspace   $teal       $surface1   $green
+        active_workspace    $subtext0   $surface1   $subtext1
+        inactive_workspace  $surface0   $surface0   $subtext0
+        urgent_workspace    $mauve      $red        $base
+        binding_mode        $green      $green      $green
+    }
+}
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $base0D $base00 $base0D $base0C
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+# Property Name          Border  BG      Text    Indicator Child Border
+#client.focused          $base05 $base0D $base00 $base0D $base0C
+#client.focused_inactive $base01 $base01 $base05 $base03 $base01
+#client.unfocused        $base01 $base00 $base05 $base01 $base01
+#client.urgent           $base08 $base08 $base00 $base08 $base08
+#client.placeholder      $base00 $base00 $base05 $base00 $base00
+#client.background       $base07
+
+client.focused          $lavender $surface1 $text  $lavender  $lavender
+client.focused_inactive $mauve    $surface1 $text  $green     $surface1
+client.unfocused        $surface1 $base     $text  $green     $surface1
+client.urgent           $red      $red      $base  $overlay0  $green
+client.placeholder      $overlay0 $base     $text  $overlay0  $overlay0
+client.background       $base
