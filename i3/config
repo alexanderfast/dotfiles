@@ -232,7 +232,7 @@ set $crust     #11111b
 
 # Basic bar configuration using the Base16 variables.
 bar {
-    status_command i3status
+    status_command i3status --config ~/.dotfiles/i3/i3status.conf
 
     colors {
         background $surface0
