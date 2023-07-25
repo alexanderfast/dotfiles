@@ -19,6 +19,12 @@ font pango:Hack Nerd Font Mono 13
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+workspace_auto_back_and_forth yes
+
+# Lock screen script
+set $i3lockwall sh ~/.dotfiles/i3/lock.sh
+bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -240,8 +246,8 @@ bar {
         statusline $lavender
 
         # State             Border      BG          Text
-        focused_workspace   $teal       $surface1   $green
-        active_workspace    $subtext0   $surface1   $subtext1
+        focused_workspace   $peach      $peach      $surface0
+        active_workspace    $lavender   $lavender   $surface0
         inactive_workspace  $surface0   $surface0   $subtext0
         urgent_workspace    $mauve      $red        $base
         binding_mode        $green      $green      $green
@@ -258,9 +264,9 @@ bar {
 #client.placeholder      $base00 $base00 $base05 $base00 $base00
 #client.background       $base07
 
-client.focused          $lavender $surface1 $text  $lavender  $lavender
-client.focused_inactive $mauve    $surface1 $text  $green     $surface1
-client.unfocused        $surface1 $base     $text  $green     $surface1
-client.urgent           $red      $red      $base  $overlay0  $green
-client.placeholder      $overlay0 $base     $text  $overlay0  $overlay0
+client.focused          $lavender $surface2 $text       $lavender  $lavender
+client.focused_inactive $mauve    $surface1 $subtext1   $green     $surface1
+client.unfocused        $surface1 $base     $subtext2   $green     $surface1
+client.urgent           $red      $red      $base       $overlay0  $green
+client.placeholder      $overlay0 $base     $text       $overlay0  $overlay0
 client.background       $base

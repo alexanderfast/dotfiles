@@ -17,5 +17,5 @@ elif [ -n "$(grep 'fedora' /etc/os-release)" ]; then
 	sudo dnf copr enable -y frostyx/qtile
 	sudo dnf install -y alacritty qtile xrandr dunst
 elif [ -n "$(grep 'Ubuntu' /etc/os-release)" ]; then
-	sudo apt install i3 polybar dunst rofi
+	sudo apt install i3 polybar dunst rofi scrot imagemagick
 fi
