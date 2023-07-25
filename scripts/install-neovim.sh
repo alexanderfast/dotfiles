@@ -3,7 +3,7 @@ if [[ -z "$(which nvim)" ]]; then
     mkdir -p ~/opensource/neovim
     git clone git@github.com:neovim/neovim.git ~/opensource/neovim
     cd ~/opensource/neovim
-    git checkout release-0.9
+    git checkout v0.9.1
     make CMAKE_BUILD_TYPE=RelWithDebInfo
     sudo make install
 fi
