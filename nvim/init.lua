@@ -127,7 +127,7 @@ require('packer').startup(function(use)
     end
   }
 
-  use 'nvie/vim-flake8'
+  -- use 'nvie/vim-flake8'
 
   -- Git related plugins
   use 'tpope/vim-fugitive'
@@ -148,7 +148,7 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
   -- Lua formatter with stylua, assumes cargo is installed
-  use { 'ckipp01/stylua-nvim', run = 'cargo install stylua' }
+  -- use { 'ckipp01/stylua-nvim', run = 'cargo install stylua' }
 
   -- Show signatures
   use { 'ray-x/lsp_signature.nvim' }
@@ -175,31 +175,90 @@ require('packer').startup(function(use)
     end,
   }
 
+  -- Debugging
+  use {
+    "mfussenegger/nvim-dap",
+    opt = true,
+    event = "BufReadPre",
+    module = { "dap" },
+    wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python" },
+    requires = {
+      "theHamsta/nvim-dap-virtual-text",
+      "rcarriga/nvim-dap-ui",
+      "mfussenegger/nvim-dap-python",
+      "nvim-telescope/telescope-dap.nvim",
+      { "leoluz/nvim-dap-go", module = "dap-go" },
+      { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+    },
+    config = function()
+      -- local dap_install = require "dap-install"
+      -- dap_install.setup {
+      --   installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
+      -- }
+
+      local dap_breakpoint = {
+        error = {
+          text = "🔴",
+          texthl = "LspDiagnosticsSignError",
+          linehl = "",
+          numhl = "",
+        },
+        rejected = {
+          text = "",
+          texthl = "LspDiagnosticsSignHint",
+          linehl = "",
+          numhl = "",
+        },
+        stopped = {
+          text = "⭕",
+          texthl = "LspDiagnosticsSignInformation",
+          linehl = "DiagnosticUnderlineInfo",
+          numhl = "LspDiagnosticsSignInformation",
+        },
+      }
+
+      vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
+      vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
+      vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
+
+      require("nvim-dap-virtual-text").setup {
+        commented = true,
+      }
+
+      local dap, dapui = require "dap", require "dapui"
+      dapui.setup {} -- use default
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        --dapui.close()
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        --dapui.close()
+      end
+
+      require("dap-python").setup("python", {})
+      require('dap-python').test_runner = 'pytest'
+    end,
+  }
+
   -- Unit testing
   use {
     'nvim-neotest/neotest',
     requires = {
+      "vim-test/vim-test",
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       'antoinemadec/FixCursorHold.nvim',
-      'nvim-neotest/neotest-go',
+      "nvim-neotest/neotest-python",
     },
     config = function()
-      -- get neotest namespace (api call creates or returns namespace)
-      local neotest_ns = vim.api.nvim_create_namespace 'neotest'
-      vim.diagnostic.config({
-        virtual_text = {
-          format = function(diagnostic)
-            local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+',
-              '')
-            return message
-          end,
-        },
-      }, neotest_ns)
-      require('neotest').setup {
-        -- your neotest config here
+      require("neotest").setup {
         adapters = {
-          require 'neotest-go',
+          require "neotest-python" {
+            dap = { justMyCode = false },
+            runner = "pytest",
+          },
         },
       }
     end,
@@ -416,6 +475,40 @@ vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
 vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
   { silent = true, noremap = true }
 )
+
+-- Dap
+vim.keymap.set('n', '<leader>dtm', ':lua require("dap-python").test_method()<CR>')
+vim.keymap.set('n', '<leader>dtc', ':lua require("dap-python").test_class()<CR>')
+vim.keymap.set('n', '<leader>dts', '<ESC>:lua require("dap-python").debug_selection()<CR>')
+
+vim.keymap.set('n', '<F6>', function() require('dap').continue() end)
+vim.keymap.set('n', '<F7>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<F8>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F9>', function() require('dap').step_out() end)
+vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+vim.keymap.set('n', '<leader>duc', function() require("dapui").close() end)
+vim.keymap.set('n', '<leader>duo', function() require("dapui").open() end)
+vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+    require('dap.ui.widgets').hover()
+end)
+vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+    require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<Leader>df', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+    local widgets = require('dap.ui.widgets')
+    widgets.centered_float(widgets.scopes)
+end)
+
+-- Packer
+vim.keymap.set('n', '<leader>ps', ':PackerSync<CR>')
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -707,8 +800,8 @@ local on_attach = function(_, bufnr)
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-  nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-  --nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+  nmap('<leader>lsd', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+  nmap('<leader>lsw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -896,9 +989,9 @@ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 ]])
 
 -- Configure python flake8 through regular vim
-vim.cmd([[
-let g:flake8_cmd="pyenv exec flake8"
-]])
+-- vim.cmd([[
+-- let g:flake8_cmd="pyenv exec flake8"
+-- ]])
 
 -- The line beneath this is called `modeline`.  `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
