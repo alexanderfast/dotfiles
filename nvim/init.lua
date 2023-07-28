@@ -62,7 +62,7 @@ require('packer').startup(function(use)
   -- Useful status updates for LSP
   use { 'j-hui/fidget.nvim', tag = 'legacy' }
 
-  use {   -- LSP Configuration & Plugins
+  use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
       -- Automatically install LSPs to stdpath for neovim
@@ -80,7 +80,7 @@ require('packer').startup(function(use)
     },
   }
 
-  use {   -- Autocompletion
+  use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = {
       'L3MON4D3/LuaSnip',
@@ -97,14 +97,14 @@ require('packer').startup(function(use)
     },
   }
 
-  use {   -- Highlight, edit, and navigate code
+  use { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     run = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   }
 
-  use {   -- Additional text objects via treesitter
+  use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
@@ -135,11 +135,11 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
 
   --use 'navarasu/onedark.nvim'                 -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim'             -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim'   -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim'                 -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth'                      -- Detect tabstop and shiftwidth automatically
-  use 'voldikss/vim-floaterm'                 -- Easy access terminal
+  use 'nvim-lualine/lualine.nvim'           -- Fancier statusline
+  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+  use 'numToStr/Comment.nvim'               -- "gc" to comment visual regions/lines
+  use 'tpope/vim-sleuth'                    -- Detect tabstop and shiftwidth automatically
+  use 'voldikss/vim-floaterm'               -- Easy access terminal
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -166,7 +166,7 @@ require('packer').startup(function(use)
     branch = 'v2.x',
     requires = {
       'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',       -- not strictly required, but recommended
+      'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
       'MunifTanjim/nui.nvim',
     },
     config = function()
@@ -187,7 +187,7 @@ require('packer').startup(function(use)
       "rcarriga/nvim-dap-ui",
       "mfussenegger/nvim-dap-python",
       "nvim-telescope/telescope-dap.nvim",
-      { "leoluz/nvim-dap-go", module = "dap-go" },
+      { "leoluz/nvim-dap-go",                module = "dap-go" },
       { "jbyuki/one-small-step-for-vimkind", module = "osv" },
     },
     config = function()
@@ -299,47 +299,47 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 require("catppuccin").setup({
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
-        light = "latte",
-        dark = "mocha",
-    },
-    transparent_background = false, -- disables setting the background color.
-    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-    term_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
-    dim_inactive = {
-        enabled = true, -- dims the background color of inactive window
-        shade = "dark",
-        percentage = 0.15, -- percentage of the shade to apply to the inactive window
-    },
-    no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
-    no_underline = false, -- Force no underline
-    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-        comments = { "italic" }, -- Change the style of comments
-        conditionals = { "italic" },
-        loops = {},
-        functions = {},
-        keywords = {},
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-    },
-    color_overrides = {},
-    custom_highlights = {},
-    integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        mini = false,
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-    },
+  flavour = "mocha",   -- latte, frappe, macchiato, mocha
+  background = {       -- :h background
+    light = "latte",
+    dark = "mocha",
+  },
+  transparent_background = false,   -- disables setting the background color.
+  show_end_of_buffer = false,       -- shows the '~' characters after the end of buffers
+  term_colors = true,               -- sets terminal colors (e.g. `g:terminal_color_0`)
+  dim_inactive = {
+    enabled = true,                 -- dims the background color of inactive window
+    shade = "dark",
+    percentage = 0.15,              -- percentage of the shade to apply to the inactive window
+  },
+  no_italic = false,                -- Force no italic
+  no_bold = false,                  -- Force no bold
+  no_underline = false,             -- Force no underline
+  styles = {                        -- Handles the styles of general hi groups (see `:h highlight-args`):
+    comments = { "italic" },        -- Change the style of comments
+    conditionals = { "italic" },
+    loops = {},
+    functions = {},
+    keywords = {},
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
+  },
+  color_overrides = {},
+  custom_highlights = {},
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    nvimtree = true,
+    treesitter = true,
+    notify = false,
+    mini = false,
+    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+  },
 })
 
 
@@ -487,24 +487,25 @@ vim.keymap.set('n', '<F8>', function() require('dap').step_into() end)
 vim.keymap.set('n', '<F9>', function() require('dap').step_out() end)
 vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
 vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set('n', '<Leader>lp',
+  function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
 vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
 vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
 vim.keymap.set('n', '<leader>duc', function() require("dapui").close() end)
 vim.keymap.set('n', '<leader>duo', function() require("dapui").open() end)
-vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
-    require('dap.ui.widgets').hover()
+vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
+  require('dap.ui.widgets').hover()
 end)
-vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
-    require('dap.ui.widgets').preview()
+vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
+  require('dap.ui.widgets').preview()
 end)
 vim.keymap.set('n', '<Leader>df', function()
-    local widgets = require('dap.ui.widgets')
-    widgets.centered_float(widgets.frames)
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.frames)
 end)
 vim.keymap.set('n', '<Leader>ds', function()
-    local widgets = require('dap.ui.widgets')
-    widgets.centered_float(widgets.scopes)
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.scopes)
 end)
 
 -- Packer
@@ -553,27 +554,27 @@ require('gitsigns').setup {
     changedelete = { text = '~' },
     untracked = { text = '┆' },
   },
-  signcolumn = true,   -- Toggle with `:Gitsigns toggle_signs`
-  numhl = true,        -- Toggle with `:Gitsigns toggle_numhl`
-  linehl = false,      -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff = false,   -- Toggle with `:Gitsigns toggle_word_diff`
+  signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+  numhl = true,      -- Toggle with `:Gitsigns toggle_numhl`
+  linehl = false,    -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
   watch_gitdir = {
     interval = 1000,
     follow_files = true,
   },
   attach_to_untracked = true,
-  current_line_blame = false,   -- Toggle with `:Gitsigns toggle_current_line_blame`
+  current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
   current_line_blame_opts = {
     virt_text = true,
-    virt_text_pos = 'right_align',     -- 'eol' | 'overlay' | 'right_align'
+    virt_text_pos = 'right_align', -- 'eol' | 'overlay' | 'right_align'
     delay = 1000,
     ignore_whitespace = false,
   },
   current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
   sign_priority = 6,
   update_debounce = 100,
-  status_formatter = nil,    -- Use default
-  max_file_length = 40000,   -- Disable if file is longer than this (in lines)
+  status_formatter = nil,  -- Use default
+  max_file_length = 40000, -- Disable if file is longer than this (in lines)
   preview_config = {
     -- Options passed to nvim_open_win
     border = 'single',
@@ -727,7 +728,7 @@ require('nvim-treesitter.configs').setup {
   textobjects = {
     select = {
       enable = true,
-      lookahead = true,       -- Automatically jump forward to textobj, similar to targets.vim
+      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
         ['aa'] = '@parameter.outer',
@@ -740,7 +741,7 @@ require('nvim-treesitter.configs').setup {
     },
     move = {
       enable = true,
-      set_jumps = true,       -- whether to set jumps in the jumplist
+      set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
         [']m'] = '@function.outer',
         [']]'] = '@class.outer',
@@ -848,7 +849,7 @@ require("lspconfig").terraformls.setup {
 }
 
 require('lsp_signature').setup {
-  bind = true,   -- This is mandatory, otherwise border config won't get registered.
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
   handler_opts = {
     border = 'rounded',
   },
@@ -899,13 +900,13 @@ cmp.setup {
   },
   sources = {
     { name = 'luasnip' },
-    { name = 'path' },                                           -- file paths
-    { name = 'nvim_lsp',               keyword_length = 3 },     -- from language server
-    { name = 'nvim_lsp_signature_help' },                        -- display function signatures with current parameter emphasized
-    { name = 'nvim_lua',               keyword_length = 2 },     -- complete neovim's Lua runtime API such vim.lsp.*
-    { name = 'buffer',                 keyword_length = 2 },     -- source current buffer
-    { name = 'vsnip',                  keyword_length = 2 },     -- nvim-cmp source for vim-vsnip
-    { name = 'calc' },                                           -- source for math calculation
+    { name = 'path' },                                       -- file paths
+    { name = 'nvim_lsp',               keyword_length = 3 }, -- from language server
+    { name = 'nvim_lsp_signature_help' },                    -- display function signatures with current parameter emphasized
+    { name = 'nvim_lua',               keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
+    { name = 'buffer',                 keyword_length = 2 }, -- source current buffer
+    { name = 'vsnip',                  keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
+    { name = 'calc' },                                       -- source for math calculation
   },
   window = {
     completion = cmp.config.window.bordered(),
