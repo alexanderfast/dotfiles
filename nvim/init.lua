@@ -472,9 +472,9 @@ vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
 vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
   { silent = true, noremap = true }
 )
-vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
-  { silent = true, noremap = true }
-)
+-- vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
+--   { silent = true, noremap = true }
+-- )
 
 -- Dap
 vim.keymap.set('n', '<leader>dtm', ':lua require("dap-python").test_method()<CR>')
@@ -681,9 +681,7 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
+vim.keymap.set('n', '<leader>-', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
@@ -701,10 +699,11 @@ vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc =
 vim.keymap.set('n', '<leader>su', require('telescope.builtin').builtin, { desc = '[S]earch Telescope B[u]iltins' })
 vim.keymap.set('n', '<leader>sl', require('telescope.builtin').loclist, { desc = '[S]earch [L]oclist' })
 vim.keymap.set('n', '<leader>sq', require('telescope.builtin').quickfix, { desc = '[S]earch [Q]uickfix' })
+vim.keymap.set('n', '<leader>so', require('telescope.builtin').oldfiles, { desc = '[S]earch [o]ld files' })
 
 vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = 'Search [G]it [B]ranches' })
 vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_commits, { desc = 'Search [G]it [C]ommits' })
--- vim.keymap.set('n', '<leader>gt', require('telescope.builtin').git_status, { desc = 'Search [G]it S[t]atus' })
+vim.keymap.set('n', '<leader>gt', require('telescope.builtin').git_status, { desc = 'Search [G]it S[t]atus' })
 
 vim.keymap.set('n', '<leader>st', ":TodoTelescope<CR>", { desc = '[S]earch [T]odo' })
 
