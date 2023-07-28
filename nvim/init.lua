@@ -142,7 +142,59 @@ require('packer').startup(function(use)
   use 'voldikss/vim-floaterm'               -- Easy access terminal
 
   -- Fuzzy Finder (files, lsp, etc)
-  use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
+  use {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require('telescope').setup{
+        -- Default configuration for telescope goes here:
+        -- config_key = value,
+        defaults = {
+           sorting_strategy = "ascending",
+           layout_config = {
+             prompt_position = 'top'
+          },
+            mappings = {
+                i = {
+                  -- map actions.which_key to <C-h> (default: <C-/>)
+                  -- actions.which_key shows the mappings for your picker,
+                  -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+                  --["<C-h>"] = "which_key"
+                  ["<C-s>"] = "select_vertical",
+                  ["<C-x>"] = "select_horizontal"
+                },
+                n = {
+                  -- map actions.which_key to <C-h> (default: <C-/>)
+                  -- actions.which_key shows the mappings for your picker,
+                  -- e.g. git_{create, delete, ...}_branch for the git_branches picker
+                  --["<C-h>"] = "which_key"
+                  ["<C-s>"] = "select_vertical",
+                  ["<C-x>"] = "select_horizontal"
+                }
+            },
+        },
+        pickers = {
+          -- Default configuration for builtin pickers goes here:
+          -- picker_name = {
+          --   picker_config_key = value,
+          --   ...
+          -- }
+          -- Now the picker_config_key will be applied every time you call this
+          -- builtin picker
+        },
+        extensions = {
+          -- Your extension configuration goes here:
+          -- extension_name = {
+          --   extension_config_key = value,
+          -- }
+          -- please take a look at the readme of the extension you want to configure
+        },
+      }
+    end
+  }
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
@@ -659,23 +711,6 @@ vim.keymap.set('n', '<leader>gcb', function()
     end
   end)
 end)
-
--- [[ Configure Telescope ]]
--- See `:help telescope` and `:help telescope.setup()`
-require('telescope').setup {
-  defaults = {
-    sorting_strategy = "ascending",
-    layout_config = {
-      prompt_position = 'top'
-    },
-    mappings = {
-      i = {
-        --['<C-u>'] = false,
-        --['<C-d>'] = false,
-      },
-    },
-  },
-}
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
