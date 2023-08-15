@@ -9,10 +9,10 @@ font:
   normal:
     family: "Hack Nerd Font Mono"
     style: "Regular"
-  size: 8
+  size: 12
 
 window:
-  opacity: 0.9
+  opacity: 0.8
 
 env:
   TERM: xterm-256color
