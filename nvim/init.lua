@@ -407,7 +407,7 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 vim.o.relativenumber = true
-vim.o.cursorline = true
+vim.o.cursorline = false
 
 -- Enable mouse mode
 vim.o.mouse = 'v'
