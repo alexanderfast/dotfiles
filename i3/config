@@ -40,6 +40,18 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Set keyboard layout
+exec --no-startup-id setxkbmap se -variant nodeadkeys
+
+# Set background image
+exec --no-startup-id feh --bg-scale -Z ~/.dotfiles/wallpapers/shaded_landscape.jpeg
+
+# For terminal transparency
+exec --no-startup-id picom &
+
+# Disable decorations for windows (pending update to gaps version)
+new_window None
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -59,7 +71,7 @@ bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec "rofi -modi drun,run -show drun"
+bindsym $mod+d exec ~/.dotfiles/rofi/deathemonic/bin/launcher
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -187,28 +199,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-## Base16 OneDark
-# Scheme author: Lalit Magant (http://github.com/tilal6991)
-# Template author: Tinted Theming (https://github.com/tinted-theming)
-#
-# You can use these variables anywhere in the i3 configuration file.
-#set $base00 #282c34
-#set $base01 #353b45
-#set $base02 #3e4451
-#set $base03 #545862
-#set $base04 #565c64
-#set $base05 #abb2bf
-#set $base06 #b6bdca
-#set $base07 #c8ccd4
-#set $base08 #e06c75
-#set $base09 #d19a66
-#set $base0A #e5c07b
-#set $base0B #98c379
-#set $base0C #56b6c2
-#set $base0D #61afef
-#set $base0E #c678dd
-#set $base0F #be5046
-
 # From https://github.com/catppuccin/i3/blob/main/themes/catppuccin-mocha
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
@@ -256,17 +246,10 @@ bar {
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Basic color configuration using the Base16 variables for windows and borders.
-# Property Name          Border  BG      Text    Indicator Child Border
-#client.focused          $base05 $base0D $base00 $base0D $base0C
-#client.focused_inactive $base01 $base01 $base05 $base03 $base01
-#client.unfocused        $base01 $base00 $base05 $base01 $base01
-#client.urgent           $base08 $base08 $base00 $base08 $base08
-#client.placeholder      $base00 $base00 $base05 $base00 $base00
-#client.background       $base07
-
-client.focused          $lavender $surface2 $text       $lavender  $lavender
-client.focused_inactive $mauve    $surface1 $subtext1   $green     $surface1
-client.unfocused        $surface1 $base     $subtext2   $green     $surface1
-client.urgent           $red      $red      $base       $overlay0  $green
-client.placeholder      $overlay0 $base     $text       $overlay0  $overlay0
-client.background       $base
+# target                 title     bg           text        indicator  border
+client.focused           $mauve    $base        $text       $rosewater $mauve
+client.focused_inactive  $surface1 $surface0    $surface2   $rosewater $surface1
+client.unfocused         $surface1 $surface0    $surface2   $rosewater $surface1
+client.urgent            $peach    $base        $peach      $overlay0  $peach
+client.placeholder       $overlay0 $base        $text       $overlay0  $overlay0
+client.background        $base

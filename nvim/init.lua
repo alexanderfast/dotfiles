@@ -134,8 +134,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  --use 'navarasu/onedark.nvim'                 -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim'           -- Fancier statusline
+  use 'freddiehaddad/feline.nvim'           -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim'               -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth'                    -- Detect tabstop and shiftwidth automatically
@@ -355,11 +354,11 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 require("catppuccin").setup({
   flavour = "macchiato", -- latte, frappe, macchiato, mocha
   background = {     -- :h background
-    light = "latte",
-    dark = "mocha",
+    light = "frappe",
+    dark = "macchiato",
   },
-  transparent_background = false, -- disables setting the background color.
-  show_end_of_buffer = false,     -- shows the '~' characters after the end of buffers
+  transparent_background = true,  -- disables setting the background color.
+  show_end_of_buffer = true,      -- shows the '~' characters after the end of buffers
   term_colors = true,             -- sets terminal colors (e.g. `g:terminal_color_0`)
   dim_inactive = {
     enabled = true,               -- dims the background color of inactive window
@@ -574,16 +573,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- Set lualine as statusline
--- See `:help lualine.txt`
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'palenight',
-    component_separators = '|',
-    section_separators = '',
-  },
-}
+-- Set feline as statusline with theme
+local ctp_feline = require('catppuccin.groups.integrations.feline')
+ctp_feline.setup({})
+require("feline").setup({
+    components = ctp_feline.get(),
+})
 
 -- Enable Comment.nvim
 require('Comment').setup()

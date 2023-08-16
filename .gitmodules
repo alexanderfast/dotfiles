@@ -15,3 +15,6 @@
 [submodule "polybar/catppuccin"]
 	path = polybar/catppuccin
 	url = https://github.com/catppuccin/polybar
+[submodule "rofi"]
+	path = rofi
+	url = https://github.com/catppuccin/rofi.git

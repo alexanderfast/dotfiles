@@ -97,9 +97,6 @@
     # Set to 0 to disable.
     frame_width = 3
 
-    # Defines color of the frame around the notification window.
-    frame_color = "#61afef"
-
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
@@ -126,7 +123,7 @@
 
     ### Text ###
 
-    font = Hack Nerd Font 13
+    font = Hack Nerd Font 11
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -253,7 +250,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 3
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -283,6 +280,8 @@
     # layout changes.
     force_xinerama = false
 
+    word_wrap = true
+
     ### mouse
 
     # Defines list of actions for each mouse event
@@ -298,9 +297,29 @@
     # * context_all: Open context menu for all notifications.
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
-    mouse_left_click = close_current
-    mouse_middle_click = do_action, close_current
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = close_current
     mouse_right_click = close_all
+
+    # Theme from https://github.com/catppuccin/dunst/blob/main/src/macchiato.conf
+    frame_color = "#8AADF4"
+    separator_color= frame
+
+[urgency_low]
+    background = "#24273A"
+    foreground = "#CAD3F5"
+
+[urgency_normal]
+    background = "#24273A"
+    foreground = "#CAD3F5"
+    #default_icon = /path/to/icon
+
+[urgency_critical]
+    background = "#24273A"
+    foreground = "#CAD3F5"
+    frame_color = "#F5A97F"
+    default_icon = emblem-important-symbolic
+
 
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
@@ -311,33 +330,6 @@
     # using the resolution and physical size. This might be useful in setups
     # where there are multiple screens with very different dpi values.
     per_monitor_dpi = false
-
-
-[urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#282c34"
-    foreground = "#abb2bf"
-    timeout = 10
-    # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
-
-[urgency_normal]
-    background = "#282c34"
-    foreground = "#98c379"
-    frame_color = "#61afef"
-    timeout = 10
-    # Icon for notifications with normal urgency, uncomment to enable
-    #default_icon = /path/to/icon
-
-[urgency_critical]
-    background = "#282c34"
-    foreground = "#e06c75"
-    frame_color = "#be5046"
-    timeout = 0
-    # Icon for notifications with critical urgency, uncomment to enable
-    #default_icon = emblem-important-symbolic
-
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
