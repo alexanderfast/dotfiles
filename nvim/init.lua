@@ -319,6 +319,9 @@ require('packer').startup(function(use)
 
   use { "xiyaowong/transparent.nvim" }
 
+  -- second part of tmux plugin for seamless navigation
+  use { "christoomey/vim-tmux-navigator" }
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -361,7 +364,7 @@ require("catppuccin").setup({
   show_end_of_buffer = true,      -- shows the '~' characters after the end of buffers
   term_colors = true,             -- sets terminal colors (e.g. `g:terminal_color_0`)
   dim_inactive = {
-    enabled = true,               -- dims the background color of inactive window
+    enabled = false,               -- dims the background color of inactive window
     shade = "dark",
     percentage = 0.15,            -- percentage of the shade to apply to the inactive window
   },
