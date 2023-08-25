@@ -21,7 +21,7 @@ setopt MARK_DIRS              # adds slash to end of completed dirs
 setopt SHARE_HISTORY          # share history between open shells
 setopt MAGIC_EQUAL_SUBST      # make filename completion after equal sign work
 unsetopt AUTOCD               # dont allow when just typing folder name
-
+unsetopt BEEP		      # turn off beep
 
 DOTFILES="$HOME/.dotfiles"
 
