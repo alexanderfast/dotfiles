@@ -1,9 +1,8 @@
 #!/bin/bash
 
 if [ -n "$(grep 'fedora' /etc/os-release)" ]; then
-	sudo dnf copr enable -y zawertun/hack-fonts
-	sudo dnf install -y zsh tmux neovim hack-fonts dunst gcc-c++
-	sudo dnf groupinstall 'Development Tools'
+	sudo dnf install -y zsh tmux neovim gcc-c++ ripgrep openconnect openssh
+	sudo dnf groupinstall -y 'Development Tools'
 elif [ -n "$(grep 'Arch Linux' /etc/os-release)" ]; then
 	sudo pacman -Sq --noconfirm git zsh tmux python3 cmake make base-devel openssh bitwarden wget curl unzip neovim ripgrep pyright npm ttf-hack-nerd
 
