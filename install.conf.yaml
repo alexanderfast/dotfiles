@@ -31,8 +31,8 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   #- [curl https://sh.rustup.rs -sSf | sh -s -- -y, Installing cargo]
-  - [scripts/install-packages.sh, Installing packages]
-  - [scripts/install-packages-desktop.sh, Installing packages for desktop]
+  #- [scripts/install-packages.sh, Installing packages]
+  #- [scripts/install-packages-desktop.sh, Installing packages for desktop]
   #- [scripts/install-neovim.sh, Installing neovim]
   #- [scripts/install-font.sh, Installing font]
   #- [tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
