@@ -1,0 +1,1 @@
+LayeredPackages: distrobox gnome-tweaks kitty langpacks-en powerline-fonts python3-pygments util-linux-user vim zsh
