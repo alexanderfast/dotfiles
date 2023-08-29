@@ -60,7 +60,7 @@ require('packer').startup(function(use)
   }
 
   -- Useful status updates for LSP
-  use { 'j-hui/fidget.nvim', tag = 'legacy' }
+  -- use { 'j-hui/fidget.nvim', tag = 'legacy' }
 
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -899,7 +899,7 @@ require('lsp_signature').setup {
 }
 
 -- Turn on lsp status information
-require('fidget').setup()
+-- require('fidget').setup()
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
