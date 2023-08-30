@@ -323,7 +323,9 @@ require('packer').startup(function(use)
   -- use { "catppuccin/nvim", as = "catppuccin" }
   -- use { "shaunsingh/nord.nvim" }
   -- use { "AlexvZyl/nordic.nvim" }
-  use 'rmehri01/onenord.nvim'
+  -- use 'rmehri01/onenord.nvim'
+  -- use 'cocopon/iceberg.vim'
+  use 'EdenEast/nightfox.nvim'
 
   use { "xiyaowong/transparent.nvim" }
 
@@ -440,7 +442,8 @@ vim.o.termguicolors = true
 -- setup must be called before loading
 -- vim.cmd.colorscheme "catppuccin"
 -- vim.cmd.colorscheme "nordic"
-vim.cmd.colorscheme "onenord"
+-- vim.cmd.colorscheme "onenord"
+vim.cmd.colorscheme "nordfox"
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
