@@ -31,6 +31,7 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   #- [curl https://sh.rustup.rs -sSf | sh -s -- -y, Installing cargo]
+  - [scripts/git-config.sh, Git config]
   #- [scripts/install-packages.sh, Installing packages]
   #- [scripts/install-packages-desktop.sh, Installing packages for desktop]
   #- [scripts/install-neovim.sh, Installing neovim]
