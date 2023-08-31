@@ -11,3 +11,13 @@ alias dr='docker run --rm -it'
 
 # override default rm
 alias rm='rm'
+
+# distrobox
+alias dba='distrobox assemble'
+alias dbac='distrobox assemble create'
+alias dbar='distrobox assemble rm'
+alias dbc='distrobox create'
+alias dbe='distrobox enter'
+alias dbl='distrobox list'
+alias dbr='distrobox rm'
+alias dbs='distrobox stop'
