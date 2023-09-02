@@ -1,158 +1,118 @@
-@import "mocha.css";
+@import "nord.css";
+
+window {
+    background-color: transparent;
+}
+
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FiraCode;
+    font-family: Cantarell;
     font-size: 14px;
-}
-
-window#waybar {
-    background-color: #1E1E2E;
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
+    font-weight: 600;
+    margin-top: 2px;
 }
 
 /*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
+* Left part
 */
-
-window#waybar.termite {
-    background-color: #3F3F3F;
+#mode {
+    color: @nord0;
+    background-color: @nord13;
+    margin-left: 8px;
+    border-radius: 5px;
+    padding: 0px 6px;
 }
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
-
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 
 #workspaces button {
-    padding: 0 5px; 
-    border-radius: 5em / 5em;
-    background-color: @surface0;
-    color: @peach;
-    margin: 2px;
+    margin-left: 8px;
+    background-color: @nord3;
+    padding: 0px 4px;
+    color: @nord6;
+    margin-top: 0;
+}
+
+#workspaces button.focused {
+    color: @nord0;
+    background-color: @nord8;
+}
+
+#window {
+    margin-left: 10px;
+    color: @nord6;
     font-weight: bold;
+    padding: 0px 5px;
+}
+
+/*
+* Right part
+*/
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#backlight,
+#language,
+#battery,
+#clock,
+#tray {
+    background-color: @nord2;
+    padding: 0px 8px;
+    color: @nord6;
 }
 
 #backlight,
-#battery {
-    padding: 0 10px;
-    color: @mauve;
-    background-color: @surface0; 
-    font-weight: bold;
-}
-
+#language,
+#battery,
 #clock,
-#cpu,
-#memory,
-#temperature,
-#network,
+#tray {
+    margin-right: 8px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 #pulseaudio,
-#keyboard-state,
-#mpd {
-    padding: 0 10px;
-    color: @peach;
-    background-color: @surface0; 
-    font-weight: bold;
-}
-
-#memory {
-   color: @yellow;
-}
-
-#window,
-#workspaces {
-    margin: 0 4px;
-    background-color: transparent;
-    font-weight:bold;
-    border-radius: 5em / 5em;
-    padding: 0 10px;
-    color: @peach;
-}
-
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
-  border-top-right-radius: 5em 5em; 
-  border-bottom-right-radius: 5em 5em;
-  color: @sky;   
-}
-
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-
-#network.disconnected {
-    background-color: #f53c3c;
-}
-
-#pulseaudio {
-    border-top-left-radius: 5em 5em;
-    border-bottom-left-radius: 5em 5em;
-    color: @pink;
+#network,
+#clock,
+#tray {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    background-color: @nord13;
+    color: @nord3;
 }
 
-#temperature.critical {
-    background-color: #eb4d4b;
+#pulseaudio, #backlight {
+    background-color: @nord10;
 }
 
-#temperature {
-   color: @green;
+#network, #cpu, #memory, #battery {
+    background-color: @nord3;
 }
 
-#keyboard-state {
-    padding: 0 0px;
-    min-width: 16px;
-    color: @mauve;
+#tray {
+    background-color: @nord1;
 }
 
-
-#keyboard-state > label {
-    padding: 0 5px;
+#network.disabled, 
+#network.disconnected {
+    background-color: @nord13;
+    color: @nord0; 
 }
 
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+#battery.warning {
+    background-color: @nord13;
+    color: @nord0; 
+}
+
+#battery.critical {
+    background-color: @nord11;
+    color: @nord0; 
+}
+
+#tray menu {
+    background-color: @nord2;
+    color: @nord4;
+    padding: 10px 5px;
+    border: 2px solid @nord1;
 }

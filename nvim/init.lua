@@ -134,11 +134,16 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'freddiehaddad/feline.nvim'           -- Fancier statusline
+  -- use 'freddiehaddad/feline.nvim'           -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim'               -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth'                    -- Detect tabstop and shiftwidth automatically
   use 'voldikss/vim-floaterm'               -- Easy access terminal
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+  }
 
   -- Fuzzy Finder (files, lsp, etc)
   use {
@@ -315,7 +320,10 @@ require('packer').startup(function(use)
     end,
   }
 
-  use { "catppuccin/nvim", as = "catppuccin" }
+  -- use { "catppuccin/nvim", as = "catppuccin" }
+  -- use { "shaunsingh/nord.nvim" }
+  -- use { "AlexvZyl/nordic.nvim" }
+  use 'rmehri01/onenord.nvim'
 
   use { "xiyaowong/transparent.nvim" }
 
@@ -354,51 +362,49 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
-require("catppuccin").setup({
-  flavour = "macchiato", -- latte, frappe, macchiato, mocha
-  background = {     -- :h background
-    light = "frappe",
-    dark = "macchiato",
-  },
-  transparent_background = true,  -- disables setting the background color.
-  show_end_of_buffer = true,      -- shows the '~' characters after the end of buffers
-  term_colors = true,             -- sets terminal colors (e.g. `g:terminal_color_0`)
-  dim_inactive = {
-    enabled = false,               -- dims the background color of inactive window
-    shade = "dark",
-    percentage = 0.15,            -- percentage of the shade to apply to the inactive window
-  },
-  no_italic = false,              -- Force no italic
-  no_bold = false,                -- Force no bold
-  no_underline = false,           -- Force no underline
-  styles = {                      -- Handles the styles of general hi groups (see `:h highlight-args`):
-    comments = { "italic" },      -- Change the style of comments
-    conditionals = { "italic" },
-    loops = {},
-    functions = {},
-    keywords = {},
-    strings = {},
-    variables = {},
-    numbers = {},
-    booleans = {},
-    properties = {},
-    types = {},
-    operators = {},
-  },
-  color_overrides = {},
-  custom_highlights = {},
-  integrations = {
-    cmp = true,
-    gitsigns = true,
-    nvimtree = true,
-    treesitter = true,
-    notify = false,
-    mini = false,
-    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-  },
-})
-
-
+-- require("catppuccin").setup({
+--   flavour = "macchiato", -- latte, frappe, macchiato, mocha
+--   background = {     -- :h background
+--     light = "frappe",
+--     dark = "macchiato",
+--   },
+--   transparent_background = true,  -- disables setting the background color.
+--   show_end_of_buffer = true,      -- shows the '~' characters after the end of buffers
+--   term_colors = true,             -- sets terminal colors (e.g. `g:terminal_color_0`)
+--   dim_inactive = {
+--     enabled = false,               -- dims the background color of inactive window
+--     shade = "dark",
+--     percentage = 0.15,            -- percentage of the shade to apply to the inactive window
+--   },
+--   no_italic = false,              -- Force no italic
+--   no_bold = false,                -- Force no bold
+--   no_underline = false,           -- Force no underline
+--   styles = {                      -- Handles the styles of general hi groups (see `:h highlight-args`):
+--     comments = { "italic" },      -- Change the style of comments
+--     conditionals = { "italic" },
+--     loops = {},
+--     functions = {},
+--     keywords = {},
+--     strings = {},
+--     variables = {},
+--     numbers = {},
+--     booleans = {},
+--     properties = {},
+--     types = {},
+--     operators = {},
+--   },
+--   color_overrides = {},
+--   custom_highlights = {},
+--   integrations = {
+--     cmp = true,
+--     gitsigns = true,
+--     nvimtree = true,
+--     treesitter = true,
+--     notify = false,
+--     mini = false,
+--     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+--   },
+-- })
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -432,7 +438,9 @@ vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 --vim.cmd [[colorscheme onedark]]
 -- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+-- vim.cmd.colorscheme "catppuccin"
+-- vim.cmd.colorscheme "nordic"
+vim.cmd.colorscheme "onenord"
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -477,6 +485,7 @@ vim.keymap.set('n', '<leader>tQ', ':tabonly<CR>')
 vim.keymap.set('n', '<leader>p', 'viw"_dP') -- replace inside word
 vim.keymap.set('n', '<leader>f', ':Format<CR>')
 vim.keymap.set('n', '<leader><leader>s', ':source $MYVIMRC<CR>')
+vim.keymap.set('n', '<C-s>', ':w<CR>')
 
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
@@ -576,12 +585,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- Set feline as statusline with theme
-local ctp_feline = require('catppuccin.groups.integrations.feline')
-ctp_feline.setup({})
-require("feline").setup({
-    components = ctp_feline.get(),
-})
+-- -- Set feline as statusline with theme
+-- local ctp_feline = require('catppuccin.groups.integrations.feline')
+-- ctp_feline.setup({})
+-- require("feline").setup({
+--     components = ctp_feline.get(),
+-- })
+
+require("lualine").setup {
+  options = {
+    theme = "nord"
+  }
+}
 
 -- Enable Comment.nvim
 require('Comment').setup()
