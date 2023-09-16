@@ -8,12 +8,12 @@ import:
 
 font:
   normal:
-    family: "Hack Nerd Font"
+    family: "Hack"
     style: "Regular"
   size: 11
 
 window:
-  opacity: 0.8
+  opacity: 1.0
 
 env:
   TERM: xterm-256color
