@@ -1,13 +1,11 @@
 #!/bin/bash -xe
 
-# for compiling vim on ubuntus that dont yet have 0.5.x
-
-branch=v0.7.2
-workdir=/tmp/neovim
+branch=v0.9.2
+workdir=$HOME/src/neovim
 
 if [ $(which nvim) ]; then
-    echo 'nvim already install, exiting'
-    exit 0
+	echo 'nvim already install, exiting'
+	exit 0
 fi
 if [ -d "$workdir" ]; then
 	pushd $workdir
@@ -19,7 +17,14 @@ else
 	git checkout $branch
 fi
 
-sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
-make CMAKE_BUILD_TYPE=Release -j4
-sudo make install
-popd
+if [ -n "$(grep 'Ubuntu' /etc/os-release)" ]; then
+	sudo apt-get install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+	make CMAKE_BUILD_TYPE=Release -j4
+	sudo make install
+	popd
+elif [ -n "$(grep 'Debian' /etc/os-release)" ]; then
+	sudo apt install build-essential cmake gettext
+	make CMAKE_BUILD_TYPE=RelWithDebInfo -j4 CMAKE_INSTALL_PREFIX=$HOME/.local
+	make install
+	popd
+fi

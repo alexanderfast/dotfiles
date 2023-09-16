@@ -19,4 +19,6 @@ elif [ -n "$(grep 'fedora' /etc/os-release)" ]; then
 	sudo dnf install -y dunst alacritty firefox
 elif [ -n "$(grep 'Ubuntu' /etc/os-release)" ]; then
 	sudo apt install i3 dunst rofi scrot imagemagick cargo feh picom
+elif [ -n "$(grep 'Debian' /etc/os-release)" ]; then
+	sudo apt install i3 dunst rofi scrot imagemagick feh picom
 fi

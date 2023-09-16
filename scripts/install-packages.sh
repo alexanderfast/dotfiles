@@ -8,8 +8,7 @@ elif [ -n "$(grep 'Arch Linux' /etc/os-release)" ]; then
 
 	# enable ntp, why isnt this default?
 	timedatectl set-ntp true
-else
-	# if empty assume ubuntu
+elif [ -n "$(grep 'Ubuntu' /etc/os-release)" ]; then
 	# ripgrep isnt in apt before v20
 	major=$(lsb_release -r | grep Release | grep -oP '\d+\.\d+' | cut -d'.' -f1)
 	set -xe
@@ -22,4 +21,6 @@ else
 	fi
 
 	sudo apt-get install -y git zsh tmux python3 fonts-powerline cmake make fuse build-essential
+elif [ -n "$(grep 'Debian' /etc/os-release)" ]; then
+	sudo apt install git zsh tmux python3 python3-pygment cmake build-essential wget curl
 fi
