@@ -330,7 +330,7 @@ require('packer').startup(function(use)
   use { "xiyaowong/transparent.nvim" }
 
   -- second part of tmux plugin for seamless navigation
-  use { "christoomey/vim-tmux-navigator" }
+  -- use { "christoomey/vim-tmux-navigator" }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -412,7 +412,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -518,6 +518,8 @@ vim.keymap.set("n", "<leader>cl", ":ccl<CR>")
 vim.keymap.set("n", "<leader>cw", ":cw<CR>")
 vim.keymap.set("n", "<leader>cn", ":cn<CR>")
 vim.keymap.set("n", "<leader>cp", ":cp<CR>")
+vim.keymap.set("n", "<C-S-j>cn", ":cn<CR>")
+vim.keymap.set("n", "<C-S-k>cp", ":cp<CR>")
 vim.keymap.set("n", "<leader>c<CR>", ":.cc<CR>")
 
 -- Trouble

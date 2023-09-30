@@ -8,3 +8,5 @@ if test -f "$HOME/.zshenv-private"; then
     source "$HOME/.zshenv-private"
 fi
 #. "$HOME/.cargo/env"
+
+source $HOME/.secrets

@@ -19,3 +19,10 @@ alias dbr='distrobox assemble rm'
 alias dbe='distrobox enter'
 alias dbs='distrobox stop'
 alias dbr='distrobox rm'
+
+function ggcl() {
+	n=$(echo $1 | cut -d: -f2 | cut -d. -f1)
+	mkdir -p $HOME/$n
+	git clone git@$WORK_GITLAB:$1.git $HOME/$n
+	cd $HOME/$n
+}
