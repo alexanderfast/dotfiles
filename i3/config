@@ -230,26 +230,49 @@ set $nord13 #ebcb8b
 set $nord14 #a3be8c
 set $nord15 #b48ead
 
-# From: https://github.com/TheDistroHopper/i3wm-nord/blob/main/i3/config
 bar {
-    height 25
+    height 28
     position bottom
-    font pango:Hack Nerd Font 12
+    font pango:Hack Nerd Font 14
     status_command i3status --config ~/.dotfiles/i3/i3status.conf
     tray_padding 1
     strip_workspace_numbers yes
+    output DP-4
 
     colors {
             separator  $nord4
             background $nord1
             statusline $nord9
 
-            #                   border  background text
-            focused_workspace  $nord1 $nord1    $nord9
-            active_workspace   $nord1 #252936    $nord10
-            inactive_workspace $nord1 $nord1    #4c566a
-            urgent_workspace   $nord1 $nord1    $nord11
-            binding_mode       $nord1 $nord9    #2e3440
+            #                  border background text
+            focused_workspace  $nord1 $nord9    $nord1
+            active_workspace   $nord1 $nord3    $nord4
+            inactive_workspace $nord1 $nord1    $nord10
+            urgent_workspace   $nord1 $nord11   $nord6
+            binding_mode       $nord1 $nord9    $nord10
+    }
+}
+
+bar {
+    height 22
+    position bottom
+    font pango:Hack Nerd Font 10
+    # status_command i3status --config ~/.dotfiles/i3/i3status.conf
+    tray_padding 1
+    strip_workspace_numbers yes
+    output DP-5
+
+    colors {
+            separator  $nord4
+            background $nord1
+            statusline $nord9
+
+            #                  border background text
+            focused_workspace  $nord1 $nord9    $nord1
+            active_workspace   $nord1 $nord3    $nord4
+            inactive_workspace $nord1 $nord1    $nord10
+            urgent_workspace   $nord1 $nord11   $nord6
+            binding_mode       $nord1 $nord9    $nord10
     }
 }
 
