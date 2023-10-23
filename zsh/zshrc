@@ -56,6 +56,9 @@ eval "$(pyenv init --path)"
 
 export SPACESHIP_CONFIG="$HOME/.dotfiles/zsh/spaceship.zsh"
 
+source $DOTFILES/zsh/zsh_aliases
+source $DOTFILES/zsh/zsh_theme
+
 # antigen
 source $DOTFILES/zsh/antigen.zsh
 
@@ -79,6 +82,7 @@ antigen bundle agkozak/zsh-z
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle vi-mode
 
 #antigen theme spaceship-prompt/spaceship-prompt
 
@@ -86,12 +90,16 @@ ZSH_TMUX_AUTOSTART=false     # auto start tmux
 ZSH_TMUX_UNICODE=true       # enable unicode
 ZSH_TMUX_AUTOCONNECT=true  # dont autoconnect
 
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+VI_MODE_CURSOR_NORMAL=2
+VI_MODE_CURSOR_VISUAL=3
+VI_MODE_CURSOR_INSERT=6
+
 antigen use oh-my-zsh
 
 antigen apply
 
-source $DOTFILES/zsh/zsh_aliases
-source $DOTFILES/zsh/zsh_theme
 
 # completion
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
