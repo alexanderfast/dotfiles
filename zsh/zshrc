@@ -86,6 +86,10 @@ antigen bundle vi-mode
 
 #antigen theme spaceship-prompt/spaceship-prompt
 
+antigen use oh-my-zsh
+
+antigen apply
+
 ZSH_TMUX_AUTOSTART=false     # auto start tmux
 ZSH_TMUX_UNICODE=true       # enable unicode
 ZSH_TMUX_AUTOCONNECT=true  # dont autoconnect
@@ -95,11 +99,7 @@ VI_MODE_SET_CURSOR=true
 VI_MODE_CURSOR_NORMAL=2
 VI_MODE_CURSOR_VISUAL=3
 VI_MODE_CURSOR_INSERT=6
-
-antigen use oh-my-zsh
-
-antigen apply
-
+bindkey '\C-e' edit-command-line
 
 # completion
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
