@@ -234,6 +234,7 @@ set $background #192330
 set $foreground #cdcecf
 
 # decorators
+set $bar_background #131a24
 set $focused_bg #719cd6
 set $focused_fg #131a24
 set $active_bg #39506d
@@ -267,7 +268,7 @@ set $color16 #f4a261
 set $color17 #d67ad2
 
 bar {
-    height 25
+    height 23
     position bottom
     font pango:Hack Nerd Font 11
     status_command i3status --config ~/.dotfiles/i3/i3status.conf
@@ -278,15 +279,15 @@ bar {
 
     colors {
         separator  $foreground
-        background $background
+        background $bar_background
         statusline $inactive_fg
 
-        #                  border           bg              text
-        focused_workspace  $focused_bg      $focused_bg     $focused_fg
-        active_workspace   $background      $active_bg      $active_fg
-        inactive_workspace $background      $inactive_bg    $inactive_fg
-        urgent_workspace   $background      $bell_bg        $active_fg
-        binding_mode       $background      $bell_bg
+        #                  border               bg              text
+        focused_workspace  $focused_bg          $focused_bg     $focused_fg
+        active_workspace   $bar_background      $active_bg      $active_fg
+        inactive_workspace $bar_background      $inactive_bg    $inactive_fg
+        urgent_workspace   $bar_background      $bell_bg        $active_fg
+        binding_mode       $bar_background      $bell_bg
     }
 }
 
