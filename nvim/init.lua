@@ -135,7 +135,7 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
 
   -- use 'freddiehaddad/feline.nvim'           -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+  -- use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim'               -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth'                    -- Detect tabstop and shiftwidth automatically
   use 'voldikss/vim-floaterm'               -- Easy access terminal
@@ -320,7 +320,7 @@ require('packer').startup(function(use)
     end,
   }
 
-  -- use { "catppuccin/nvim", as = "catppuccin" }
+  use { "catppuccin/nvim", as = "catppuccin" }
   -- use { "shaunsingh/nord.nvim" }
   -- use { "AlexvZyl/nordic.nvim" }
   -- use 'rmehri01/onenord.nvim'
@@ -364,49 +364,50 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
--- require("catppuccin").setup({
---   flavour = "macchiato", -- latte, frappe, macchiato, mocha
---   background = {     -- :h background
---     light = "frappe",
---     dark = "macchiato",
---   },
---   transparent_background = true,  -- disables setting the background color.
---   show_end_of_buffer = true,      -- shows the '~' characters after the end of buffers
---   term_colors = true,             -- sets terminal colors (e.g. `g:terminal_color_0`)
---   dim_inactive = {
---     enabled = false,               -- dims the background color of inactive window
---     shade = "dark",
---     percentage = 0.15,            -- percentage of the shade to apply to the inactive window
---   },
---   no_italic = false,              -- Force no italic
---   no_bold = false,                -- Force no bold
---   no_underline = false,           -- Force no underline
---   styles = {                      -- Handles the styles of general hi groups (see `:h highlight-args`):
---     comments = { "italic" },      -- Change the style of comments
---     conditionals = { "italic" },
---     loops = {},
---     functions = {},
---     keywords = {},
---     strings = {},
---     variables = {},
---     numbers = {},
---     booleans = {},
---     properties = {},
---     types = {},
---     operators = {},
---   },
---   color_overrides = {},
---   custom_highlights = {},
---   integrations = {
---     cmp = true,
---     gitsigns = true,
---     nvimtree = true,
---     treesitter = true,
---     notify = false,
---     mini = false,
---     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
---   },
--- })
+require("catppuccin").setup({
+  flavour = "mocha", -- latte, frappe, macchiato, mocha
+  background = {     -- :h background
+    light = "frappe",
+    dark = "macchiato",
+  },
+  transparent_background = false,  -- disables setting the background color.
+  show_end_of_buffer = true,      -- shows the '~' characters after the end of buffers
+  term_colors = true,             -- sets terminal colors (e.g. `g:terminal_color_0`)
+  dim_inactive = {
+    enabled = false,               -- dims the background color of inactive window
+    shade = "dark",
+    percentage = 0.15,            -- percentage of the shade to apply to the inactive window
+  },
+  no_italic = false,              -- Force no italic
+  no_bold = false,                -- Force no bold
+  no_underline = false,           -- Force no underline
+  styles = {                      -- Handles the styles of general hi groups (see `:h highlight-args`):
+    comments = { "italic" },      -- Change the style of comments
+    conditionals = { "italic" },
+    loops = {},
+    functions = {},
+    keywords = {},
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
+  },
+  color_overrides = {},
+  custom_highlights = {},
+  integrations = {
+    cmp = true,
+    gitsigns = true,
+    nvimtree = true,
+    treesitter = true,
+    notify = false,
+    mini = false,
+    -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+  },
+})
+
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -443,7 +444,7 @@ vim.o.termguicolors = true
 -- vim.cmd.colorscheme "catppuccin"
 -- vim.cmd.colorscheme "nordic"
 -- vim.cmd.colorscheme "onenord"
-vim.cmd.colorscheme "nordfox"
+-- vim.cmd.colorscheme "nordfox"
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -555,7 +556,7 @@ vim.keymap.set('n', '<F8>', function() require('dap').step_into() end)
 vim.keymap.set('n', '<F9>', function() require('dap').step_out() end)
 vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
 vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-vim.keymap.set('n', '<Leader>lp',
+vim.keymap.set('', '<Leader>lp',
   function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
 vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
 vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
@@ -597,21 +598,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --     components = ctp_feline.get(),
 -- })
 
-require("lualine").setup {
-  options = {
-    theme = "nord"
-  }
-}
-
 -- Enable Comment.nvim
 require('Comment').setup()
 
--- Enable `lukas-reineke/indent-blankline.nvim`
--- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '¦',
-  show_trailing_blankline_indent = false,
-}
+-- -- Enable `lukas-reineke/indent-blankline.nvim`
+-- -- See `:help indent_blankline.txt`
+-- require('indent_blankline').setup {
+--   char = '¦',
+--   show_trailing_blankline_indent = false,
+-- }
 
 -- Gitsigns
 -- See `:help gitsigns.txt`
@@ -708,6 +703,61 @@ require('gitsigns').setup {
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end,
 }
+
+-- Default options
+require('nightfox').setup({
+  options = {
+    -- Compiled file's destination location
+    compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+    compile_file_suffix = "_compiled", -- Compiled file suffix
+    transparent = false,     -- Disable setting background
+    terminal_colors = true,  -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+    dim_inactive = false,    -- Non focused panes set to alternative background
+    module_default = true,   -- Default enable value for modules
+    colorblind = {
+      enable = false,        -- Enable colorblind support
+      simulate_only = false, -- Only show simulated colorblind colors and not diff shifted
+      severity = {
+        protan = 0,          -- Severity [0,1] for protan (red)
+        deutan = 0,          -- Severity [0,1] for deutan (green)
+        tritan = 0,          -- Severity [0,1] for tritan (blue)
+      },
+    },
+    styles = {               -- Style to be applied to different syntax groups
+      comments = "NONE",     -- Value is any valid attr-list value `:help attr-list`
+      conditionals = "NONE",
+      constants = "NONE",
+      functions = "NONE",
+      keywords = "NONE",
+      numbers = "NONE",
+      operators = "NONE",
+      strings = "NONE",
+      types = "NONE",
+      variables = "NONE",
+    },
+    inverse = {             -- Inverse highlight for different types
+      match_paren = false,
+      visual = false,
+      search = false,
+    },
+    modules = {             -- List of various plugins and additional options
+      -- ...
+    },
+  },
+  palettes = {},
+  specs = {},
+  groups = {},
+})
+
+-- setup must be called before loading
+vim.cmd("colorscheme nordfox")
+
+require("lualine").setup {
+  -- options = {
+  --   theme = "nord"
+  -- }
+}
+
 
 vim.keymap.set('n', '<leader>gs', ':Git<CR>')
 vim.keymap.set('n', '<leader>gf', ':Git fetch --prune<CR>')
