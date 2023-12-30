@@ -84,7 +84,7 @@ antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle vi-mode
 
-antigen theme spaceship-prompt/spaceship-prompt
+# antigen theme spaceship-prompt/spaceship-prompt
 
 antigen use oh-my-zsh
 
@@ -138,3 +138,5 @@ source $HOME/.secrets
 # settings that should be defaul
 export ANSIBLE_NOCOWS=1
 export PIPENV_VENV_IN_PROJECT=1
+
+eval "$(starship init zsh)"
