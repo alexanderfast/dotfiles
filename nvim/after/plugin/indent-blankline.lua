@@ -1,4 +1,15 @@
-require("ibl").setup()
-
--- slightly fade the indent char
-vim.api.nvim_set_hl(0, "IblIndent", { link = "comment lua" })
+local highlight = {
+    "Whitespace",
+    "NonText",
+}
+require("ibl").setup {
+    indent = {
+        highlight = highlight,
+        char = "¦"
+    },
+    whitespace = {
+        highlight = highlight,
+        remove_blankline_trail = false,
+    },
+    scope = { enabled = false },
+}
