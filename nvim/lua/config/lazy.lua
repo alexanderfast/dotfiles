@@ -118,8 +118,7 @@ local plugins = {
     'folke/todo-comments.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
-      require("todo-comments").setup {
-      }
+      require("todo-comments").setup { }
     end
   },
 
@@ -127,8 +126,7 @@ local plugins = {
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
-      require("trouble").setup {
-      }
+      require("trouble").setup { }
     end
   },
 
@@ -330,12 +328,17 @@ local plugins = {
   -- { "AlexvZyl/nordic.nvim" },
   -- { 'rmehri01/onenord.nvim' },
   -- { 'cocopon/iceberg.vim' },
-  { 'EdenEast/nightfox.nvim' },
+  { 'EdenEast/nightfox.nvim', priority = 1000 },
 
   -- { "xiyaowong/transparent.nvim" },
 
   -- second part of tmux plugin for seamless navigation
   -- { "christoomey/vim-tmux-navigator" },
+
+  {
+    "startup-nvim/startup.nvim",
+    dependencies = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+  },
 }
 
 require("lazy").setup(plugins)
