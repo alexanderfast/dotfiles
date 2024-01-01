@@ -9,4 +9,4 @@ tmux new zsh
 
 Using [Dotbot](https://github.com/anishathalye/dotbot) and snippets from [here](https://github.com/anishathalye/dotbot/wiki/Users).
 
-Assumes [onedark theme](https://github.com/joshdick/onedark.vim) and [powerline fonts](https://github.com/powerline/fonts), if these dotfiles are in a host you ssh to get these in your local terminal.
+Assumes [powerline fonts](https://github.com/powerline/fonts) are installed.
