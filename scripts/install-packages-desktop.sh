@@ -16,9 +16,9 @@ if [ -n "$(grep 'Arch Linux' /etc/os-release)" ]; then
 elif [ -n "$(grep 'fedora' /etc/os-release)" ]; then
 	# sudo dnf copr enable -y frostyx/qtile
 	# sudo dnf install -y alacritty qtile xrandr dunst
-	sudo dnf install -y dunst alacritty firefox
+	sudo dnf install -y dunst alacritty firefox xclip
 elif [ -n "$(grep 'Ubuntu' /etc/os-release)" ]; then
-	sudo apt install i3 dunst rofi scrot imagemagick cargo feh picom
+	sudo apt install i3 dunst rofi scrot imagemagick cargo feh picom xclip
 elif [ -n "$(grep 'Debian' /etc/os-release)" ]; then
-	sudo apt install i3 dunst rofi scrot imagemagick feh picom
+	sudo apt install i3 dunst rofi scrot imagemagick feh picom xclip
 fi
