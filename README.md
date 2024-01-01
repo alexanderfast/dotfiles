@@ -10,3 +10,8 @@ tmux new zsh
 Using [Dotbot](https://github.com/anishathalye/dotbot) and snippets from [here](https://github.com/anishathalye/dotbot/wiki/Users).
 
 Assumes [powerline fonts](https://github.com/powerline/fonts) are installed.
+
+### Todo
+
+- Better vi mode in zsh.
+- Header symbol in i3 and tmux.
