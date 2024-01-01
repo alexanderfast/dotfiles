@@ -83,7 +83,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen bundle vi-mode
-antigen bundle jeffreytse/zsh-vi-mode
+# antigen bundle jeffreytse/zsh-vi-mode
+# antigen bundle spaceship-prompt/spaceship-vi-mode@main
 
 # antigen theme spaceship-prompt/spaceship-prompt
 
@@ -95,7 +96,6 @@ ZSH_TMUX_AUTOSTART=false   # auto start tmux
 ZSH_TMUX_UNICODE=true      # enable unicode
 ZSH_TMUX_AUTOCONNECT=true  # dont autoconnect
 
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 # VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 # VI_MODE_SET_CURSOR=true
 # VI_MODE_CURSOR_NORMAL=2
@@ -123,6 +123,9 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # extra completion
 source <(kubectl completion zsh)
+
+# enable fzf keybinds
+source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # ssh host completion
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'

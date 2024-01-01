@@ -10,14 +10,6 @@ SPACESHIP_DIR_TRUNC_REPO=false
 # Fix for async not working https://github.com/spaceship-prompt/spaceship-prompt/issues/1193
 SPACESHIP_PROMPT_ASYNC=false
 
-# Add custom Ember section
-# See: https://github.com/spaceship-prompt/spaceship-ember
-spaceship add ember
-
-# Add a custom vi-mode section to the prompt
-# See: https://github.com/spaceship-prompt/spaceship-vi-mode
-spaceship add --before char vi_mode
-
 SPACESHIP_PROMPT_ORDER=(
   # time           # Time stamps section
   # user           # Username section
@@ -75,9 +67,14 @@ SPACESHIP_PROMPT_ORDER=(
   exit_code      # Exit code section
   sudo           # Sudo indicator
   char           # Prompt character
+  # vi_mode
 )
 
 SPACESHIP_RPROMPT_ORDER=(
   time           # Time stamps section
   exec_time      # Execution time
 )
+
+# Add a custom vi-mode section to the prompt
+# See: https://github.com/spaceship-prompt/spaceship-vi-mode
+spaceship add --after line_sep vi_mode
