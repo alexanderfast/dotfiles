@@ -145,3 +145,4 @@ export ANSIBLE_NOCOWS=1
 export PIPENV_VENV_IN_PROJECT=1
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"

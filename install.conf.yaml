@@ -37,7 +37,7 @@
   - [scripts/git-config.sh, Git config]
   #- [scripts/install-packages.sh, Installing packages]
   #- [scripts/install-packages-desktop.sh, Installing packages for desktop]
-  - [scripts/install-starship.sh, Git config]
+  - [scripts/install-extra.sh, Install extra]
   #- [scripts/install-neovim.sh, Installing neovim]
   #- [scripts/install-font.sh, Installing font]
   #- [tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
