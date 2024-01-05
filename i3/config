@@ -13,7 +13,10 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Hack Nerd Font Mono 10
+set $fontsize_laptop 10
+set $fontsize 8
+set $fontsize_side 7
+font pango:Hack Nerd Font Mono $fontsize
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -268,14 +271,20 @@ set $color16 #f4a261
 set $color17 #d67ad2
 
 bar {
-    height 23
     position bottom
-    font pango:Hack Nerd Font 11
     status_command i3status --config ~/.dotfiles/i3/i3status.conf
     tray_padding 20
-    #output DP-4
-    output eDP-1
+
+    # work main
+    font pango:Hack Nerd Font $fontsize
+    height 28
+    output DP-4
     tray_output DP-4
+
+    # laptop
+    # height 23
+    # output eDP-1
+    # tray_output eDP-1
 
     colors {
         separator  $foreground
@@ -291,30 +300,29 @@ bar {
     }
 }
 
-# # side monitor
-# bar {
-#     height 25
-#     position bottom
-#     font pango:Hack Nerd Font 11
-#     status_command i3status --config ~/.dotfiles/i3/i3status.conf
-#     #output DP-2
-#     output DP-1-1
-#     # tray_output DP-4
-#     tray_output DP-1-1
-#
-#     colors {
-#         separator  $foreground
-#         background $background
-#         statusline $foreground
-#
-#         #                  border           bg              text
-#         focused_workspace  $focused_bg      $focused_bg     $focused_fg
-#         active_workspace   $background      $active_bg      $active_fg
-#         inactive_workspace $background      $inactive_bg    $inactive_fg
-#         urgent_workspace   $background      $bell_bg        $active_fg
-#         binding_mode       $background      $bell_bg
-#     }
-# }
+# side monitor
+bar {
+    position bottom
+    status_command i3status --config ~/.dotfiles/i3/i3status.conf
+
+    # work main
+    font pango:Hack Nerd Font $fontsize_side
+    output DP-2
+    height 25
+
+    colors {
+        separator  $foreground
+        background $bar_background
+        statusline $inactive_fg
+
+        #                  border           bg              text
+        focused_workspace  $focused_bg      $focused_bg     $focused_fg
+        active_workspace   $background      $active_bg      $active_fg
+        inactive_workspace $background      $inactive_bg    $inactive_fg
+        urgent_workspace   $background      $bell_bg        $active_fg
+        binding_mode       $background      $bell_bg
+    }
+}
 
 # Window color settings
 # class                 border          bg              text            indicator
