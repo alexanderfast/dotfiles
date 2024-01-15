@@ -85,6 +85,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen bundle vi-mode
 # antigen bundle jeffreytse/zsh-vi-mode
 # antigen bundle spaceship-prompt/spaceship-vi-mode@main
+antigen bundle sawadashota/go-task-completions
 
 # antigen theme spaceship-prompt/spaceship-prompt
 
@@ -121,8 +122,11 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+autoload -U compinit && compinit
+
 # extra completion
 source <(kubectl completion zsh)
+source <(glab completion -s zsh); compdef _glab glab
 
 # enable fzf keybinds
 source /usr/share/doc/fzf/examples/key-bindings.zsh
