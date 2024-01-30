@@ -1,4 +1,5 @@
 alias v="nvim"
+alias e="nvim"
 
 # git
 alias gcma='git commit -am'
@@ -26,3 +27,5 @@ function ggcl() {
 	git clone git@$WORK_GITLAB:$1.git $HOME/$n
 	cd $HOME/$n
 }
+
+alias rg="rg --hidden --glob '!.git'"
