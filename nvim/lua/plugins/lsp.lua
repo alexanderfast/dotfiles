@@ -1,78 +1,108 @@
-return {}
--- -- LSP settings.
--- --  This function gets run when an LSP connects to a particular buffer.
--- local on_attach = function(_, bufnr)
---   -- Remember that lua is a real programming language, and as such it is possible
---   -- to define small helper and utility functions so you don't have to repeat yourself
---   -- many times.
---   --
---   -- In this case, we create a function that lets us more easily define mappings specific
---   -- for LSP related items. It sets the mode, buffer and description for us each time.
---   local nmap = function(keys, func, desc)
---     if desc then
---       desc = 'LSP: ' .. desc
---     end
---
---     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
---   end
---
---   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
---   nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
---
---   nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
---   nmap('gR', vim.lsp.buf.references, '[G]oto [R]eferences')
---   nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
---   nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
---   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
---   nmap('<leader>lsd', require('telescope.builtin').lsp_document_symbols, '[S]ymbols [D]ocument')
---   nmap('<leader>lsw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[S]ymbols [W]orkspace')
---   --nmap('<leader>ld', require('telescope.builtin').diagnostics, '[D]iagnostics')
---
---   -- See `:help K` for why this keymap
---   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
---   nmap('<leader>li', vim.lsp.buf.signature_help, '[L]sp s[I]gnature Documentation')
---
---   -- Lesser used LSP functionality
---   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
---   --nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
---   --nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
---   --nmap('<leader>wl', function()
---   --  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
---   --end, '[W]orkspace [L]ist Folders')
---
---   -- Create a command `:Format` local to the LSP buffer
---   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
---     vim.lsp.buf.format()
---   end, { desc = 'Format current buffer with LSP' })
--- end
---
--- -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
---
--- -- Setup mason so it can manage external tooling
--- require('mason').setup()
--- require("mason-lspconfig").setup()
--- require("lspconfig").lua_ls.setup {
---   capabilities = capabilities,
---   on_attach = on_attach,
---   settings = {},
--- }
--- require("lspconfig").pyright.setup {
---   capabilities = capabilities,
---   on_attach = on_attach,
---   settings = {},
--- }
--- require("lspconfig").terraformls.setup {
---   capabilities = capabilities,
---   on_attach = on_attach,
---   settings = {},
--- }
---
--- require('lsp_signature').setup {
---   bind = true, -- This is mandatory, otherwise border config won't get registered.
---   handler_opts = {
---     border = 'rounded',
---   },
--- }
---
+return {
+  -- add tsserver and setup with typescript.nvim instead of lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "jose-elias-alvarez/typescript.nvim",
+      init = function()
+        require("lazyvim.util").lsp.on_attach(function(_, buffer)
+          -- stylua: ignore
+          vim.keymap.set("n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
+          vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
+        end)
+      end,
+    },
+    ---@class PluginLspOpts
+    opts = {
+      ---@type lspconfig.options
+      servers = {
+        -- tsserver will be automatically installed with mason and loaded with lspconfig
+        tsserver = {},
+      },
+      -- you can do any additional lsp server setup here
+      -- return true if you don't want this server to be setup with lspconfig
+      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+      setup = {
+        -- example to setup with typescript.nvim
+        tsserver = function(_, opts)
+          require("typescript").setup({ server = opts })
+          return true
+        end,
+        -- Specify * to use this function as a fallback for any server
+        -- ["*"] = function(server, opts) end,
+      },
+    },
+  },
+
+  -- add pyright to lspconfig
+  {
+    "neovim/nvim-lspconfig",
+    ---@class PluginLspOpts
+    opts = {
+      ---@type lspconfig.options
+      servers = {
+        -- pyright will be automatically installed with mason and loaded with lspconfig
+        pyright = {},
+      },
+    },
+  },
+
+  -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
+  -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
+  { import = "lazyvim.plugins.extras.lang.typescript" },
+
+  -- add more treesitter parsers
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+        "terraform",
+        "hcl",
+      },
+    },
+  },
+
+  -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
+  -- would overwrite `ensure_installed` with the new value.
+  -- If you'd rather extend the default config, use the code below instead:
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      -- add tsx and treesitter
+      vim.list_extend(opts.ensure_installed, {
+        "tsx",
+        "typescript",
+      })
+    end,
+  },
+
+  -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
+  { import = "lazyvim.plugins.extras.lang.json" },
+
+  -- add any tools you want to have installed below
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "stylua",
+        "shellcheck",
+        "shfmt",
+        "flake8",
+      },
+    },
+  },
+}

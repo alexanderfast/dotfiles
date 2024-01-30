@@ -1,42 +1,9 @@
--- Set highlight on search
-vim.o.hlsearch = true
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
 
--- Make line numbers default
-vim.wo.number = true
-vim.o.relativenumber = true
-vim.o.cursorline = false
+-- Don't hide my json strings
+vim.o.conceallevel = 0
 
--- Enable mouse mode
-vim.o.mouse = 'v'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
-
--- Set colorscheme
-vim.o.termguicolors = true
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
--- Default open place for new splits
-vim.o.splitbelow = true
-vim.o.splitright = true
-
--- No swapfile
-vim.o.swapfile = false
-
--- Use scrolloff to keep cursor closer to middle for context
-vim.o.scrolloff = 10
-vim.o.sidescrolloff = 15
-vim.o.sidescroll = 1
+-- Disable LazyVim auto format
+vim.g.autoformat = false
