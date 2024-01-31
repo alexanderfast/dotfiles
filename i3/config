@@ -16,8 +16,9 @@ set $mod Mod4
 set $fontsize 10
 # set $fontsize 13
 set $fontsize_laptop 10
-set $fontsize_side 7
+set $fontsize_laptop 13
 set $fontsize_work 8
+set $fontsize_side 7
 font pango:Hack Nerd Font Mono $fontsize
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
