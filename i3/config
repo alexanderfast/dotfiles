@@ -13,9 +13,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
+set $fontsize 10
+# set $fontsize 13
 set $fontsize_laptop 10
-set $fontsize 13
-set $fontsize_side 10
+set $fontsize_side 7
+set $fontsize_work 8
 font pango:Hack Nerd Font Mono $fontsize
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -229,16 +231,17 @@ bar {
     status_command i3status --config ~/.dotfiles/i3/i3status.conf
     #tray_padding 20
 
-    # work main
-    font pango:Hack Nerd Font $fontsize
+    # # work main
+    # font pango:Hack Nerd Font $fontsize
     # height 28
-    output DP-4
-    tray_output DP-4
+    # output DP-4
+    # tray_output DP-4
 
     # laptop
-    # height 23
-    # output eDP-1
-    # tray_output eDP-1
+    font pango:Hack Nerd Font $fontsize
+    height 23
+    output eDP-1
+    tray_output eDP-1
 
     colors {
         # bar background color
@@ -254,55 +257,79 @@ bar {
     }
 }
 
-# side monitor
-bar {
-    position bottom
-    # status_command i3status --config ~/.dotfiles/i3/i3status.conf
-
-    # work main
-    font pango:Hack Nerd Font $fontsize_side
-    # height 25
-    output DP-2
-    tray_output none
-
-    colors {
-        # bar background color
-        background $bg
-        # text color used for blocks that do not have a color specified.
-        statusline $yellow
-        # workspaces section
-        #                    border  backgr. text
-        focused_workspace    $aqua $aqua $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
-        urgent_workspace     $red $red $bg
-    }
-}
-
-# side monitor
-bar {
-    position bottom
-    # status_command i3status --config ~/.dotfiles/i3/i3status.conf
-
-    # work main
-    font pango:Hack Nerd Font 8
-    # height 25
-    output HDMI-0
-    tray_output none
-
-    colors {
-        # bar background color
-        background $bg
-        # text color used for blocks that do not have a color specified.
-        statusline $yellow
-        # workspaces section
-        #                    border  backgr. text
-        focused_workspace    $aqua $aqua $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
-        urgent_workspace     $red $red $bg
-    }
-}
+# # side monitor
+# bar {
+#     position bottom
+#     # status_command i3status --config ~/.dotfiles/i3/i3status.conf
+#
+#     # work main
+#     font pango:Hack Nerd Font $fontsize_side
+#     # height 25
+#     output DP-2
+#     tray_output none
+#
+#     colors {
+#         # bar background color
+#         background $bg
+#         # text color used for blocks that do not have a color specified.
+#         statusline $yellow
+#         # workspaces section
+#         #                    border  backgr. text
+#         focused_workspace    $aqua $aqua $darkgray
+#         inactive_workspace   $darkgray $darkgray $yellow
+#         active_workspace     $darkgray $darkgray $yellow
+#         urgent_workspace     $red $red $bg
+#     }
+# }
+#
+# # side monitor
+# bar {
+#     position bottom
+#     status_command i3status --config ~/.dotfiles/i3/i3status.conf
+#
+#     # work main
+#     font pango:Hack Nerd Font $fontsize_side
+#     output DP-2
+#     height 25
+#
+#     colors {
+#         separator  $foreground
+#         background $bar_background
+#         statusline $inactive_fg
+#
+#         #                  border           bg              text
+#         focused_workspace  $focused_bg      $focused_bg     $focused_fg
+#         active_workspace   $background      $active_bg      $active_fg
+#         inactive_workspace $background      $inactive_bg    $inactive_fg
+#         urgent_workspace   $background      $bell_bg        $active_fg
+#         binding_mode       $background      $bell_bg
+#     }
+# }
+#
+# # side monitor
+# bar {
+#     position bottom
+#     # status_command i3status --config ~/.dotfiles/i3/i3status.conf
+#
+#     # work main
+#     font pango:Hack Nerd Font 8
+#     # height 25
+#     output HDMI-0
+#     tray_output none
+#
+#     colors {
+#         # bar background color
+#         background $bg
+#         # text color used for blocks that do not have a color specified.
+#         statusline $yellow
+#         # workspaces section
+#         #                    border  backgr. text
+#         focused_workspace    $aqua $aqua $darkgray
+#         inactive_workspace   $darkgray $darkgray $yellow
+#         active_workspace     $darkgray $darkgray $yellow
+#         urgent_workspace     $red $red $bg
+#     }
+# }
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
