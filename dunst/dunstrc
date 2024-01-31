@@ -1,24 +1,24 @@
-# TokyoNight colors for dunst
-# For more configuraion options see https://github.com/dunst-project/dunst/blob/master/dunstrc
-
-[urgency_low]
-    background = "#1f2335"
-    foreground = "#c0caf5"
-    frame_color = "#c0caf5"
-
-[urgency_normal]
-    background = "#24283b"
-    foreground = "#c0caf5"
-    frame_color = "#c0caf5"
-
-[urgency_critical]
-    background = "#292e42"
-    foreground = "#db4b4b"
-    frame_color = "#db4b4b"
-
 # See dunst(5) for all configuration options
 
+[urgency_low]
+    background = "#282828"
+    foreground = "#ebdbb2"
+    timeout = 5
+
+[urgency_normal]
+    background = "#282828"
+    foreground = "#ebdbb2"
+    timeout = 20
+
+[urgency_critical]
+    background = "#282828"
+    foreground = "#ebdbb2"
+    timeout = 0
+
 [global]
+    frame_color = "#83a598"
+    separator_color = "#585858"
+
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
@@ -38,7 +38,7 @@
     follow = none
 
     ### Geometry ###
-    geometry = "900x5-10+50"
+    # geometry = "900x5-10+50"
     title = Dunst
     class = Dunst
 
@@ -82,10 +82,10 @@
     progress_bar_max_width = 300
 
     # Corner radius for the progress bar. 0 disables rounded corners.
-    progress_bar_corner_radius = 0
+    # progress_bar_corner_radius = 0
 
     # Corner radius for the icon image.
-    icon_corner_radius = 0
+    # icon_corner_radius = 0
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
@@ -319,7 +319,6 @@
     mouse_middle_click = close_current
     mouse_right_click = close_all
 
-    frame_color = "#5e81ac"
     separator_color= frame
 
 
