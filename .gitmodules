@@ -15,3 +15,6 @@
 [submodule "polybar/catppuccin"]
 	path = polybar/catppuccin
 	url = https://github.com/catppuccin/polybar
+[submodule "kitty/kitty_gruvbox_theme"]
+	path = kitty/kitty_gruvbox_theme
+	url = https://github.com/wdomitrz/kitty_gruvbox_theme.git
