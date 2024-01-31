@@ -210,65 +210,17 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# # Nord theme
-# #   src : https://www.nordtheme.com/docs/colors-and-palettes
-# # Polar Night
-# set $nord1 #2e3440
-# set $nord1 #3b4252
-# set $nord2 #434c5e
-# set $nord3 #4c566a
-# # Snowstorm
-# set $nord4 #d8dee9
-# set $nord5 #e5e9f0
-# set $nord6 #eceff4
-# # Frost
-# set $nord7 #8fbcbb
-# set $nord8 #88c0d0
-# set $nord9 #81a1c1
-# set $nord10 #5e81ac
-# # Aurora
-# set $nord11 #bf616a
-# set $nord12 #d08770
-# set $nord13 #ebcb8b
-# set $nord14 #a3be8c
-# set $nord15 #b48ead
+# set primary gruvbox colorscheme colors
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
 
-set $background #192330
-set $foreground #cdcecf
-
-# decorators
-set $bar_background #131a24
-set $focused_bg #719cd6
-set $focused_fg #131a24
-set $active_bg #39506d
-set $active_fg #738091
-set $inactive_bg #2b3b51
-set $inactive_fg #738091
-set $bell_bg #f4a261
-
-# normal
-set $color0 #393b44
-set $color1 #c94f6d
-set $color2 #81b29a
-set $color3 #dbc074
-set $color4 #719cd6
-set $color5 #9d79d6
-set $color6 #63cdcf
-set $color7 #dfdfe0
-
-# bright
-set $color8 #575860
-set $color9 #d16983
-set $color10 #8ebaa4
-set $color11 #e0c989
-set $color12 #86abdc
-set $color13 #baa1e2
-set $color14 #7ad5d6
-set $color15 #e4e4e5
-
-# extended colors
-set $color16 #f4a261
-set $color17 #d67ad2
 
 bar {
     position bottom
@@ -287,16 +239,16 @@ bar {
     # tray_output eDP-1
 
     colors {
-        separator  $foreground
-        background $bar_background
-        statusline $inactive_fg
-
-        #                  border               bg              text
-        focused_workspace  $focused_bg          $focused_bg     $focused_fg
-        active_workspace   $bar_background      $active_bg      $active_fg
-        inactive_workspace $bar_background      $inactive_bg    $inactive_fg
-        urgent_workspace   $bar_background      $bell_bg        $active_fg
-        binding_mode       $bar_background      $bell_bg
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $yellow
+        # workspaces section
+        #                    border  backgr. text
+        focused_workspace    $aqua $aqua $darkgray
+        inactive_workspace   $darkgray $darkgray $yellow
+        active_workspace     $darkgray $darkgray $yellow
+        urgent_workspace     $red $red $bg
     }
 }
 
@@ -311,24 +263,29 @@ bar {
     height 25
 
     colors {
-        separator  $foreground
-        background $bar_background
-        statusline $inactive_fg
-
-        #                  border           bg              text
-        focused_workspace  $focused_bg      $focused_bg     $focused_fg
-        active_workspace   $background      $active_bg      $active_fg
-        inactive_workspace $background      $inactive_bg    $inactive_fg
-        urgent_workspace   $background      $bell_bg        $active_fg
-        binding_mode       $background      $bell_bg
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $yellow
+        # workspaces section
+        #                    border  backgr. text
+        focused_workspace    $aqua $aqua $darkgray
+        inactive_workspace   $darkgray $darkgray $yellow
+        active_workspace     $darkgray $darkgray $yellow
+        urgent_workspace     $red $red $bg
     }
 }
 
-# Window color settings
-# class                 border          bg              text            indicator
-client.focused          $focused_bg     $focused_bg     $focused_fg     $bell_bg
-client.unfocused        $background     $background     $foreground     $bell_bg
-client.focused_inactive $active_bg      $active_bg      $active_fg      $bell_bg
-client.placeholder      $background     $background     $foreground     $bell_bg
-client.urgent           $bell_bg        $bell_bg        $focuesed_fg    $focuesed_fg
-client.background       $background
+# green gruvbox
+# class                 border|backgr|text|indicator|child_border
+#client.focused          $green $green $darkgray $purple $darkgray
+#client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+#client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+#client.urgent           $red $red $white $red $red
+
+# blue gruvbox
+# class                 border|backgr|text|indicator|child_border
+client.focused          $blue $blue $darkgray $purple $darkgray
+client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+client.urgent           $red $red $white $red $red
