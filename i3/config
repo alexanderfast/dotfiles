@@ -22,7 +22,7 @@ font pango:Hack Nerd Font Mono $fontsize
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 
 # Lock screen script
 set $i3lockwall sh ~/.dotfiles/i3/lock.sh
