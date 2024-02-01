@@ -1,0 +1,16 @@
+[user]
+  name = Alexander Fast
+[merge]
+  tool = nvimdiff
+  conflictstyle = diff3
+[pull]
+  rebase = true
+[init]
+  defaultBranch = main
+[pager]
+  diff = false
+  show = false
+[includeIf "gitdir:~/gsg/"]
+  path = ~/.gitconfig-work
+[includeIf "gitdir:~/personal/"]
+  path = ~/.gitconfig-personal
