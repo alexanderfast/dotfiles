@@ -78,6 +78,7 @@ antigen bundle python
 antigen bundle terraform
 antigen bundle tmux
 antigen bundle vault
+antigen bundle starship
 antigen bundle agkozak/zsh-z
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
@@ -125,8 +126,12 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 autoload -U compinit && compinit
 
 # extra completion
-source <(kubectl completion zsh)
-source <(glab completion -s zsh); compdef _glab glab
+if (( $+commands[kubectl] )); then
+  source <(kubectl completion zsh)
+fi
+if (( $+commands[glab] )); then
+  source <(glab completion -s zsh); compdef _glab glab
+fi
 
 # enable fzf keybinds
 source /usr/share/doc/fzf/examples/key-bindings.zsh
@@ -148,7 +153,7 @@ source $HOME/.secrets
 export ANSIBLE_NOCOWS=1
 export PIPENV_VENV_IN_PROJECT=1
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # fzf theme

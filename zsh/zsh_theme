@@ -1,8 +1,8 @@
 PROMPT=$'%{$fg_bold[blue]%}%n@%m %{$fg[white]%}%D{[%X]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(gitstatus)\
 %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )'
 
-PROMPT="$PROMPT\$(vi_mode_prompt_info)"
-RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
+# PROMPT="$PROMPT\$(vi_mode_prompt_info)"
+# RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}["
 ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"

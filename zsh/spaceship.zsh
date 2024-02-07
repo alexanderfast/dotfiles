@@ -77,4 +77,4 @@ SPACESHIP_RPROMPT_ORDER=(
 
 # Add a custom vi-mode section to the prompt
 # See: https://github.com/spaceship-prompt/spaceship-vi-mode
-spaceship add --after line_sep vi_mode
+# spaceship add --after line_sep vi_mode
