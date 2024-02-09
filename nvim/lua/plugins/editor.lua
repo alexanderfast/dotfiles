@@ -5,6 +5,11 @@ return {
     enabled = false,
   },
 
+  {
+    "rcarriga/nvim-notify",
+    enabled = false,
+  },
+
   { "sindrets/diffview.nvim" },
 
   {
