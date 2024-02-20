@@ -225,7 +225,7 @@ set $darkgray #1d2021
 bar {
     position bottom
     status_command i3status --config ~/.dotfiles/i3/i3status.conf
-    tray_padding 20
+    #tray_padding 20
 
     # work main
     font pango:Hack Nerd Font $fontsize
@@ -259,8 +259,9 @@ bar {
 
     # work main
     font pango:Hack Nerd Font $fontsize_side
-    output DP-2
     height 25
+    output DP-2
+    tray_output none
 
     colors {
         # bar background color
