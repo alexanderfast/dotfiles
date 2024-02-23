@@ -37,14 +37,39 @@ return {
   -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
-    ---@class PluginLspOpts
-    opts = {
-      ---@type lspconfig.options
-      servers = {
-        -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
-      },
+    -- ---@class PluginLspOpts
+    -- opts = {
+    --   ---@type lspconfig.options
+    --   servers = {
+    --     -- pyright will be automatically installed with mason and loaded with lspconfig
+    --     pyright = {},
+    --     nil_ls = {},
+    --   },
+    -- },
+
+    "neovim/nvim-lspconfig",
+
+    dependencies = {
+        { "j-hui/fidget.nvim", opts = {
+            progress = {
+                 ignore_empty_message = true
+            }
+        } },
+        "folke/neodev.nvim",
     },
+
+    config = function()
+        local lspconfig = require('lspconfig')
+        local pyright_opts = {
+            single_file_support = true,
+        }
+        lspconfig.pyright.setup(pyright_opts)
+        lspconfig.nil_ls.setup ({
+          formatting = {
+            command = "nixfmt"
+          }
+        })
+    end,
   },
 
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,

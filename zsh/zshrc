@@ -52,7 +52,9 @@ DISABLE_AUTO_TITLE="true"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin":$PATH
-eval "$(pyenv init --path)"
+if (( $+commands[pyenv] )); then
+  eval "$(pyenv init --path)"
+fi
 
 export SPACESHIP_CONFIG="$HOME/.dotfiles/zsh/spaceship.zsh"
 
@@ -87,6 +89,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen bundle jeffreytse/zsh-vi-mode
 # antigen bundle spaceship-prompt/spaceship-vi-mode@main
 antigen bundle sawadashota/go-task-completions
+antigen bundle chisui/zsh-nix-shell
+antigen bundle nix-community/nix-zsh-completions
 
 # antigen theme spaceship-prompt/spaceship-prompt
 
@@ -154,7 +158,9 @@ export ANSIBLE_NOCOWS=1
 export PIPENV_VENV_IN_PROJECT=1
 
 # eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
 
 # fzf theme
 # made using https://minsw.github.io/fzf-color-picker/
