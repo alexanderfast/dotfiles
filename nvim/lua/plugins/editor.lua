@@ -101,13 +101,13 @@ return {
         end,
         desc = "[S]earch [P]ickers",
       },
-      -- {
-      --   "<leader>sr",
-      --   function()
-      --     require("telescope.builtin").resume()
-      --   end,
-      --   desc = "Resume",
-      -- },
+      {
+        "<leader>sr",
+        function()
+          require("telescope.builtin").resume()
+        end,
+        desc = "Resume",
+      },
       -- {
       --   "<leader>sR",
       --   function()
