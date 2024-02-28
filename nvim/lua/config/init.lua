@@ -40,7 +40,13 @@ require("lazy").setup({
   --   removed = " ",
   -- },
   install = { colorscheme = { "nightfox", "tokyonight", "habamax", "catpuccin" } },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = {
+    enabled = false, -- disable automatic check for plugin updates
+    concurrency = nil, ---@type number? set to 1 to check for updates very slowly
+    notify = true, -- get a notification when new updates are found
+    frequency = 3600, -- check for updates every hour
+    check_pinned = false, -- check for pinned packages that can't be updated
+  },
   performance = {
     rtp = {
       -- disable some rtp plugins
