@@ -13,9 +13,14 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
+<<<<<<< HEAD
 set $fontsize 10
 # set $fontsize 13
 set $fontsize_laptop 10
+set $fontsize_laptop 13
+=======
+set $fontsize_laptop 12
+>>>>>>> 5a16425 (Stuff)
 set $fontsize_work 8
 set $fontsize_side 7
 font pango:Hack Nerd Font Mono $fontsize_laptop
@@ -310,6 +315,7 @@ bar {
 #         urgent_workspace   $background      $bell_bg        $active_fg
 #         binding_mode       $background      $bell_bg
 #     }
+<<<<<<< HEAD
 # }
 #
 # # side monitor
@@ -336,7 +342,9 @@ bar {
 #         urgent_workspace     $red $red $bg
 #     }
 # }
+=======
 #}
+>>>>>>> 5a16425 (Stuff)
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
