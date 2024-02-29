@@ -9,7 +9,7 @@ return {
     "rcarriga/nvim-notify",
     opts = {
       background_colour = "#000000",
-    }
+    },
   },
 
   { "sindrets/diffview.nvim" },
@@ -302,5 +302,33 @@ return {
   },
 
   -- sister plugin to tmux navigator
-  { "christoomey/vim-tmux-navigator" }
+  { "christoomey/vim-tmux-navigator" },
+
+  -- conform for formatting code
+  {
+    "stevearc/conform.nvim",
+    --dependencies = { "mason.nvim" },
+    lazy = true,
+    cmd = "ConformInfo",
+    --keys = {
+    --  {
+    --    "<leader>cF",
+    --    function()
+    --      require("conform").format({ formatters = { "injected" } })
+    --    end,
+    --    mode = { "n", "v" },
+    --    desc = "Format Injected Langs",
+    --  },
+    --},
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        -- Conform will run multiple formatters sequentially
+        python = { "autopep8" },
+        -- Use a sub-list to run only the first available formatter
+        javascript = { { "prettierd", "prettier" } },
+        json = { "jsonfmt" },
+      },
+    },
+  },
 }
