@@ -8,5 +8,5 @@ vim.o.conceallevel = 0
 -- Disable LazyVim auto format
 vim.g.autoformat = false
 
--- Disable mouse
 vim.opt.mouse = ""
+vim.opt.swapfile = false
