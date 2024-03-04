@@ -39,11 +39,15 @@ return {
     },
   },
 
-  -- TODO: disable the animation as its too distracting
+  -- disable the animation as its too distracting
   {
     "echasnovski/mini.indentscope",
     enabled = false,
   },
+
+  --{
+  --  "lukas-reineke/indent-blankline",
+  --},
 
   {
     "nvimdev/dashboard-nvim",

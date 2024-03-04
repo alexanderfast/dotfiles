@@ -326,8 +326,16 @@ return {
         python = { "autopep8" },
         -- Use a sub-list to run only the first available formatter
         javascript = { { "prettierd", "prettier" } },
-        json = { "jsonfmt" },
+        json = { "prettiertw4" },
         nix = { "nixfmt" },
+        -- Default formatter
+        ["_"] = { "trim_whitespace" },
+      },
+      formatters = {
+        prettiertw4 = {
+          command = "prettier",
+          args = { "--tab-width", "4", "$FILENAME" },
+        },
       },
     },
   },

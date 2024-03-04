@@ -61,14 +61,16 @@ return {
 
     config = function()
       local lspconfig = require("lspconfig")
-      local pyright_opts = {
-        single_file_support = true,
-      }
-      lspconfig.pyright.setup(pyright_opts)
       lspconfig.nil_ls.setup({
         formatting = {
           command = "nixfmt",
         },
+      })
+      lspconfig.pyright.setup({
+        single_file_support = true,
+      })
+      lspconfig.jsonls.setup({
+        user_config = {}
       })
     end,
   },
