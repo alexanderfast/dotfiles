@@ -9,6 +9,10 @@ vim.keymap.set("n", "<leader>i", ":vsp<CR>", { desc = "Vertical split" })
 vim.keymap.set("n", "<leader>u", ":sp<CR>", { desc = "Horizontal split" })
 vim.keymap.set("n", "<leader>n", ":noh<CR>", { desc = "No highlight" })
 
+vim.keymap.set("n", "<leader>ml", ":diffget LO<CR>", { desc = "Merge diffget local" })
+vim.keymap.set("n", "<leader>mb", ":diffget BA<CR>", { desc = "Merge diffget base" })
+vim.keymap.set("n", "<leader>mr", ":diffget RE<CR>", { desc = "Merge diffget remote" })
+
 -- vim.keymap.set("n", "<C-h>", "<C-w>h")
 -- vim.keymap.set("n", "<C-j>", "<C-w>j")
 -- vim.keymap.set("n", "<C-k>", "<C-w>k")
