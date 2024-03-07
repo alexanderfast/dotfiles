@@ -36,6 +36,7 @@ return {
       lspconfig.jsonls.setup({
         user_config = {}
       })
+      lspconfig.terraformls.setup({})
     end,
 
     -- ---@class PluginLspOpts

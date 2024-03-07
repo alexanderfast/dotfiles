@@ -320,6 +320,7 @@ return {
     --  },
     --},
     opts = {
+      lsp_fallback = true,
       formatters_by_ft = {
         lua = { "stylua" },
         -- Conform will run multiple formatters sequentially
@@ -328,6 +329,7 @@ return {
         javascript = { { "prettierd", "prettier" } },
         json = { "prettiertw4" },
         nix = { "nixfmt" },
+        terraform = { "terraform_fmt" },
         -- Default formatter
         ["_"] = { "trim_whitespace" },
       },
