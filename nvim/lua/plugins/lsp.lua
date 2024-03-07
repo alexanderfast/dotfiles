@@ -1,8 +1,17 @@
 return {
   -- add tsserver and setup with typescript.nvim instead of lspconfig
+  -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      {
+        "j-hui/fidget.nvim",
+        opts = {
+          progress = {
+            ignore_empty_message = true,
+          },
+        },
+      },
       "jose-elias-alvarez/typescript.nvim",
       init = function()
         require("lazyvim.util").lsp.on_attach(function(_, buffer)
@@ -11,7 +20,33 @@ return {
           vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
         end)
       end,
+      "folke/neodev.nvim",
     },
+
+    config = function()
+      local lspconfig = require("lspconfig")
+      lspconfig.nil_ls.setup({
+        formatting = {
+          command = "nixfmt",
+        },
+      })
+      lspconfig.pyright.setup({
+        single_file_support = true,
+      })
+      lspconfig.jsonls.setup({
+        user_config = {}
+      })
+    end,
+
+    -- ---@class PluginLspOpts
+    -- opts = {
+    --   ---@type lspconfig.options
+    --   servers = {
+    --     -- pyright will be automatically installed with mason and loaded with lspconfig
+    --     pyright = {},
+    --     nil_ls = {},
+    --   },
+    -- },
     ---@class PluginLspOpts
     opts = {
       ---@type lspconfig.options
@@ -32,47 +67,6 @@ return {
         -- ["*"] = function(server, opts) end,
       },
     },
-  },
-
-  -- add pyright to lspconfig
-  {
-    "neovim/nvim-lspconfig",
-    -- ---@class PluginLspOpts
-    -- opts = {
-    --   ---@type lspconfig.options
-    --   servers = {
-    --     -- pyright will be automatically installed with mason and loaded with lspconfig
-    --     pyright = {},
-    --     nil_ls = {},
-    --   },
-    -- },
-
-    dependencies = {
-      {
-        "j-hui/fidget.nvim",
-        opts = {
-          progress = {
-            ignore_empty_message = true,
-          },
-        },
-      },
-      "folke/neodev.nvim",
-    },
-
-    config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.nil_ls.setup({
-        formatting = {
-          command = "nixfmt",
-        },
-      })
-      lspconfig.pyright.setup({
-        single_file_support = true,
-      })
-      lspconfig.jsonls.setup({
-        user_config = {}
-      })
-    end,
   },
 
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
