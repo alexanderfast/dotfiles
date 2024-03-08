@@ -56,8 +56,8 @@ input * {
 # }
 #
 # # Set background image
-# exec --no-startup-id feh --bg-scale -Z ~/.dotfiles/wallpapers/shaded_landscape.jpeg
-output "*" bg ~/.dotfiles/wallpapers/nordgirl.jpeg fill
+exec --no-startup-id feh --bg-scale -Z ~/.dotfiles/wallpapers/gruvbox_astro.jpg
+# output "*" bg ~/.dotfiles/wallpapers/nordgirl.jpeg fill
 
 # For terminal transparency
 exec --no-startup-id picom &
