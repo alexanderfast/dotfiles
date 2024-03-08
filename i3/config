@@ -28,8 +28,7 @@ workspace_auto_back_and_forth no
 focus_on_window_activation focus
 
 # Lock screen script
-set $i3lockwall sh ~/.dotfiles/i3/lock.sh
-bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
+bindsym $mod+Ctrl+Shift+l exec sh ~/.dotfiles/i3/lock.sh
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
