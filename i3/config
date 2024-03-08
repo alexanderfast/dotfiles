@@ -14,8 +14,8 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 set $fontsize_laptop 10
-set $fontsize 8
-set $fontsize_side 7
+set $fontsize 13
+set $fontsize_side 10
 font pango:Hack Nerd Font Mono $fontsize
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -229,7 +229,7 @@ bar {
 
     # work main
     font pango:Hack Nerd Font $fontsize
-    height 28
+    # height 28
     output DP-4
     tray_output DP-4
 
@@ -255,12 +255,37 @@ bar {
 # side monitor
 bar {
     position bottom
-    status_command i3status --config ~/.dotfiles/i3/i3status.conf
+    # status_command i3status --config ~/.dotfiles/i3/i3status.conf
 
     # work main
     font pango:Hack Nerd Font $fontsize_side
-    height 25
+    # height 25
     output DP-2
+    tray_output none
+
+    colors {
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $yellow
+        # workspaces section
+        #                    border  backgr. text
+        focused_workspace    $aqua $aqua $darkgray
+        inactive_workspace   $darkgray $darkgray $yellow
+        active_workspace     $darkgray $darkgray $yellow
+        urgent_workspace     $red $red $bg
+    }
+}
+
+# side monitor
+bar {
+    position bottom
+    # status_command i3status --config ~/.dotfiles/i3/i3status.conf
+
+    # work main
+    font pango:Hack Nerd Font 8
+    # height 25
+    output HDMI-0
     tray_output none
 
     colors {
