@@ -41,6 +41,12 @@ exec --no-startup-id dex --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+# auto lock screen and turn off after 1 minute of inactivity
+exec --no-startup-id xset s on
+exec --no-startup-id xset s 62
+exec --no-startup-id xautolock -time 1 -locker ~/.dotfiles/i3/lock.sh
+exec --no-startup-id xss-lock -- ~/.dotfiles/i3/lock.sh
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -285,7 +291,7 @@ bar {
     # status_command i3status --config ~/.dotfiles/i3/i3status.conf
 
     # work main
-    font pango:Hack Nerd Font 8
+    font pango:Hack Nerd Font $fontsize_side
     # height 25
     output HDMI-0
     tray_output none
