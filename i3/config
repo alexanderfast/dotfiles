@@ -44,7 +44,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # auto lock screen and turn off after 1 minute of inactivity
 exec --no-startup-id xset s on
 exec --no-startup-id xset s 62
-exec --no-startup-id xautolock -time 1 -locker ~/.dotfiles/i3/lock.sh
+exec --no-startup-id xautolock -time 10 -locker ~/.dotfiles/i3/lock.sh
 exec --no-startup-id xss-lock -- ~/.dotfiles/i3/lock.sh
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
