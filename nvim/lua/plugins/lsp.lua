@@ -17,8 +17,18 @@ return {
         pyright = {
           mason = false,
           settings = {
-            singlefilesupport = true
-          }
+            singlefilesupport = true,
+          },
+        },
+        gopls = {
+          mason = false,
+          settings = {
+            analyses = {
+              unusedparams = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+          },
         },
       },
       -- -- you can do any additional lsp server setup here
