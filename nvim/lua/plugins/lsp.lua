@@ -92,22 +92,24 @@ return {
   -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
   { import = "lazyvim.plugins.extras.lang.json" },
 
-  -- add any tools you want to have installed below
-  {
-    "williamboman/mason.nvim",
-    enabled = false,
-    --opts = {
-    --  ensure_installed = {
-    --    "stylua",
-    --    "shellcheck",
-    --    "shfmt",
-    --    "flake8",
-    --  },
-    --},
-  },
+  -- -- add any tools you want to have installed below
+  -- {
+  --   "williamboman/mason.nvim",
+  --   enabled = false,
+  --   --opts = {
+  --   --  ensure_installed = {
+  --   --    "stylua",
+  --   --    "shellcheck",
+  --   --    "shfmt",
+  --   --    "flake8",
+  --   --  },
+  --   --},
+  -- },
+  --
+  -- {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   enabled = false,
+  -- },
 
-  {
-    "williamboman/mason-lspconfig.nvim",
-    enabled = false,
-  },
+  { "nvim-neotest/nvim-nio" },
 }
