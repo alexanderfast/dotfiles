@@ -306,7 +306,7 @@ return {
   },
 
   -- sister plugin to tmux navigator
-  { "christoomey/vim-tmux-navigator" },
+  -- { "christoomey/vim-tmux-navigator" },
 
   -- conform for formatting code
   {

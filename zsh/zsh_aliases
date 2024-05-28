@@ -29,3 +29,5 @@ function ggcl() {
 }
 
 alias rg="rg --hidden --glob '!.git'"
+
+alias lg="lazygit"
