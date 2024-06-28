@@ -27,7 +27,12 @@ return {
   {
     "NvChad/nvim-colorizer.lua",
     init = function()
-      require("colorizer").setup({})
+      require("colorizer").setup({
+        filetypes = { "*" },
+        user_default_options = {
+          names = false, -- "Name" codes like Blue or blue
+        }
+      })
     end,
   },
 
