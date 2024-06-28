@@ -62,6 +62,7 @@ export SPACESHIP_CONFIG="$HOME/.dotfiles/zsh/spaceship.zsh"
 
 source $DOTFILES/zsh/zsh_aliases
 # source $DOTFILES/zsh/zsh_theme
+source $DOTFILES/zsh/zsh_functions
 
 # antigen
 source $DOTFILES/zsh/antigen.zsh
