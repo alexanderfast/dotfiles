@@ -6,6 +6,7 @@ alias gcma='git commit -am'
 alias gamend='git commit --amend --verbose'
 alias glr='git pull --rebase'
 alias gfpgl='git fetch --prune; git pull'
+alias gdw='git diff --word-diff=color --word-diff-regex=.'
 
 # docker
 alias dr='docker run --rm -it'
