@@ -234,7 +234,7 @@ set $darkgray #1d2021
 
 bar {
     position bottom
-    # status_command i3status --config ~/.dotfiles/i3/i3status.conf
+    status_command i3status --config ~/.dotfiles/i3/i3status.conf
     #tray_padding 20
 
     # # work main
@@ -263,31 +263,31 @@ bar {
     }
 }
 
-# side monitor
-bar {
-    position bottom
-    status_command i3status --config ~/.dotfiles/i3/i3status.conf
-
-    # work main
-    font pango:Hack Nerd Font $fontsize_side
-    # height 25
-    output DP-2
-    # tray_output none
-    # tray_output DP-2
-
-    colors {
-        # bar background color
-        background $bg
-        # text color used for blocks that do not have a color specified.
-        statusline $yellow
-        # workspaces section
-        #                    border  backgr. text
-        focused_workspace    $aqua $aqua $darkgray
-        inactive_workspace   $darkgray $darkgray $yellow
-        active_workspace     $darkgray $darkgray $yellow
-        urgent_workspace     $red $red $bg
-    }
-}
+# # side monitor
+# bar {
+#     position bottom
+#     status_command i3status --config ~/.dotfiles/i3/i3status.conf
+#
+#     # work main
+#     font pango:Hack Nerd Font $fontsize_side
+#     # height 25
+#     output DP-2
+#     # tray_output none
+#     # tray_output DP-2
+#
+#     colors {
+#         # bar background color
+#         background $bg
+#         # text color used for blocks that do not have a color specified.
+#         statusline $yellow
+#         # workspaces section
+#         #                    border  backgr. text
+#         focused_workspace    $aqua $aqua $darkgray
+#         inactive_workspace   $darkgray $darkgray $yellow
+#         active_workspace     $darkgray $darkgray $yellow
+#         urgent_workspace     $red $red $bg
+#     }
+# }
 
 # # side monitor
 # bar {
