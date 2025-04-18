@@ -1,8 +1,11 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
+
+vim.keymap.set("i", "jk", "<Esc>", {})
+
 vim.keymap.set("n", "<leader>z", "ZZ<CR>")
-vim.keymap.set("n", "<leader>Q", ":wqa!<CR>")
+vim.keymap.set("n", "<leader>q", ":wqa!<CR>")
 vim.keymap.set("n", "<leader>p", 'viw"_dP') -- replace inside word
 
 vim.keymap.set("n", "<leader>i", ":vsp<CR>", { desc = "Vertical split" })
@@ -27,12 +30,11 @@ vim.keymap.set("n", "<leader>t", lazyterm, { desc = "Terminal (root dir)" })
 -- vim.keymap.set("n", "ö", "[")
 -- vim.keymap.set("n", "ä", "]")
 
-vim.cmd [[
+vim.cmd([[
 nmap ö [
 nmap ä ]
 omap ö [
 omap ä ]
 xmap ö [
 xmap ä ]
-]]
-
+]])

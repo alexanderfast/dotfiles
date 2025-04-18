@@ -71,6 +71,7 @@ return {
         "yaml",
         "terraform",
         "hcl",
+        "helm",
       },
     },
   },

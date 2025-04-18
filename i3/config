@@ -202,14 +202,14 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Up resize grow height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or $mod+r
@@ -234,7 +234,7 @@ set $darkgray #1d2021
 
 bar {
     position bottom
-    status_command i3status --config ~/.dotfiles/i3/i3status.conf
+    # status_command i3status --config ~/.dotfiles/i3/i3status.conf
     #tray_padding 20
 
     # # work main
@@ -248,6 +248,32 @@ bar {
     # height 23
     output eDP-1
     tray_output eDP-1
+
+    colors {
+        # bar background color
+        background $bg
+        # text color used for blocks that do not have a color specified.
+        statusline $yellow
+        # workspaces section
+        #                    border  backgr. text
+        focused_workspace    $aqua $aqua $darkgray
+        inactive_workspace   $darkgray $darkgray $yellow
+        active_workspace     $darkgray $darkgray $yellow
+        urgent_workspace     $red $red $bg
+    }
+}
+
+# side monitor
+bar {
+    position bottom
+    status_command i3status --config ~/.dotfiles/i3/i3status.conf
+
+    # work main
+    font pango:Hack Nerd Font $fontsize_side
+    # height 25
+    output DP-2
+    # tray_output none
+    # tray_output DP-2
 
     colors {
         # bar background color

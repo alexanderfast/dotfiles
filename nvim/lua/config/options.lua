@@ -10,3 +10,7 @@ vim.g.autoformat = false
 
 vim.opt.mouse = ""
 vim.opt.swapfile = false
+
+vim.o.smartindent = false
+
+vim.o.clipboard = "unnamed"

@@ -10,3 +10,6 @@ fi
 #. "$HOME/.cargo/env"
 
 source $HOME/.secrets
+
+# This makes poetry not popup a keyring gui thing, which doesnt work over ssh
+export PYTHON_KEYRING_BACKEND=keyring.backends.fail.Keyring

@@ -60,8 +60,6 @@ export ZSH_COLORIZE_TOOL=chroma
 
 export SPACESHIP_CONFIG="$HOME/.dotfiles/zsh/spaceship.zsh"
 
-source $DOTFILES/zsh/zsh_aliases
-# source $DOTFILES/zsh/zsh_theme
 
 # antigen
 source $DOTFILES/zsh/antigen.zsh
@@ -85,7 +83,7 @@ antigen bundle terraform
 antigen bundle tmux
 antigen bundle vault
 antigen bundle starship
-antigen bundle agkozak/zsh-z
+# antigen bundle agkozak/zsh-z
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -176,3 +174,7 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --color=fg+:#fbf1c7,bg+:#3c3836,hl+:#458588
   --color=info:#665c54,prompt:#fe8019,pointer:#b8bb26
   --color=marker:#d3869b,spinner:#d65d03,header:#98971a'
+
+source $DOTFILES/zsh/zsh_aliases
+# source $DOTFILES/zsh/zsh_theme
+source $DOTFILES/zsh/zsh_functions

@@ -1,0 +1,73 @@
+function ggcl() {
+  cachedir=$HOME/.local/state/ggcl
+  cachefile=$cachedir/cache
+
+  mkdir -p $cachedir
+
+  for i in fzf curl jq sed; do
+    if (( ! $+commands[$i] )); then
+      echo "Error: $i required"
+      return
+    fi
+  done
+
+  for i in WORK_GITLAB GITLAB_API_TOKEN; do
+    if [[ -z "$i" ]]; then
+      echo "Error: $i env var required"
+      return
+    fi
+  done
+
+  if [[ $1 == 're' ]] then
+    rm -f $cachefile
+  fi
+
+  if [[ -f "$cachefile" ]]; then
+    projects=$(cat $cachefile)
+  else
+    echo "Refreshing cache, this can take a minute first time (use 'ggcl re' to refresh later)..."
+    p=()
+    page=1
+    while [ 1 ]; do
+      response=$(curl --silent --request GET \
+        --header "PRIVATE-TOKEN: $GITLAB_API_TOKEN" \
+        "https://$WORK_GITLAB/api/v4/projects?per_page=100&page=$page" |
+        jq ".[] .path_with_namespace" |
+        sed "s|\"||g")
+      if [ -z "$response" ]; then
+        break
+      else
+        for i in $response; do
+          p+=("$i")
+        done
+        page=$(($page + 1))
+      fi
+    done
+
+    p=$(echo $p | sort --unique)
+    echo $p > $cachefile
+    projects=$p
+  fi
+
+  selected=$(echo $projects | fzf)
+
+  # default to clone into home, override with this var
+  if [[ -z "$GGCL_ROOT" ]]; then
+    GGCL_ROOT=$HOME
+  fi
+
+  newdir=$GGCL_ROOT/$selected
+  if [[ ! -d "$newdir" ]]; then
+    mkdir -p $newdir
+    from=git@$WORK_GITLAB:$selected.git
+    echo "Cloning from $from"
+    git clone $from $newdir
+  fi
+
+  if (( $+commands[zoxide] )); then
+    zoxide add $newdir
+    z $newdir
+  else
+    cd $newdir
+  fi
+}
