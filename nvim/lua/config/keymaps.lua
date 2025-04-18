@@ -16,19 +16,11 @@ vim.keymap.set("n", "<leader>ml", ":diffget LO<CR>", { desc = "Merge diffget loc
 vim.keymap.set("n", "<leader>mb", ":diffget BA<CR>", { desc = "Merge diffget base" })
 vim.keymap.set("n", "<leader>mr", ":diffget RE<CR>", { desc = "Merge diffget remote" })
 
--- vim.keymap.set("n", "<C-h>", "<C-w>h")
--- vim.keymap.set("n", "<C-j>", "<C-w>j")
--- vim.keymap.set("n", "<C-k>", "<C-w>k")
--- vim.keymap.set("n", "<C-l>", "<C-w>l")
-
 local Util = require("lazyvim.util")
 local lazyterm = function()
   Util.terminal(nil, { cwd = Util.root() })
 end
 vim.keymap.set("n", "<leader>t", lazyterm, { desc = "Terminal (root dir)" })
-
--- vim.keymap.set("n", "ö", "[")
--- vim.keymap.set("n", "ä", "]")
 
 vim.cmd([[
 nmap ö [

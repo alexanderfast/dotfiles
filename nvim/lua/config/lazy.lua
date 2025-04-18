@@ -28,18 +28,18 @@ require("lazy").setup({
     lazyvim = true,
     neovim = true,
   },
-  -- diagnostics = {
-  --   Error = " ",
-  --   Warn = " ",
-  --   Hint = " ",
-  --   Info = " ",
-  -- },
-  -- git = {
-  --   added = " ",
-  --   modified = " ",
-  --   removed = " ",
-  -- },
-  install = { colorscheme = { "nightfox", "tokyonight", "habamax", "catpuccin" } },
+  diagnostics = {
+    Error = " ",
+    Warn = " ",
+    Hint = " ",
+    Info = " ",
+  },
+  git = {
+    added = " ",
+    modified = " ",
+    removed = " ",
+  },
+  install = { colorscheme = { "nightfox", "tokyonight", "habamax", "catpuccin", "gruvbox" } },
   checker = {
     enabled = false, -- disable automatic check for plugin updates
     concurrency = nil, ---@type number? set to 1 to check for updates very slowly
