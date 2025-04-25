@@ -5,7 +5,7 @@
 vim.keymap.set("i", "jk", "<Esc>", {})
 
 vim.keymap.set("n", "<leader>z", "ZZ<CR>")
-vim.keymap.set("n", "<leader>q", ":wqa!<CR>")
+-- vim.keymap.set("n", "<leader>q", ":wqa!<CR>")
 vim.keymap.set("n", "<leader>p", 'viw"_dP') -- replace inside word
 
 vim.keymap.set("n", "<leader>i", ":vsp<CR>", { desc = "Vertical split" })

@@ -10,9 +10,22 @@ return {
     enabled = false,
   },
 
+  -- disabled as it messes with forward slash search for some reason
+  {
+    "folke/noice.nvim",
+    enabled = false,
+  },
+
   {
     "folke/flash.nvim",
     enabled = false,
+    -- opts = {
+    --   modes = {
+    --     search = {
+    --       enabled = false,
+    --     },
+    --   },
+    -- },
   },
 
   {
@@ -391,6 +404,7 @@ return {
         json = { "prettiertw4" },
         nix = { "nixfmt" },
         terraform = { "terraform_fmt" },
+        go = { "go fmt" },
         -- Default formatter
         ["_"] = { "trim_whitespace" },
       },
@@ -399,6 +413,62 @@ return {
           command = "prettier",
           args = { "--tab-width", "4", "$FILENAME" },
         },
+      },
+    },
+  },
+
+  {
+    "CRAG666/code_runner.nvim",
+    -- config = true,
+    cmd = "RunCode",
+    keys = {
+      {
+        "<leader>r",
+        function()
+          require("code_runner").run_code()
+        end,
+        desc = "Run code",
+      },
+    },
+    opts = {
+      mode = "term",
+      focus = false,
+      before_run_filetype = function()
+        vim.cmd.write()
+      end,
+      filetype = {
+        java = {
+          "cd $dir &&",
+          "javac $fileName &&",
+          "java $fileNameWithoutExt",
+        },
+        python = "python3 -u",
+        typescript = "deno run",
+        rust = {
+          "cd $dir &&",
+          "rustc $fileName &&",
+          "$dir/$fileNameWithoutExt",
+        },
+        go = {
+          "cd $dir &&",
+          "go run $fileName",
+        },
+        -- c = function(...)
+        --   c_base = {
+        --     "cd $dir &&",
+        --     "gcc $fileName -o",
+        --     "/tmp/$fileNameWithoutExt",
+        --   }
+        --   local c_exec = {
+        --     "&& /tmp/$fileNameWithoutExt &&",
+        --     "rm /tmp/$fileNameWithoutExt",
+        --   }
+        --   vim.ui.input({ prompt = "Add more args:" }, function(input)
+        --     c_base[4] = input
+        --     vim.print(vim.tbl_extend("force", c_base, c_exec))
+        --     require("code_runner.commands").run_from_fn(vim.list_extend(c_base, c_exec))
+        --   end)
+        -- end,
       },
     },
   },

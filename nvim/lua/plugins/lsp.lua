@@ -72,6 +72,7 @@ return {
         "terraform",
         "hcl",
         "helm",
+        "go",
       },
     },
   },
