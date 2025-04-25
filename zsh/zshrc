@@ -1,5 +1,5 @@
 # uncomment to profile
-#zmodload zsh/zprof
+# zmodload zsh/zprof
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -29,10 +29,10 @@ DOTFILES="$HOME/.dotfiles"
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
 
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -58,7 +58,7 @@ export ZSH_COLORIZE_TOOL=chroma
 #   eval "$(pyenv init --path)"
 # fi
 
-export SPACESHIP_CONFIG="$HOME/.dotfiles/zsh/spaceship.zsh"
+# export SPACESHIP_CONFIG="$HOME/.dotfiles/zsh/spaceship.zsh"
 
 
 # antigen
@@ -68,31 +68,32 @@ antigen use oh-my-zsh
 
 # antigen bundle autopep8
 antigen bundle colorize
-antigen bundle command-not-found
+# antigen bundle command-not-found
 antigen bundle common-aliases
-antigen bundle dirhistory
-antigen bundle docker
+antigen bundle direnv
+# antigen bundle dirhistory
+# antigen bundle docker
 antigen bundle git
-antigen bundle xylous/gitstatus
-antigen bundle history
-antigen bundle pip
-#antigen bundle pipenv
-antigen bundle pyenv
-antigen bundle python
-antigen bundle terraform
+# antigen bundle xylous/gitstatus
+# antigen bundle history
+# antigen bundle pip
+# antigen bundle pipenv
+# antigen bundle pyenv
+# antigen bundle python
+# antigen bundle terraform
 antigen bundle tmux
-antigen bundle vault
+# antigen bundle vault
 antigen bundle starship
 # antigen bundle agkozak/zsh-z
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
+# antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen bundle vi-mode
 # antigen bundle jeffreytse/zsh-vi-mode
 # antigen bundle spaceship-prompt/spaceship-vi-mode@main
-antigen bundle sawadashota/go-task-completions
-antigen bundle chisui/zsh-nix-shell
-antigen bundle nix-community/nix-zsh-completions
+# antigen bundle sawadashota/go-task-completions
+# antigen bundle chisui/zsh-nix-shell
+# antigen bundle nix-community/nix-zsh-completions
 
 # antigen theme spaceship-prompt/spaceship-prompt
 
@@ -130,9 +131,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 autoload -U compinit && compinit
 
 # extra completion
-if (( $+commands[kubectl] )); then
-  source <(kubectl completion zsh)
-fi
 if (( $+commands[glab] )); then
   source <(glab completion -s zsh); compdef _glab glab
 fi
@@ -141,10 +139,7 @@ fi
 source ~/.dotfiles/zsh/fzf-keybindings.zsh
 
 # ssh host completion
-zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
-
-# uncomment to profile
-#zprof
+# zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
@@ -153,19 +148,9 @@ export PATH="$HOME/go/bin":$PATH
 
 source $HOME/.secrets
 
-# settings that should be defaul
+# settings that should be default
 export ANSIBLE_NOCOWS=1
 export PIPENV_VENV_IN_PROJECT=1
-
-# eval "$(starship init zsh)"
-
-if (( $+commands[zoxide] )); then
-  eval "$(zoxide init zsh)"
-fi
-
-if (( $+commands[direnv] )); then
-  eval "$(direnv hook zsh)"
-fi
 
 # fzf theme
 # made using https://minsw.github.io/fzf-color-picker/
@@ -178,3 +163,6 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 source $DOTFILES/zsh/zsh_aliases
 # source $DOTFILES/zsh/zsh_theme
 source $DOTFILES/zsh/zsh_functions
+
+# uncomment to profile
+# zprof
