@@ -135,6 +135,10 @@ if (( $+commands[glab] )); then
   source <(glab completion -s zsh); compdef _glab glab
 fi
 
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh)"
+fi
+
 # enable fzf keybinds
 source ~/.dotfiles/zsh/fzf-keybindings.zsh
 
