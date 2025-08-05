@@ -4,4 +4,6 @@ img=/tmp/i3lock.png
 # convert $img -scale 10% -scale 1000% $img
 # i3lock -i $img
 
-i3lock -c 0000CC & sleep 2 && xset dpms force off
+# i3lock -c 0000CC & sleep 2 && xset dpms force off
+
+loginctl lock-session
