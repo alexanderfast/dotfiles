@@ -10,11 +10,11 @@ return {
     enabled = false,
   },
 
-  -- disabled as it messes with forward slash search for some reason
-  {
-    "folke/noice.nvim",
-    enabled = false,
-  },
+  -- -- disabled as it messes with forward slash search for some reason
+  -- {
+  --   "folke/noice.nvim",
+  --   enabled = true,
+  -- },
 
   {
     "folke/flash.nvim",
