@@ -9,10 +9,10 @@ return {
   },
 
   -- disable the animation as its too distracting
-  {
-    "echasnovski/mini.indentscope",
-    enabled = false,
-  },
+  -- {
+  --   "echasnovski/mini.indentscope",
+  --   enabled = false,
+  -- },
 
   {
     "folke/snacks.nvim",
