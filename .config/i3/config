@@ -28,7 +28,7 @@ workspace_auto_back_and_forth no
 focus_on_window_activation focus
 
 # Lock screen script
-bindsym $mod+Ctrl+Shift+l exec sh ~/.dotfiles/i3/lock.sh
+bindsym $mod+Ctrl+Shift+l exec sh ~/.config/i3/lock.sh
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -44,8 +44,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # auto lock screen and turn off after 1 minute of inactivity
 exec --no-startup-id xset s on
 exec --no-startup-id xset s 600
-exec --no-startup-id xautolock -time 600 -locker ~/.dotfiles/i3/lock.sh
-exec --no-startup-id xss-lock -- ~/.dotfiles/i3/lock.sh
+exec --no-startup-id xautolock -time 600 -locker ~/.config/i3/lock.sh
+exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -56,10 +56,10 @@ exec --no-startup-id nm-applet
 exec --no-startup-id setxkbmap se nodeadkeys
 
 # Set background image
-exec --no-startup-id feh --bg-scale -Z ~/.dotfiles/wallpapers/gruvbox_astro.jpg
+exec --no-startup-id feh --bg-scale -Z ~/.config/wallpapers/gruvbox_astro.jpg
 
 # For terminal transparency
-exec --no-startup-id picom --config ~/.dotfiles/picom/picom.conf &
+exec --no-startup-id picom --config ~/.config/picom/picom.conf &
 
 # For desktop notifications
 exec --no-startup-id dunst &
@@ -235,7 +235,7 @@ set $ac $red
 
 bar {
     position bottom
-    status_command i3status --config ~/.dotfiles/i3/i3status.conf
+    status_command i3status --config ~/.config/i3/i3status.conf
     #tray_padding 20
 
     # work main
@@ -266,7 +266,7 @@ bar {
 # side monitor
 bar {
     position bottom
-    # status_command i3status --config ~/.dotfiles/i3/i3status.conf
+    # status_command i3status --config ~/.config/i3/i3status.conf
 
     font pango:Hack Nerd Font $fontsize_side
     # height 25
@@ -291,7 +291,7 @@ bar {
 # # side monitor
 # bar {
 #     position bottom
-#     # status_command i3status --config ~/.dotfiles/i3/i3status.conf
+#     # status_command i3status --config ~/.config/i3/i3status.conf
 #
 #     # work main
 #     font pango:Hack Nerd Font $fontsize_side
