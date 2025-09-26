@@ -1,4 +1,4 @@
 *.swp
 **/*.zwc
-nvim/plugin
+.config/nvim/plugin
 gtk-3.0/bookmarks

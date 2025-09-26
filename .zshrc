@@ -3,7 +3,7 @@
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.config/ohmyzsh
 bindkey -v
 
 setopt AUTO_PARAM_SLASH       # adds slash at end of tabbed dirs
@@ -23,7 +23,7 @@ setopt MAGIC_EQUAL_SUBST      # make filename completion after equal sign work
 unsetopt AUTOCD               # dont allow when just typing folder name
 unsetopt BEEP                 # turn off beep
 
-DOTFILES="$HOME/.dotfiles"
+DOTFILES="$HOME/.config"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -62,7 +62,7 @@ export ZSH_COLORIZE_TOOL=chroma
 
 
 # antigen
-source $DOTFILES/zsh/antigen.zsh
+source $HOME/.config/zsh/antigen.zsh
 
 antigen use oh-my-zsh
 
@@ -140,7 +140,7 @@ if (( $+commands[zoxide] )); then
 fi
 
 # enable fzf keybinds
-source ~/.dotfiles/zsh/fzf-keybindings.zsh
+source ~/.config/zsh/fzf-keybindings.zsh
 
 # ssh host completion
 # zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
