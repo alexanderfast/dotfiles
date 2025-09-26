@@ -1,0 +1,15 @@
+# Comments and blank lines are allowed.
+
+RCS
+.+,v
+
+\.git
+\.gitignore
+\.gitmodules
+
+^/README.*
+^/LICENSE.*
+
+# handled by nix flake
+\.zshrc
+\.zshenv

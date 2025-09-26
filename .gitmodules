@@ -1,9 +1,9 @@
 [submodule ".config/ohmyzsh"]
 	path = .config/ohmyzsh
 	url = git@github.com:ohmyzsh/ohmyzsh.git
-[submodule ".config/tmux/plugins/tpm"]
-	path = .config/tmux/plugins/tpm
-	url = git@github.com:tmux-plugins/tpm.git
 [submodule ".config/kitty/kitty_gruvbox_theme"]
 	path = .config/kitty/kitty_gruvbox_theme
 	url = git@github.com:wdomitrz/kitty_gruvbox_theme.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = git@github.com:tmux-plugins/tpm.git
