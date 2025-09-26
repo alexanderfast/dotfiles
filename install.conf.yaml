@@ -23,6 +23,7 @@
     ~/.config/rofi:
     ~/.config/sway:
     ~/.config/waybar:
+    ~/.config/ghostty:
     ~/.gtkrc-2.0: gtk-2.0/gtkrc-2.0
     ~/.dmrc: lightdm/dmrc
     ~/.oh-my-zsh: ohmyzsh
