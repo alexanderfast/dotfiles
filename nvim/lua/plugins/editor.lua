@@ -472,4 +472,10 @@ return {
       },
     },
   },
+
+
+  -- open line in browser
+  {
+    "almo7aya/openingh.nvim",
+  },
 }
