@@ -473,9 +473,20 @@ return {
     },
   },
 
-
   -- open line in browser
   {
     "almo7aya/openingh.nvim",
+  },
+
+  -- disables auto popup of blink
+  {
+    "saghen/blink.cmp",
+    opts = {
+      completion = {
+        menu = {
+          auto_show = false,
+        },
+      },
+    },
   },
 }
