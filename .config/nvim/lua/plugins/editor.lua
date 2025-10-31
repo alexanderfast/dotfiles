@@ -28,13 +28,6 @@ return {
     -- },
   },
 
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      background_colour = "#000000",
-    },
-  },
-
   { "sindrets/diffview.nvim" },
 
   {
@@ -47,15 +40,6 @@ return {
         },
       })
     end,
-  },
-
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      -- level = 3,
-      render = "minimal",
-      stages = "fade",
-    },
   },
 
   {
