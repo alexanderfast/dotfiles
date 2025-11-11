@@ -472,8 +472,8 @@ return {
           auto_show = false,
         },
         ghost_text = {
-          enabled = false
-        }
+          enabled = false,
+        },
       },
     },
   },
@@ -486,5 +486,15 @@ return {
   {
     "mfussenegger/nvim-dap-python",
     enabled = false,
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = {
+      linters_by_ft = {
+        markdown = { "markdownlint-cli2" },
+      },
+    },
   },
 }
