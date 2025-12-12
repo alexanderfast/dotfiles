@@ -195,17 +195,17 @@ return {
   -- },
 
   -- search/replace in multiple files
-  {
-    "nvim-pack/nvim-spectre",
-    enabled = false, -- TODO: re-enable once the keybind clash is fixed
-    build = false,
-    cmd = "Spectre",
-    opts = { open_cmd = "noswapfile vnew" },
-    -- stylua: ignore
-    keys = {
-      { "<leader>sR", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
-    },
-  },
+  -- {
+  --   "nvim-pack/nvim-spectre",
+  --   enabled = false, -- TODO: re-enable once the keybind clash is fixed
+  --   build = false,
+  --   cmd = "Spectre",
+  --   opts = { open_cmd = "noswapfile vnew" },
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "<leader>sR", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+  --   },
+  -- },
 
   -- override nvim-cmp and add cmp-emoji
   {
@@ -362,45 +362,45 @@ return {
   -- sister plugin to tmux navigator
   -- { "christoomey/vim-tmux-navigator" },
 
-  -- -- conform for formatting code
-  -- {
-  --   "stevearc/conform.nvim",
-  --   --dependencies = { "mason.nvim" },
-  --   lazy = true,
-  --   cmd = "ConformInfo",
-  --   --keys = {
-  --   --  {
-  --   --    "<leader>cF",
-  --   --    function()
-  --   --      require("conform").format({ formatters = { "injected" } })
-  --   --    end,
-  --   --    mode = { "n", "v" },
-  --   --    desc = "Format Injected Langs",
-  --   --  },
-  --   --},
-  --   opts = {
-  --     lsp_fallback = true,
-  --     formatters_by_ft = {
-  --       lua = { "stylua" },
-  --       -- Conform will run multiple formatters sequentially
-  --       python = { "autopep8" },
-  --       -- Use a sub-list to run only the first available formatter
-  --       javascript = { { "prettierd", "prettier" } },
-  --       json = { "prettiertw4" },
-  --       nix = { "nixfmt" },
-  --       terraform = { "terraform_fmt" },
-  --       go = { "go fmt" },
-  --       -- Default formatter
-  --       ["_"] = { "trim_whitespace" },
-  --     },
-  --     formatters = {
-  --       prettiertw4 = {
-  --         command = "prettier",
-  --         args = { "--tab-width", "4", "$FILENAME" },
-  --       },
-  --     },
-  --   },
-  -- },
+  -- conform for formatting code
+  {
+    "stevearc/conform.nvim",
+    --dependencies = { "mason.nvim" },
+    lazy = true,
+    cmd = "ConformInfo",
+    --keys = {
+    --  {
+    --    "<leader>cF",
+    --    function()
+    --      require("conform").format({ formatters = { "injected" } })
+    --    end,
+    --    mode = { "n", "v" },
+    --    desc = "Format Injected Langs",
+    --  },
+    --},
+    opts = {
+      lsp_fallback = true,
+      formatters_by_ft = {
+        lua = { "stylua" },
+        -- Conform will run multiple formatters sequentially
+        python = { "autopep8", "isort" },
+        -- Use a sub-list to run only the first available formatter
+        javascript = { "prettierd", "prettier" },
+        json = { "prettiertw4" },
+        nix = { "nixfmt" },
+        terraform = { "terraform_fmt" },
+        go = { "go fmt" },
+        -- Default formatter
+        ["_"] = { "trim_whitespace" },
+      },
+      formatters = {
+        prettiertw4 = {
+          command = "prettier",
+          args = { "--tab-width", "4", "$FILENAME" },
+        },
+      },
+    },
+  },
 
   {
     "CRAG666/code_runner.nvim",

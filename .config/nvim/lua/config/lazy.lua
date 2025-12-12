@@ -39,7 +39,8 @@ require("lazy").setup({
     modified = " ",
     removed = " ",
   },
-  install = { colorscheme = { "nightfox", "tokyonight", "habamax", "catpuccin", "gruvbox" } },
+  -- install = { colorscheme = { "nightfox", "tokyonight", "habamax", "catpuccin", "gruvbox" } },
+  install = { colorscheme = { "catpuccin" } },
   checker = {
     enabled = false, -- disable automatic check for plugin updates
     concurrency = nil, ---@type number? set to 1 to check for updates very slowly

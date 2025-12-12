@@ -1,11 +1,11 @@
 return {
-  {
-    "ellisonleao/gruvbox.nvim",
-    opts = {
-      transparent_mode = false,
-      contrast = "soft",
-    },
-  },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   opts = {
+  --     transparent_mode = false,
+  --     contrast = "soft",
+  --   },
+  -- },
 
   -- disable the animation as its too distracting
   -- {

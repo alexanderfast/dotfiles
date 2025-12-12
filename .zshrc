@@ -157,12 +157,19 @@ export ANSIBLE_NOCOWS=1
 export PIPENV_VENV_IN_PROJECT=1
 
 # fzf theme
-# made using https://minsw.github.io/fzf-color-picker/
+# gruvbox, made using https://minsw.github.io/fzf-color-picker/
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
   --color=fg:#a89984,bg:#282828,hl:#83a598
   --color=fg+:#fbf1c7,bg+:#3c3836,hl+:#458588
   --color=info:#665c54,prompt:#fe8019,pointer:#b8bb26
   --color=marker:#d3869b,spinner:#d65d03,header:#98971a'
+# catppuccin-mocha, from https://github.com/catppuccin/fzf/blob/main/themes/catppuccin-fzf-mocha.sh
+export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+  --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+  --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+  --color=selected-bg:#45475A \
+  --color=border:#6C7086,label:#CDD6F4"
 
 source $DOTFILES/zsh/zsh_aliases
 # source $DOTFILES/zsh/zsh_theme
