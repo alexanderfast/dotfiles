@@ -1,18 +1,4 @@
 return {
-  -- {
-  --   "ellisonleao/gruvbox.nvim",
-  --   opts = {
-  --     transparent_mode = false,
-  --     contrast = "soft",
-  --   },
-  -- },
-
-  -- disable the animation as its too distracting
-  -- {
-  --   "echasnovski/mini.indentscope",
-  --   enabled = false,
-  -- },
-
   {
     "folke/snacks.nvim",
     opts = {

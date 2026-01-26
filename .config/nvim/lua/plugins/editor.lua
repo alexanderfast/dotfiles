@@ -5,27 +5,9 @@ return {
     enabled = false,
   },
 
-  -- {
-  --   "echasnovski/mini.pairs",
-  --   enabled = false,
-  -- },
-
-  -- -- disabled as it messes with forward slash search for some reason
-  -- {
-  --   "folke/noice.nvim",
-  --   enabled = true,
-  -- },
-
   {
     "folke/flash.nvim",
     enabled = false,
-    -- opts = {
-    --   modes = {
-    --     search = {
-    --       enabled = false,
-    --     },
-    --   },
-    -- },
   },
 
   { "sindrets/diffview.nvim" },
@@ -42,171 +24,6 @@ return {
     end,
   },
 
-  -- {
-  --   "ibhagwan/fzf-lua",
-  --   keys = {
-  --     { "<leader>sf", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
-  --   },
-  -- },
-
-  -- -- change some telescope options and a keymap to browse plugin files
-  -- {
-  --   "nvim-telescope/telescope.nvim",
-  --   keys = {
-  --     -- add a keymap to browse plugin files
-  --     -- stylua: ignore
-  --     {
-  --       "<leader>fp",
-  --       function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
-  --       desc = "Find Plugin File",
-  --     },
-  --     {
-  --       "<leader>-",
-  --       function()
-  --         require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-  --           winblend = 10,
-  --           previewer = false,
-  --         }))
-  --       end,
-  --       desc = "[-] Fuzzily search in current buffer]",
-  --     },
-  --     -- {
-  --     --   "<leader>sb",
-  --     --   function()
-  --     --     require("telescope.builtin").buffers()
-  --     --   end,
-  --     --   desc = "[S]earch [B]uffers",
-  --     -- },
-  --     -- vim.keymap.set('n', '<leader>sc', require('telescope.builtin').commands, { desc = '[S]earch [C]ommands' })
-  --     -- vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-  --     -- {
-  --     --   "<leader>se",
-  --     --   function()
-  --     --     require("telescope.builtin").registers()
-  --     --   end,
-  --     --   desc = "[S]earch r[E]gisters",
-  --     -- },
-  --     {
-  --       "<leader>sf",
-  --       function()
-  --         require("telescope.builtin").find_files()
-  --       end,
-  --       desc = "[S]earch [F]iles",
-  --     },
-  --     -- vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-  --     -- vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-  --     {
-  --       "<leader>sj",
-  --       function()
-  --         require("telescope.builtin").jumplist()
-  --       end,
-  --       desc = "[S]earch [J]umplist",
-  --     },
-  --     -- vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
-  --     {
-  --       "<leader>sl",
-  --       function()
-  --         require("telescope.builtin").loclist()
-  --       end,
-  --       desc = "[S]earch [L]oclist",
-  --     },
-  --     -- vim.keymap.set('n', '<leader>sm', require('telescope.builtin').marks, { desc = '[S]earch [M]arks' })
-  --     -- vim.keymap.set('n', '<leader>sM', require('telescope.builtin').man_pages, { desc = '[S]earch [M]an pages' })
-  --     -- vim.keymap.set('n', '<leader>so', require('telescope.builtin').oldfiles, { desc = '[S]earch [o]ld files' })
-  --     {
-  --       "<leader>sp",
-  --       function()
-  --         require("telescope.builtin").pickers()
-  --       end,
-  --       desc = "[S]earch [P]ickers",
-  --     },
-  --     {
-  --       "<leader>sr",
-  --       function()
-  --         require("telescope.builtin").resume()
-  --       end,
-  --       desc = "Resume",
-  --     },
-  --     -- {
-  --     --   "<leader>sR",
-  --     --   function()
-  --     --     -- require("telescope.builtin").resume()
-  --     --   end,
-  --     --   desc = "Unbind",
-  --     -- },
-  --     {
-  --       "<leader>sq",
-  --       function()
-  --         require("telescope.builtin").quickfix()
-  --       end,
-  --       desc = "[S]earch [Q]uickfix",
-  --     },
-  --     {
-  --       "<leader>su",
-  --       function()
-  --         require("telescope.builtin").builtin()
-  --       end,
-  --       desc = "[S]earch Telescope B[u]iltins",
-  --     },
-  --     -- vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-  --     --
-  --     -- vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = 'Search [G]it [B]ranches' })
-  --     -- vim.keymap.set('n', '<leader>gc', require('telescope.builtin').git_commits, { desc = 'Search [G]it [C]ommits' })
-  --     -- vim.keymap.set('n', '<leader>gt', require('telescope.builtin').git_status, { desc = 'Search [G]it S[t]atus' })
-  --     --
-  --     -- vim.keymap.set('n', '<leader>st', ":TodoTelescope<CR>", { desc = '[S]earch [T]odo' })
-  --     --vim.keymap.set('n', '<leader>sta', require('telescope.builtin').tags, { desc = '[S]earch [Ta]gs' })
-  --   },
-  --   -- change some options
-  --   opts = {
-  --     defaults = {
-  --       sorting_strategy = "ascending",
-  --       layout_strategy = "horizontal",
-  --       layout_config = {
-  --         prompt_position = "top",
-  --       },
-  --       winblend = 0,
-  --     },
-  --     pickers = {
-  --       live_grep = {
-  --         additional_args = function()
-  --           -- search in hidden files
-  --           return { "--hidden" }
-  --         end,
-  --       },
-  --       find_files = {
-  --         -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-  --         find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-  --       },
-  --     },
-  --   },
-  -- },
-  --
-  -- -- add telescope-fzf-native
-  -- {
-  --   "telescope.nvim",
-  --   dependencies = {
-  --     "nvim-telescope/telescope-fzf-native.nvim",
-  --     build = "make",
-  --     config = function()
-  --       require("telescope").load_extension("fzf")
-  --     end,
-  --   },
-  -- },
-
-  -- search/replace in multiple files
-  -- {
-  --   "nvim-pack/nvim-spectre",
-  --   enabled = false, -- TODO: re-enable once the keybind clash is fixed
-  --   build = false,
-  --   cmd = "Spectre",
-  --   opts = { open_cmd = "noswapfile vnew" },
-  --   -- stylua: ignore
-  --   keys = {
-  --     { "<leader>sR", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
-  --   },
-  -- },
-
   -- override nvim-cmp and add cmp-emoji
   {
     "hrsh7th/nvim-cmp",
@@ -216,29 +33,6 @@ return {
       table.insert(opts.sources, { name = "emoji" })
     end,
   },
-
-  -- -- the opts function can also be used to change the default opts:
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   event = "VeryLazy",
-  --   opts = function(_, opts)
-  --     table.insert(opts.sections.lualine_x, "😄")
-  --   end,
-  -- },
-
-  -- -- or you can return new options to override all the defaults
-  -- {
-  --   "nvim-lualine/lualine.nvim",
-  --   event = "VeryLazy",
-  --   opts = function()
-  --     return {
-  --       --[[add your custom lualine config here]]
-  --     }
-  --   end,
-  -- },
-
-  -- use mini.starter instead of alpha
-  -- { import = "lazyvim.plugins.extras.ui.mini-starter" },
 
   -- Use <tab> for completion and snippets (supertab)
   -- first: disable default <tab> and <s-tab> behavior in LuaSnip
@@ -358,9 +152,6 @@ return {
       },
     },
   },
-
-  -- sister plugin to tmux navigator
-  -- { "christoomey/vim-tmux-navigator" },
 
   -- conform for formatting code
   {

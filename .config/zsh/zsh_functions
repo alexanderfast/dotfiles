@@ -4,12 +4,12 @@ function ggcl() {
 
   mkdir -p $cachedir
 
-  for i in fzf curl jq sed; do
-    if (( ! $+commands[$i] )); then
-      echo "Error: $i required"
-      return
-    fi
-  done
+  # for i in fzf curl jq sed; do
+  #   if (( ! $+commands[$i] )); then
+  #     echo "Error: $i required"
+  #     return
+  #   fi
+  # done
 
   for i in WORK_GITLAB GITLAB_API_TOKEN; do
     if [[ -z "$i" ]]; then

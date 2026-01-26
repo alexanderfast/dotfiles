@@ -9,7 +9,3 @@ RCS
 
 ^/README.*
 ^/LICENSE.*
-
-# handled by nix flake
-\.zshrc
-\.zshenv
