@@ -190,3 +190,5 @@ source $DOTFILES/zsh/zsh_functions
 
 # uncomment to profile
 # zprof
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
