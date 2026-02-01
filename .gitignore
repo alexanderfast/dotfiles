@@ -2,3 +2,5 @@
 **/*.zwc
 .config/nvim/plugin
 gtk-3.0/bookmarks
+.config/Slack
+.config/WowUpCf
