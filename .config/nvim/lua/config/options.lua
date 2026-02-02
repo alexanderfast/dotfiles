@@ -13,4 +13,4 @@ vim.opt.swapfile = false
 
 vim.o.smartindent = false
 
-vim.o.clipboard = "unnamed"
+vim.o.clipboard = ""
