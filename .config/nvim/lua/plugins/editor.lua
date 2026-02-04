@@ -181,6 +181,7 @@ return {
         nix = { "nixfmt" },
         terraform = { "terraform_fmt" },
         go = { "go fmt" },
+        markdown = { "markdownlint" },
         -- Default formatter
         ["_"] = { "trim_whitespace" },
       },
@@ -274,17 +275,17 @@ return {
     enabled = false,
   },
 
-  {
-    "mfussenegger/nvim-dap-python",
-    enabled = false,
-  },
+  -- {
+  --   "mfussenegger/nvim-dap-python",
+  --   enabled = false,
+  -- },
 
   {
     "mfussenegger/nvim-lint",
     optional = true,
     opts = {
       linters_by_ft = {
-        markdown = { "markdownlint-cli2" },
+        markdown = { "markdownlint" },
       },
     },
   },
