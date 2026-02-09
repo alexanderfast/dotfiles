@@ -32,6 +32,6 @@ xmap ä ]
 ]])
 
 vim.keymap.set("v", "<C-c>", '"+y', { desc = "Copy to clipboard" })
-vim.keymap.set("n", "<C-v>", '"+p', { desc = "Paste from clipboard" })
+vim.keymap.set("i", "<C-v>", '"+p', { desc = "Paste from clipboard" })
 vim.keymap.set("v", "y", '"+y', { desc = "Yank selection to clipboard" })
 vim.keymap.set("n", "Y", '"+y$', { desc = "Yank line to clipboard" })
