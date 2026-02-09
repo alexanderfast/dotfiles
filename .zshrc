@@ -163,26 +163,34 @@ export ANSIBLE_NOCOWS=1
 export PIPENV_VENV_IN_PROJECT=1
 
 # fzf theme
-# # gruvbox, made using https://minsw.github.io/fzf-color-picker/
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-#   --color=fg:#a89984,bg:#282828,hl:#83a598
-#   --color=fg+:#fbf1c7,bg+:#3c3836,hl+:#458588
-#   --color=info:#665c54,prompt:#fe8019,pointer:#b8bb26
-#   --color=marker:#d3869b,spinner:#d65d03,header:#98971a'
 # catppuccin-mocha, from https://github.com/catppuccin/fzf/blob/main/themes/catppuccin-fzf-mocha.sh
-export FZF_DEFAULT_OPTS="
-  --color=bg:#1E1E2E,bg+:#45475A
-  --color=fg:#CDD6F4,fg+:#CDD6F4
-  --color=hl:#F38BA8,hl+:#F38BA8
-  --color=spinner:#F5E0DC
-  --color=header:#F38BA8
-  --color=info:#CBA6F7
-  --color=pointer:#F5E0DC
-  --color=marker:#B4BEFE
-  --color=prompt:#CBA6F7
-  --color=border:#6C7086
-  --color=label:#CDD6F4
+# Base options that work everywhere (keep conservative)
+typeset -g FZF_DEFAULT_OPTS_BASE="
+--color=bg:#1E1E2E,bg+:#45475A
+--color=fg:#CDD6F4,fg+:#CDD6F4
+--color=hl:#F38BA8,hl+:#F38BA8
+--color=spinner:#F5E0DC
+--color=header:#F38BA8
+--color=info:#CBA6F7
+--color=pointer:#F5E0DC
+--color=marker:#B4BEFE
+--color=prompt:#CBA6F7
 "
+
+# Determine fzf version (first in PATH)
+# Compare versions (zsh has a native version comparator)
+fzf_ver=$(fzf --version 2>/dev/null | awk '{print $1}')
+autoload -Uz is-at-least
+typeset -g FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS_BASE"
+
+# Only add newer keys when available
+if is-at-least 0.67 "$fzf_ver"; then
+  FZF_DEFAULT_OPTS+="
+--color=border:#6C7086
+--color=label:#CDD6F4
+"
+fi
+export FZF_DEFAULT_OPTS
 
 source $DOTFILES/zsh/zsh_aliases
 # source $DOTFILES/zsh/zsh_theme
