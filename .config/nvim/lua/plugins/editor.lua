@@ -180,7 +180,7 @@ return {
         json = { "prettiertw4" },
         nix = { "nixfmt" },
         terraform = { "terraform_fmt" },
-        go = { "go fmt" },
+        go = { "goimports", "gofmt" },
         markdown = { "markdownlint" },
         -- Default formatter
         ["_"] = { "trim_whitespace" },
