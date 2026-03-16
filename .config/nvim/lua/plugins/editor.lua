@@ -12,18 +12,6 @@ return {
 
   { "sindrets/diffview.nvim" },
 
-  {
-    "NvChad/nvim-colorizer.lua",
-    init = function()
-      require("colorizer").setup({
-        filetypes = { "*" },
-        user_default_options = {
-          names = false, -- "Name" codes like Blue or blue
-        },
-      })
-    end,
-  },
-
   -- override nvim-cmp and add cmp-emoji
   {
     "hrsh7th/nvim-cmp",

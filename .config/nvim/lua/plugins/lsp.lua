@@ -10,27 +10,27 @@ return {
             yaml = {
               -- LazyVim often already uses SchemaStore.nvim;
               -- disabling built-in schemaStore avoids duplicate catalogs.
-              schemaStore = { enable = false, url = "" },
+              -- schemaStore = { enable = false, url = "" },
 
               -- Add your own schema mappings (these override/augment)
-              schemas = {
-                ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*.gitlab-ci*.{yml,yaml}",
-                -- ["https://json.schemastore.org/gitlab-ci.json"] = {
-                --   ".gitlab-ci.yml",
-                --   ".gitlab-ci.yaml",
-                -- },
-                ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.{yml,yaml}",
-                ["https://json.schemastore.org/github-action.json"] = ".github/action.{yml,yaml}",
-                ["https://json.schemastore.org/docker-compose.json"] = "*docker-compose*.{yml,yaml}",
-              },
+              -- schemas = {
+              --   -- ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*.gitlab-ci*.{yml,yaml}",
+              --   -- ["https://json.schemastore.org/gitlab-ci.json"] = {
+              --   --   ".gitlab-ci.yml",
+              --   --   ".gitlab-ci.yaml",
+              --   -- },
+              --   ["https://json.schemastore.org/github-workflow.json"] = ".github/workflows/*.{yml,yaml}",
+              --   ["https://json.schemastore.org/github-action.json"] = ".github/action.{yml,yaml}",
+              --   ["https://json.schemastore.org/docker-compose.json"] = "*docker-compose*.{yml,yaml}",
+              -- },
 
               -- Example: Kubernetes manifests (pick one that matches your files)
               -- ["https://json.schemastore.org/kubernetes.json"] = "*.k8s.{yml,yaml}",
 
               customTags = {
                 "!reference sequence",
-                "!reference scalar",
-                "!reference mapping",
+                -- "!reference scalar",
+                -- "!reference mapping",
               },
             },
 
