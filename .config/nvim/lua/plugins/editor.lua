@@ -275,6 +275,14 @@ return {
       linters_by_ft = {
         markdown = { "markdownlint" },
       },
+      linters = {
+        markdownlint = function()
+          local config = vim.fn.findfile(".markdownlint.json", vim.fn.expand("%:p:h") .. ";")
+          return vim.tbl_extend("force", require("lint.linters.markdownlint"), {
+            cwd = config ~= "" and vim.fn.fnamemodify(config, ":h") or vim.fn.getcwd(),
+          })
+        end,
+      },
     },
   },
 }
