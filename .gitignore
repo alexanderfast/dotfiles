@@ -10,3 +10,6 @@ gtk-3.0/bookmarks
 # is host-specific or sensitive and must never be committed.
 .claude/*
 !.claude/skills
+
+# Trello API key/token — never commit, never sync via git.
+.config/trello/
