@@ -4,3 +4,9 @@
 gtk-3.0/bookmarks
 .config/Slack
 .config/WowUpCf
+
+# Only skills/ is version-controlled under .claude — everything else there
+# (settings, .credentials.json, sessions/, history.jsonl, telemetry/, cache/)
+# is host-specific or sensitive and must never be committed.
+.claude/*
+!.claude/skills
