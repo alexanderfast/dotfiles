@@ -139,9 +139,6 @@ if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
 fi
 
-# enable fzf keybinds
-source ~/.config/zsh/fzf-keybindings.zsh
-
 # ssh host completion
 # zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
@@ -200,6 +197,24 @@ source $DOTFILES/zsh/zsh_functions
 # zprof
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Keep fzf's keybindings in sync with the fzf that's actually on PATH.
+# Nix devshells (e.g. batmake) can shadow the system fzf with an older build;
+# the widgets are generated once at startup, so a widget built by system fzf
+# 0.67 (which binds alt-r:toggle-raw) fails when it later runs against a
+# devshell's fzf 0.62 ("unknown action: toggle-raw") — Ctrl-R silently dies.
+# Regenerate the integration only when the resolved fzf binary changes (no
+# per-prompt fork; ${commands[fzf]} is a hash lookup), so the baked options
+# always match the binary that runs them, in or out of a devshell.
+typeset -g _FZF_SYNCED_PATH
+_fzf_sync_bindings() {
+  local p=${commands[fzf]}
+  [[ $p == $_FZF_SYNCED_PATH ]] && return
+  _FZF_SYNCED_PATH=$p
+  [[ -n $p ]] && source <(fzf --zsh)
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _fzf_sync_bindings
 
 # for npm and nvm
 export PATH="$HOME/.npm-global/bin:$PATH"
