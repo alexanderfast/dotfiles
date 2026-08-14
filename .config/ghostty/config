@@ -45,4 +45,9 @@
 # theme = catppuchin-mocha
 theme = Catppuccin Mocha
 font-size = 11
-#font-family = Fira Sans 
+#font-family = Fira Sans
+
+# Clipboard: tmux is the single copy-on-select owner (mouse on + set-clipboard
+# on), so disable Ghostty's own copy-on-select to avoid a second "Copied to
+# clipboard" toast when selecting text.
+copy-on-select = false
