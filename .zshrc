@@ -100,6 +100,13 @@ fi
 source ${_zsh_plugins_zsh}
 unset _zsh_plugins_txt _zsh_plugins_zsh
 
+# common-aliases sets `cp -i`/`mv -i`/`rm -i`, whose overwrite prompts hang
+# non-interactive agents (Claude Code) that can't answer them. Keep the safety
+# net for real interactive use; drop it inside Claude Code sessions.
+if [[ -n ${CLAUDECODE} ]]; then
+  unalias cp mv rm 2>/dev/null
+fi
+
 #
 # Completion styling
 #
