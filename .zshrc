@@ -1,116 +1,104 @@
-# uncomment to profile
+# ~/.zshrc — interactive zsh configuration
+# Layout: options -> PATH/env -> compinit -> plugins -> completions -> tools -> keybindings -> aliases
+# (to profile: uncomment `zmodload zsh/zprof` here and `zprof` at the very end)
 # zmodload zsh/zprof
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH=$HOME/.config/ohmyzsh
-bindkey -v
+#
+# Shell options & history
+#
+bindkey -v                          # vi keybindings
 
-setopt AUTO_PARAM_SLASH       # adds slash at end of tabbed dirs
-setopt CHECK_JOBS             # check bg jobs on exit
-setopt EXTENDED_GLOB          # globs #, ~ and ^
-setopt EXTENDED_HISTORY       # saves timestamps on history
-setopt GLOB_DOTS              # find dotfiles easier
-setopt HASH_CMDS              # save cmd location to skip PATH lookup
-setopt HIST_EXPIRE_DUPS_FIRST # expire duped history first
-setopt HIST_NO_STORE          # dont save history cmd in history
-setopt INC_APPEND_HISTORY     # append history as command are entered
-setopt LIST_ROWS_FIRST        # completion options left-to-right, top-to-bottom
-setopt LIST_TYPES             # show file types in list
-setopt MARK_DIRS              # adds slash to end of completed dirs
-setopt SHARE_HISTORY          # share history between open shells
-setopt MAGIC_EQUAL_SUBST      # make filename completion after equal sign work
-unsetopt AUTOCD               # dont allow when just typing folder name
-unsetopt BEEP                 # turn off beep
-
-DOTFILES="$HOME/.config"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
-
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment if git is slow
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+setopt AUTO_PARAM_SLASH             # trailing slash on completed dirs
+setopt CHECK_JOBS                   # warn about bg jobs on exit
+setopt EXTENDED_GLOB                # #, ~ and ^ globbing
+setopt EXTENDED_HISTORY             # timestamps in history
+setopt GLOB_DOTS                    # match dotfiles without leading dot
+setopt HASH_CMDS                    # cache command locations
+setopt HIST_EXPIRE_DUPS_FIRST       # drop dupes first when trimming history
+setopt HIST_NO_STORE                # don't store the history command itself
+setopt INC_APPEND_HISTORY           # append as commands run
+setopt LIST_ROWS_FIRST              # completion grid left-to-right
+setopt LIST_TYPES                   # show file types in completion list
+setopt MARK_DIRS                    # trailing slash on globbed dirs
+setopt MAGIC_EQUAL_SUBST            # complete after `foo=`
+setopt SHARE_HISTORY                # share history across sessions
+unsetopt AUTOCD                     # don't cd just by typing a dir name
+unsetopt BEEP                       # no bell
 
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.histfile
 HIST_STAMPS="yyyy-mm-dd"
 
+DOTFILES="$HOME/.config"
 DISABLE_AUTO_TITLE="true"
-
+HYPHEN_INSENSITIVE="true"
 export ZSH_COLORIZE_TOOL=chroma
 
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin":$PATH
-# if (( $+commands[pyenv] )); then
-#   eval "$(pyenv init --path)"
-# fi
+#
+# PATH & environment — set BEFORE command lookups, compinit and plugins
+# so `(( $+commands[...] ))` checks and completions see the right tools.
+#
+path=(
+  $HOME/.local/bin
+  $HOME/.npm-global/bin
+  $HOME/go/bin
+  $path
+  /opt/nvim-linux-x86_64/bin
+  /usr/local/go/bin
+)
+export GOPATH=$HOME/go
+path+=$GOPATH/bin
+typeset -U path                     # keep PATH deduplicated
 
-# export SPACESHIP_CONFIG="$HOME/.dotfiles/zsh/spaceship.zsh"
+export ANSIBLE_NOCOWS=1
+export PIPENV_VENV_IN_PROJECT=1
+export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
+export BATMCP_SECRETS_FILE="$HOME/.secrets"
 
+# nvm
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
-# antigen
-source $HOME/.config/zsh/antigen.zsh
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-antigen use oh-my-zsh
+#
+# Plugin configuration — must be set before the plugins load
+#
+ZSH_TMUX_AUTOSTART=false
+ZSH_TMUX_UNICODE=true
+ZSH_TMUX_AUTOCONNECT=true
 
-# antigen bundle autopep8
-antigen bundle colorize
-# antigen bundle command-not-found
-antigen bundle common-aliases
-antigen bundle direnv
-# antigen bundle dirhistory
-# antigen bundle docker
-antigen bundle git
-# antigen bundle xylous/gitstatus
-# antigen bundle history
-# antigen bundle pip
-# antigen bundle pipenv
-# antigen bundle pyenv
-# antigen bundle python
-antigen bundle terraform
-antigen bundle tmux
-# antigen bundle vault
-antigen bundle starship
-# antigen bundle agkozak/zsh-z
-antigen bundle zsh-users/zsh-autosuggestions
-# antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
-# antigen bundle vi-mode
-# antigen bundle jeffreytse/zsh-vi-mode
-# antigen bundle spaceship-prompt/spaceship-vi-mode@main
-# antigen bundle sawadashota/go-task-completions
-# antigen bundle chisui/zsh-nix-shell
-# antigen bundle nix-community/nix-zsh-completions
+#
+# Completion init — rebuild + security-audit the dump at most once a day,
+# otherwise trust the cache (compinit -C) so startup stays fast.
+#
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qNmh-24) ]]; then
+  compinit -C
+else
+  compinit
+fi
 
-# antigen theme spaceship-prompt/spaceship-prompt
+#
+# Plugins via antidote — statically compiled to a single flat file for speed,
+# regenerated only when the manifest (zsh_plugins.txt) changes. Pinned: plugins
+# stay at their cloned commit until an explicit `antidote update`.
+#
+source ~/.antidote/antidote.zsh
+_zsh_plugins_txt=~/.config/zsh/zsh_plugins.txt
+_zsh_plugins_zsh=~/.config/zsh/zsh_plugins.zsh
+if [[ ! ${_zsh_plugins_zsh} -nt ${_zsh_plugins_txt} ]]; then
+  antidote bundle <${_zsh_plugins_txt} >| ${_zsh_plugins_zsh}
+fi
+source ${_zsh_plugins_zsh}
+unset _zsh_plugins_txt _zsh_plugins_zsh
 
-antigen apply
-
-ZSH_TMUX_AUTOSTART=false   # auto start tmux
-ZSH_TMUX_UNICODE=true      # enable unicode
-ZSH_TMUX_AUTOCONNECT=true  # dont autoconnect
-
-# VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-# VI_MODE_SET_CURSOR=true
-# VI_MODE_CURSOR_NORMAL=2
-# VI_MODE_CURSOR_VISUAL=3
-# VI_MODE_CURSOR_INSERT=6
-bindkey '\C-e' edit-command-line
-
-# completion
+#
+# Completion styling
+#
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -128,40 +116,30 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-autoload -U compinit && compinit
-
-# extra completion
+# Tool-provided completions (after PATH is set so the tools resolve)
 if (( $+commands[glab] )); then
   source <(glab completion -s zsh); compdef _glab glab
 fi
-
 if (( $+commands[zoxide] )); then
   eval "$(zoxide init zsh)"
 fi
 
-# ssh host completion
-# zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+#
+# Prompt
+#
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
-export PATH="$HOME/.local/bin":$PATH
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-
-# golang
-export PATH="$HOME/go/bin":$PATH
-export PATH="$PATH:/usr/local/go/bin"
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-source $HOME/.secrets
-
-# settings that should be default
-export ANSIBLE_NOCOWS=1
-export PIPENV_VENV_IN_PROJECT=1
-
-# fzf theme
-# catppuccin-mocha, from https://github.com/catppuccin/fzf/blob/main/themes/catppuccin-fzf-mocha.sh
-# Base options that work everywhere (keep conservative)
+#
+# fzf — keybindings + catppuccin theme, kept in sync with whichever fzf is on
+# PATH. Nix devshells can shadow the system fzf with an older build; the widgets
+# are baked once at startup, so a widget built by fzf 0.67 (binds
+# alt-r:toggle-raw) fails against a devshell's 0.62 ("unknown action:
+# toggle-raw") and Ctrl-R silently dies. Regenerate only when the resolved fzf
+# binary changes (no per-prompt fork; ${commands[fzf]} is a hash lookup) so the
+# baked options — and the version-gated colors — always match the running fzf.
+#
 typeset -g FZF_DEFAULT_OPTS_BASE="
 --color=bg:#1E1E2E,bg+:#45475A
 --color=fg:#CDD6F4,fg+:#CDD6F4
@@ -173,51 +151,36 @@ typeset -g FZF_DEFAULT_OPTS_BASE="
 --color=marker:#B4BEFE
 --color=prompt:#CBA6F7
 "
-
-# Determine fzf version (first in PATH)
-# Compare versions (zsh has a native version comparator)
-fzf_ver=$(fzf --version 2>/dev/null | awk '{print $1}')
-autoload -Uz is-at-least
-typeset -g FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS_BASE"
-
-# Only add newer keys when available
-if is-at-least 0.67 "$fzf_ver"; then
-  FZF_DEFAULT_OPTS+="
---color=border:#6C7086
---color=label:#CDD6F4
-"
-fi
-export FZF_DEFAULT_OPTS
-
-source $DOTFILES/zsh/zsh_aliases
-# source $DOTFILES/zsh/zsh_theme
-source $DOTFILES/zsh/zsh_functions
-
-# uncomment to profile
-# zprof
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Keep fzf's keybindings in sync with the fzf that's actually on PATH.
-# Nix devshells (e.g. batmake) can shadow the system fzf with an older build;
-# the widgets are generated once at startup, so a widget built by system fzf
-# 0.67 (which binds alt-r:toggle-raw) fails when it later runs against a
-# devshell's fzf 0.62 ("unknown action: toggle-raw") — Ctrl-R silently dies.
-# Regenerate the integration only when the resolved fzf binary changes (no
-# per-prompt fork; ${commands[fzf]} is a hash lookup), so the baked options
-# always match the binary that runs them, in or out of a devshell.
 typeset -g _FZF_SYNCED_PATH
 _fzf_sync_bindings() {
   local p=${commands[fzf]}
   [[ $p == $_FZF_SYNCED_PATH ]] && return
   _FZF_SYNCED_PATH=$p
-  [[ -n $p ]] && source <(fzf --zsh)
+  [[ -z $p ]] && return
+  FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS_BASE
+  autoload -Uz is-at-least
+  if is-at-least 0.67 "${${(z)$(fzf --version)}[1]}"; then
+    FZF_DEFAULT_OPTS+=$'\n--color=border:#6C7086\n--color=label:#CDD6F4'
+  fi
+  export FZF_DEFAULT_OPTS
+  source <(fzf --zsh)
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd _fzf_sync_bindings
 
-# for npm and nvm
-export PATH="$HOME/.npm-global/bin:$PATH"
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
+# Keybindings
+#
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+#
+# Aliases & functions
+#
+source $DOTFILES/zsh/zsh_aliases
+source $DOTFILES/zsh/zsh_functions
+
+# zprof

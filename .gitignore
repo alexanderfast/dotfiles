@@ -13,3 +13,4 @@ gtk-3.0/bookmarks
 
 # Trello API key/token — never commit, never sync via git.
 .config/trello/
+.config/zsh/zsh_plugins.zsh

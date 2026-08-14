@@ -1,0 +1,20 @@
+# Plugin manifest for antidote (replaces the antigen bundle list).
+# Order matters: Oh My Zsh lib first, zsh-syntax-highlighting LAST.
+# Pinned by default — plugins stay at their cloned commit until `antidote update`.
+
+# Oh My Zsh library (parity with the old `antigen use oh-my-zsh`)
+ohmyzsh/ohmyzsh path:lib
+
+# Oh My Zsh plugins
+ohmyzsh/ohmyzsh path:plugins/colorize
+ohmyzsh/ohmyzsh path:plugins/common-aliases
+ohmyzsh/ohmyzsh path:plugins/direnv
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/terraform
+ohmyzsh/ohmyzsh path:plugins/tmux
+
+# Autosuggestions
+zsh-users/zsh-autosuggestions
+
+# Syntax highlighting — MUST be the last plugin sourced
+zsh-users/zsh-syntax-highlighting
