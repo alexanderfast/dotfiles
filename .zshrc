@@ -54,6 +54,10 @@ typeset -U path                     # keep PATH deduplicated
 export ANSIBLE_NOCOWS=1
 export PIPENV_VENV_IN_PROJECT=1
 export CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1
+# Claude Code captures the mouse and copies text on select; disabling its mouse
+# clicks stops that extra copy, so selecting text gives a single clipboard
+# toast (tmux's) instead of two. Wheel scroll still works.
+export CLAUDE_CODE_DISABLE_MOUSE_CLICKS=1
 export BATMCP_SECRETS_FILE="$HOME/.secrets"
 
 # nvm
