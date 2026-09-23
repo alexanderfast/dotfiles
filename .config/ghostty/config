@@ -47,7 +47,10 @@ theme = Catppuccin Mocha
 font-size = 11
 #font-family = Fira Sans
 
-# Clipboard: tmux is the single copy-on-select owner (mouse on + set-clipboard
-# on), so disable Ghostty's own copy-on-select to avoid a second "Copied to
-# clipboard" toast when selecting text.
-copy-on-select = false
+# Clipboard: tmux owns copy-on-select for CLIPBOARD (mouse on + set-clipboard on).
+# Ghostty's copy-on-select is set to PRIMARY only (the "true" value = selection
+# clipboard, not CLIPBOARD), so it doesn't fire a second CLIPBOARD toast. This is
+# what makes Shift+drag selections (which bypass tmux) land in PRIMARY for
+# middle-click paste, e.g. inside the Claude Code TUI where mouse clicks are
+# disabled (CLAUDE_CODE_DISABLE_MOUSE_CLICKS).
+copy-on-select = true
