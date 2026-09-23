@@ -195,3 +195,7 @@ source $DOTFILES/zsh/zsh_aliases
 source $DOTFILES/zsh/zsh_functions
 
 # zprof
+
+# Resume Claude Code sessions without copying the session ID
+alias clc='claude --continue'  # resume most recent session in current dir (cc = C compiler)
+alias ccr='claude --resume'    # global picker across all sessions
