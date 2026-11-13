@@ -54,3 +54,6 @@ font-size = 11
 # middle-click paste, e.g. inside the Claude Code TUI where mouse clicks are
 # disabled (CLAUDE_CODE_DISABLE_MOUSE_CLICKS).
 copy-on-select = true
+
+# KWin stopped drawing server-side decorations for Ghostty after the Ubuntu 26.04 upgrade; draw our own.
+window-decoration = client
